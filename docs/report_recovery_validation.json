@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-26",
+  "incident": "Report timed out at1800seconds while rebuilding evidence from saved matching batches",
+  "evidence": "User log and screenshot: anhthu128/porto-flow has saved _output_.zip about5.48GB; archive not inspected locally",
+  "real_matching_complete": "UNKNOWN_PENDING_SAVED_MATCHING_SUMMARY",
+  "original_delivery_sha256": "2ac4d75d741ce09d2f61e67ff7ae25be16e228e8107103e599264f8acb750591",
+  "frozen_scientific_source_files_identical": 19,
+  "tests": {
+    "full_suite": "26passed in35.02s",
+    "extracted_recovery_zip": "2passed/7deselected"
+  },
+  "recovery_zip_sha256": "008e6c3843996d768ebf9c57ba3490539c6ebdb0484735c86284e4a3b446a24b",
+  "recovery_zip_bytes": 68395,
+  "runtime_limit_seconds": 5400,
+  "raw_scan_of_porto_in_recovery": false,
+  "native_matching_of_porto_in_recovery": false,
+  "real_archive_recovery_executed": false,
+  "app_export_replaced": false
+}

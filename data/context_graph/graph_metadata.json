@@ -1,0 +1,81 @@
+{
+  "graph_version": "b6bbb785ec7c69b37b64755626dbfbe8936a660c4c7817f402b3b13335c6325a",
+  "metric_crs": "EPSG:32629",
+  "graph_identity_method": "wgs84_content_v2",
+  "portable_content_sha256": "b6bbb785ec7c69b37b64755626dbfbe8936a660c4c7817f402b3b13335c6325a",
+  "source_crs": "EPSG:4326",
+  "provenance": {
+    "kind": "OSM_CURRENT",
+    "region_scope": "PORTOFLOW_FULL_SOURCE_V1",
+    "region_plan": {
+      "authorization": "PORTOFLOW_FULL_SOURCE_V1",
+      "center_lonlat": [
+        -8.63,
+        41.16
+      ],
+      "width_m": 10000,
+      "height_m": 10000,
+      "matching_buffer_m": 500,
+      "metric_crs": "EPSG:32629",
+      "window_start_local": "2013-07-01",
+      "window_end_local_exclusive": "2014-07-01",
+      "train_cutoff_utc": "2014-05-01T00:00:00Z",
+      "max_raw_rows": 2000000,
+      "raw_batch_rows": 1000,
+      "max_points_per_trip": 2000,
+      "minimum_block_points": 6,
+      "match_batch_trips": 20,
+      "max_batch_observations": 250000,
+      "max_graph_edges": 60000,
+      "scan_timeout_seconds": 5400,
+      "matching_timeout_seconds": 21600,
+      "report_timeout_seconds": 1800,
+      "max_rss_mb": 12000,
+      "max_output_gb": 12,
+      "partial_policy": "validated_blocks_v1",
+      "partial_minimum_gap_fraction": 0.9,
+      "partial_boundary_trim_gaps": 1,
+      "partial_minimum_block_gaps": 3,
+      "reference_coverage_fraction": 0.8,
+      "stop_at_coverage_target": false,
+      "automatic_app_update": false
+    },
+    "core_polygon_lonlat": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -8.570699006070381,
+            41.11475430376463
+          ],
+          [
+            -8.570110822366074,
+            41.204831651283776
+          ],
+          [
+            -8.689382585235364,
+            41.205215113035315
+          ],
+          [
+            -8.689807586331938,
+            41.11513655880333
+          ],
+          [
+            -8.570699006070381,
+            41.11475430376463
+          ]
+        ]
+      ]
+    },
+    "fetch_utc": "2026-10-25T10:48:52.422224+00:00",
+    "role": "matching_context"
+  },
+  "nodes": 12404,
+  "edges": 26254,
+  "weak_components": 38,
+  "strong_components": 188,
+  "sha256": {
+    "road_graph.graphml": "3630f79f89f3d5eed84b4d7071dc1aca64a943fc01331471940e20f78b38980d",
+    "road_edges.parquet": "3a0af3181eff11323b6e94144f714c7c8ef209692e368caed4e44d9d49a30b69"
+  }
+}

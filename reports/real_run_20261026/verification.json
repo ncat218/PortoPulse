@@ -1,0 +1,259 @@
+{
+  "date": "2026-10-26",
+  "review_zip": "C:\\Users\\ADMIN\\Documents\\CS313\\PortoFlow\\notebooks\\portoflow_final_review.zip",
+  "review_zip_sha256": "8e910edf0ac4ba2066cee9caf6dd31161bb5c6fcd1fd83a8b1964807d3eea781",
+  "status": "REPORT_COMPLETE_PROFILE_BUNDLE_AUDIT_PASSED_CANDIDATE_REMAINS_PENDING_QC",
+  "postprocessing_complete": true,
+  "matching_complete": false,
+  "matched_parents": {
+    "train": 1343398,
+    "holdout": 75322
+  },
+  "expected_parents": {
+    "holdout": 303479,
+    "train": 1343398
+  },
+  "remaining_parents": {
+    "holdout": 228157,
+    "train": 0
+  },
+  "profile_rows": 274320,
+  "fixed_directed_edges": 22860,
+  "buckets": [
+    {
+      "bucket": "weekday/00-06",
+      "edges": 22860,
+      "known": 14636,
+      "unknown": 8224,
+      "known_pct": 64.0245,
+      "unvisited": 4994,
+      "observed_unknown": 3230,
+      "normal": 11003,
+      "slow": 2363,
+      "high_slowdown": 1270
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edges": 22860,
+      "known": 13892,
+      "unknown": 8968,
+      "known_pct": 60.7699,
+      "unvisited": 5958,
+      "observed_unknown": 3010,
+      "normal": 8979,
+      "slow": 3563,
+      "high_slowdown": 1350
+    },
+    {
+      "bucket": "weekday/09-12",
+      "edges": 22860,
+      "known": 15467,
+      "unknown": 7393,
+      "known_pct": 67.6597,
+      "unvisited": 4661,
+      "observed_unknown": 2732,
+      "normal": 8510,
+      "slow": 5196,
+      "high_slowdown": 1761
+    },
+    {
+      "bucket": "weekday/12-16",
+      "edges": 22860,
+      "known": 16113,
+      "unknown": 6747,
+      "known_pct": 70.4856,
+      "unvisited": 4017,
+      "observed_unknown": 2730,
+      "normal": 8586,
+      "slow": 5527,
+      "high_slowdown": 2000
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edges": 22860,
+      "known": 15796,
+      "unknown": 7064,
+      "known_pct": 69.0989,
+      "unvisited": 4293,
+      "observed_unknown": 2771,
+      "normal": 7134,
+      "slow": 6491,
+      "high_slowdown": 2171
+    },
+    {
+      "bucket": "weekday/19-24",
+      "edges": 22860,
+      "known": 15768,
+      "unknown": 7092,
+      "known_pct": 68.9764,
+      "unvisited": 4287,
+      "observed_unknown": 2805,
+      "normal": 9465,
+      "slow": 4629,
+      "high_slowdown": 1674
+    },
+    {
+      "bucket": "weekend/00-06",
+      "edges": 22860,
+      "known": 15056,
+      "unknown": 7804,
+      "known_pct": 65.8618,
+      "unvisited": 4794,
+      "observed_unknown": 3010,
+      "normal": 11279,
+      "slow": 2478,
+      "high_slowdown": 1299
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edges": 22860,
+      "known": 12994,
+      "unknown": 9866,
+      "known_pct": 56.8416,
+      "unvisited": 6597,
+      "observed_unknown": 3269,
+      "normal": 10049,
+      "slow": 1962,
+      "high_slowdown": 983
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edges": 22860,
+      "known": 11512,
+      "unknown": 11348,
+      "known_pct": 50.3587,
+      "unvisited": 7761,
+      "observed_unknown": 3587,
+      "normal": 7399,
+      "slow": 3124,
+      "high_slowdown": 989
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edges": 22860,
+      "known": 12451,
+      "unknown": 10409,
+      "known_pct": 54.4663,
+      "unvisited": 6850,
+      "observed_unknown": 3559,
+      "normal": 7720,
+      "slow": 3603,
+      "high_slowdown": 1128
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edges": 22860,
+      "known": 11845,
+      "unknown": 11015,
+      "known_pct": 51.8154,
+      "unvisited": 7474,
+      "observed_unknown": 3541,
+      "normal": 6890,
+      "slow": 3831,
+      "high_slowdown": 1124
+    },
+    {
+      "bucket": "weekend/19-24",
+      "edges": 22860,
+      "known": 13321,
+      "unknown": 9539,
+      "known_pct": 58.2721,
+      "unvisited": 6121,
+      "observed_unknown": 3418,
+      "normal": 8852,
+      "slow": 3224,
+      "high_slowdown": 1245
+    }
+  ],
+  "classification_rules_checked_against_profiles": true,
+  "coverage_recounted_from_profiles": true,
+  "clipped_length_coverage_recomputed": true,
+  "graph_local_files_match_candidate_manifest": {
+    "graph_metadata.json": true,
+    "road_edges.parquet": true,
+    "road_graph.graphml": true
+  },
+  "included_candidate_member_hashes_verified": {
+    "diagnostics.png": "84fc83cc5ce81acf481b0879c7904568287b18357f32ac621c053307d26d9bc1",
+    "pipeline_config.json": "871195141ff0ac923f9c25b2e3657beb4195a43993d5c95336b6b129ca989ceb",
+    "congestion_profiles.parquet": "6d57765b4b5edfca8be46a715a247f93ad3221caf42064cffec2e1eeb83b1314"
+  },
+  "candidate_members_not_in_small_review_zip": [
+    "traffic.geojson",
+    "evaluation.json",
+    "holdout_components.csv",
+    "coverage_report.json",
+    "coverage.json",
+    "graph/road_graph.graphml",
+    "graph/road_edges.parquet",
+    "graph/graph_metadata.json"
+  ],
+  "local_code_revisions_match": {
+    "configs/default.yaml": true,
+    "configs/study_area.yaml": true,
+    "requirements/constraints.txt": true,
+    "scripts/report_continue.py": true,
+    "scripts/report_recovery.py": true,
+    "scripts/run_pipeline.py": true,
+    "src/portoflow/__init__.py": true,
+    "src/portoflow/config.py": true,
+    "src/portoflow/congestion.py": true,
+    "src/portoflow/contracts.py": true,
+    "src/portoflow/data.py": true,
+    "src/portoflow/export.py": true,
+    "src/portoflow/graph.py": true,
+    "src/portoflow/matching.py": true,
+    "src/portoflow/pipeline.py": true,
+    "src/portoflow/preprocess.py": true,
+    "src/portoflow/profiles.py": true,
+    "src/portoflow/route.py": true,
+    "src/portoflow/schema_v1.json": true,
+    "src/portoflow/schemas.py": true,
+    "src/portoflow/segment_qc.py": true,
+    "src/portoflow/speed.py": true,
+    "src/portoflow/state.py": true,
+    "src/portoflow/storage.py": true,
+    "src/portoflow/synthetic.py": true,
+    "tests/test_report_continue.py": true,
+    "tests/test_report_recovery.py": true
+  },
+  "reported_evaluation": {
+    "status": "SAVED_HELDOUT_COMPONENT_EVALUATION",
+    "components_considered": 148603,
+    "holdout_parents_with_observations": 67421,
+    "scored_parents": 67317,
+    "metrics": {
+      "static": {
+        "n": 148312,
+        "mae_s": 56.934781942971476,
+        "rmse_s": 84.8411125885376
+      },
+      "bucket": {
+        "n": 148312,
+        "mae_s": 51.22065739184281,
+        "rmse_s": 76.47764146655773
+      }
+    },
+    "exclusions": {
+      "incomplete_or_boundary_clipped_gaps": 26810,
+      "components_under_three_complete_gaps": 20718,
+      "insufficient_profile_coverage_components": 291
+    },
+    "holdout_excluded_from_profiles": true,
+    "target": "15 seconds times contiguous fully retained original GPS gaps",
+    "bucket_policy": "fixed component departure bucket; no passage-time lookahead",
+    "limitation": "QA-retained in-region components only; not full-trip accuracy or realized route savings"
+  },
+  "reported_eta_improvement_pct": {
+    "mae_s": 10.036263170116635,
+    "rmse_s": 9.857804626562396
+  },
+  "limits": [
+    "Original matching archive and sealed SQLite are not present locally; their SHA verification is recorded by the Kaggle run, not independently repeated here.",
+    "Raw GPS provenance, accepted-gap/QC evidence, independent support counts, medians/P85 and manual review cases are not recomputed from this small review bundle.",
+    "Heldout component CSV is absent, so ETA MAE/RMSE are reported metrics, not independently recomputed here.",
+    "Only the processed holdout subset is evaluated; this is not full-trip or whole-dataset accuracy."
+  ],
+  "app_export_replaced": false,
+  "automatic_app_activation": false
+}

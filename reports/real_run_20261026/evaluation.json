@@ -1,0 +1,27 @@
+{
+  "status": "SAVED_HELDOUT_COMPONENT_EVALUATION",
+  "components_considered": 148603,
+  "holdout_parents_with_observations": 67421,
+  "scored_parents": 67317,
+  "metrics": {
+    "static": {
+      "n": 148312,
+      "mae_s": 56.934781942971476,
+      "rmse_s": 84.8411125885376
+    },
+    "bucket": {
+      "n": 148312,
+      "mae_s": 51.22065739184281,
+      "rmse_s": 76.47764146655773
+    }
+  },
+  "exclusions": {
+    "incomplete_or_boundary_clipped_gaps": 26810,
+    "components_under_three_complete_gaps": 20718,
+    "insufficient_profile_coverage_components": 291
+  },
+  "holdout_excluded_from_profiles": true,
+  "target": "15 seconds times contiguous fully retained original GPS gaps",
+  "bucket_policy": "fixed component departure bucket; no passage-time lookahead",
+  "limitation": "QA-retained in-region components only; not full-trip accuracy or realized route savings"
+}

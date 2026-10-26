@@ -1,0 +1,128 @@
+{
+  "target": 0.8,
+  "denominator": "fixed directed edges with positive length in the exact 100 km2 square",
+  "all_buckets_target_met": false,
+  "buckets": {
+    "weekday/00-06": {
+      "edges": 22860,
+      "known": 14636,
+      "unknown": 8224,
+      "known_edge_fraction": 0.6402449693788277,
+      "edges_without_accepted_visits": 4994,
+      "observed_but_unknown_edges": 3230,
+      "known_length_fraction": 0.683402280531686,
+      "target_met": false
+    },
+    "weekday/06-09": {
+      "edges": 22860,
+      "known": 13892,
+      "unknown": 8968,
+      "known_edge_fraction": 0.6076990376202974,
+      "edges_without_accepted_visits": 5958,
+      "observed_but_unknown_edges": 3010,
+      "known_length_fraction": 0.6487594811631915,
+      "target_met": false
+    },
+    "weekday/09-12": {
+      "edges": 22860,
+      "known": 15467,
+      "unknown": 7393,
+      "known_edge_fraction": 0.676596675415573,
+      "edges_without_accepted_visits": 4661,
+      "observed_but_unknown_edges": 2732,
+      "known_length_fraction": 0.7102499092096226,
+      "target_met": false
+    },
+    "weekday/12-16": {
+      "edges": 22860,
+      "known": 16113,
+      "unknown": 6747,
+      "known_edge_fraction": 0.7048556430446195,
+      "edges_without_accepted_visits": 4017,
+      "observed_but_unknown_edges": 2730,
+      "known_length_fraction": 0.7371726517444257,
+      "target_met": false
+    },
+    "weekday/16-19": {
+      "edges": 22860,
+      "known": 15796,
+      "unknown": 7064,
+      "known_edge_fraction": 0.6909886264216973,
+      "edges_without_accepted_visits": 4293,
+      "observed_but_unknown_edges": 2771,
+      "known_length_fraction": 0.7288085408122784,
+      "target_met": false
+    },
+    "weekday/19-24": {
+      "edges": 22860,
+      "known": 15768,
+      "unknown": 7092,
+      "known_edge_fraction": 0.6897637795275591,
+      "edges_without_accepted_visits": 4287,
+      "observed_but_unknown_edges": 2805,
+      "known_length_fraction": 0.7291100167788405,
+      "target_met": false
+    },
+    "weekend/00-06": {
+      "edges": 22860,
+      "known": 15056,
+      "unknown": 7804,
+      "known_edge_fraction": 0.6586176727909011,
+      "edges_without_accepted_visits": 4794,
+      "observed_but_unknown_edges": 3010,
+      "known_length_fraction": 0.6998558546139727,
+      "target_met": false
+    },
+    "weekend/06-09": {
+      "edges": 22860,
+      "known": 12994,
+      "unknown": 9866,
+      "known_edge_fraction": 0.568416447944007,
+      "edges_without_accepted_visits": 6597,
+      "observed_but_unknown_edges": 3269,
+      "known_length_fraction": 0.6159876196072802,
+      "target_met": false
+    },
+    "weekend/09-12": {
+      "edges": 22860,
+      "known": 11512,
+      "unknown": 11348,
+      "known_edge_fraction": 0.5035870516185477,
+      "edges_without_accepted_visits": 7761,
+      "observed_but_unknown_edges": 3587,
+      "known_length_fraction": 0.5496009405028527,
+      "target_met": false
+    },
+    "weekend/12-16": {
+      "edges": 22860,
+      "known": 12451,
+      "unknown": 10409,
+      "known_edge_fraction": 0.544663167104112,
+      "edges_without_accepted_visits": 6850,
+      "observed_but_unknown_edges": 3559,
+      "known_length_fraction": 0.5909289561617775,
+      "target_met": false
+    },
+    "weekend/16-19": {
+      "edges": 22860,
+      "known": 11845,
+      "unknown": 11015,
+      "known_edge_fraction": 0.5181539807524059,
+      "edges_without_accepted_visits": 7474,
+      "observed_but_unknown_edges": 3541,
+      "known_length_fraction": 0.5679929386801117,
+      "target_met": false
+    },
+    "weekend/19-24": {
+      "edges": 22860,
+      "known": 13321,
+      "unknown": 9539,
+      "known_edge_fraction": 0.5827209098862642,
+      "edges_without_accepted_visits": 6121,
+      "observed_but_unknown_edges": 3418,
+      "known_length_fraction": 0.628910855564511,
+      "target_met": false
+    }
+  },
+  "target_role": "reference only; unchanged scientific classification rules"
+}

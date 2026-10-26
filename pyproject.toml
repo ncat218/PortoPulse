@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "portoflow"
+version = "0.1.0"
+description = "Independent full-source historical Porto taxi mining in a 10 km metric square"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "PyYAML>=6,<7", "pyarrow>=20,<25", "networkx>=3.2,<4", "shapely>=2.1,<3",
+  "pyproj>=3.6,<4", "pandas>=2.2,<4", "matplotlib>=3.8,<4", "tzdata>=2024.1",
+  "osmnx>=2,<3", "folium>=0.16,<1",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.40,<2", "streamlit-folium==0.27.4"]
+test = ["pytest>=8,<10"]
+fastmm = ["fastmm==0.3.2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+portoflow = ["schema_v1.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

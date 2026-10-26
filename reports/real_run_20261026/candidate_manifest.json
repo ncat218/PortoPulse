@@ -1,0 +1,21 @@
+{
+  "run_id": "03d70b3481a13cfbc6a7",
+  "graph_version": "401fea1a982be227710b427ea651784d87d78b0ded45433c5c8f72866b385031",
+  "cutoff_utc": "2014-05-01T00:00:00+00:00",
+  "data_kind": "REAL_INPUT_UNVERIFIED_PROVENANCE",
+  "status": "CANDIDATE_PENDING_MANUAL_QC_AND_HOLDOUT_REVIEW",
+  "matching_complete": false,
+  "outputs_sha256": {
+    "diagnostics.png": "84fc83cc5ce81acf481b0879c7904568287b18357f32ac621c053307d26d9bc1",
+    "traffic.geojson": "dd72d58a93dfaac8ba4d60f27835eedefe9b2aadb3e45c44e90434891519d383",
+    "pipeline_config.json": "871195141ff0ac923f9c25b2e3657beb4195a43993d5c95336b6b129ca989ceb",
+    "evaluation.json": "cd3d7748703adee4ab3b2c2a509e7acc574442a60cf4ff0cdcbcfd8d67659d99",
+    "holdout_components.csv": "f979eb4c0fccc0807ed6978dc4fd5569ca168f73bbf40424e720071d3eeedde6",
+    "coverage_report.json": "0bb8b57e8e07521d354d2b2f906364eb98179bf628234056a88399de0080b0b7",
+    "congestion_profiles.parquet": "6d57765b4b5edfca8be46a715a247f93ad3221caf42064cffec2e1eeb83b1314",
+    "coverage.json": "93b4c42bf8cca019800a5955ebf8368c631dbc3d8487d4473b8633c7e7476c54",
+    "graph/road_graph.graphml": "0b64ad347d65a365159b97261ce28958091e6cfccbbd4cb617754cad25393f2c",
+    "graph/road_edges.parquet": "e16e402d6879d357e946ff0239a0015ced865a53f38b303eaf8886bed5a0ba98",
+    "graph/graph_metadata.json": "b5335fda9c714819d48787d1b88089a1b4871783c88000a413b4be05cde6b467"
+  }
+}

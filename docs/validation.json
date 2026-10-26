@@ -1,0 +1,21 @@
+{
+  "project": "PortoFlow",
+  "date": "2026-10-25",
+  "project_root": "C:\\Users\\ADMIN\\Documents\\CS313\\PortoFlow",
+  "python": "3.12.14",
+  "tests": {
+    "standalone_suite": "13 passed in 12.42s",
+    "extracted_zip_native_e2e": "1 passed, 8 deselected in 3.86s"
+  },
+  "core_directed_edges": 22860,
+  "context_directed_edges": 26254,
+  "core_area_m2": 100000000.0,
+  "core_graph_version": "401fea1a982be227710b427ea651784d87d78b0ded45433c5c8f72866b385031",
+  "context_graph_version": "b6bbb785ec7c69b37b64755626dbfbe8936a660c4c7817f402b3b13335c6325a",
+  "code_zip_sha256": "2ac4d75d741ce09d2f61e67ff7ae25be16e228e8107103e599264f8acb750591",
+  "code_zip_bytes": 7433632,
+  "full_porto_matching_performed": false,
+  "github_repository_created": false,
+  "github_pushed": false,
+  "recurring_automation_created": false
+}

@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-27",
+  "kind": "REAL_GRAPH_AND_SAVED_PROFILE_APP_ROUTING_CHECK",
+  "requested_a": [
+    -8.618964053486968,
+    41.16034392672699
+  ],
+  "requested_b": [
+    -8.619318192861943,
+    41.16051258639719
+  ],
+  "source_edge_from_user_screenshot": "474541515:4703910293:0",
+  "routes": {
+    "distance": {
+      "endpoint_gap_b_m": 2.3283064365386963e-10,
+      "distance_m": 35.44164096911233,
+      "final_edge": "4703910293:474541483:0",
+      "final_color": "#2ca25f",
+      "final_status": "normal",
+      "final_partial_edge_m": 12.00000000027983
+    },
+    "static": {
+      "endpoint_gap_b_m": 2.3283064365386963e-10,
+      "distance_m": 35.44164096911233,
+      "final_edge": "4703910293:474541483:0",
+      "final_color": "#2ca25f",
+      "final_status": "normal",
+      "final_partial_edge_m": 12.00000000027983
+    },
+    "bucket": {
+      "endpoint_gap_b_m": 2.3283064365386963e-10,
+      "distance_m": 35.44164096911233,
+      "final_edge": "4703910293:474541483:0",
+      "final_color": "#2ca25f",
+      "final_status": "normal",
+      "final_partial_edge_m": 12.00000000027983
+    }
+  },
+  "frozen_scientific_source_files_unchanged": 19,
+  "seconds": 5.36,
+  "new_matching_performed": false,
+  "limitation": "On-road points derived from the screenshot edge and adjacent graph edge, not the exact original user click coordinates."
+}

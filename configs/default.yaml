@@ -1,0 +1,70 @@
+schema_version: "1.1.0"
+random_seed: 313
+dataset:
+  source_url: "https://archive.ics.uci.edu/dataset/339/taxi+service+trajectory+prediction+challenge+ecml+pkdd+2015"
+  expected_archive: "data/raw/train.csv.zip"
+  expected_csv_member: "train.csv"
+  archive_sha256: null  # Record after acquiring the official file.
+  nominal_sample_interval_seconds: 15
+time:
+  source_timezone: "UTC"
+  analysis_timezone: "Europe/Lisbon"
+  day_groups:
+    weekday: [0, 1, 2, 3, 4]
+    weekend: [5, 6]
+  bucket_boundaries_hour: [0, 6, 9, 12, 16, 19, 24]
+geometry:
+  source_crs: "EPSG:4326"
+  display_crs: "EPSG:4326"
+  metric_crs: "EPSG:32629"  # UTM 29N; explicit metre-based CRS for the Porto subset.
+graph:
+  study_area: null  # Select from S01 geographic coverage; approve before S02 fetch.
+  source_snapshot_date: null
+  graph_version: null
+split:
+  policy: "forward_time_by_trip"
+  train_cutoff_utc: null  # Set before fitting any speed profile.
+matching:
+  preferred_method: "fastmm"
+  batch_size: null  # Set after S03 timing/QC.
+  candidate_radius_m: 50.0
+  max_candidates: 8
+  gps_sigma_m: 15.0
+  transition_beta_m: 50.0
+  max_median_residual_m: 30.0
+  max_gap_speed_kmh: 140.0
+  ubodt_distance_m: 1000.0
+  minimum_success_fraction: 0.5  # Provisional engineering stop rule; not a research benchmark.
+storage:
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  exports_dir: "data/exports"
+  checkpoint_format: "parquet"
+  atomic_writes: true
+  manifest_required: true
+profile_rules:
+  min_distinct_trips: null  # Set after real-data EDA in S06.
+  min_distinct_taxis: null
+  min_distinct_dates: null
+  slow_ratio_threshold: null
+  high_slowdown_ratio_threshold: null
+s01:
+  max_rows: 1000  # Bounded prefix smoke run; not a representative full-year sample.
+  batch_size: 100
+  max_points_per_trip: 2000
+  sample_per_stratum: 10  # Per train/holdout x local-start weekday/weekend x hour bucket.
+  points_per_partition: 5000
+  qc_bbox_lonlat: [-9.0, 40.0, -7.0, 42.0]  # Broad provisional QC envelope, not study area.
+speed_rules:
+  max_speed_kmh: 140.0
+  min_inferred_duration_s: 0.05
+events:
+  window_minutes: 30
+  min_distinct_trips: 3
+  min_distinct_taxis: 2
+route_rules:
+  fallback_speed_kmh: 25.0  # Explicit unknown-road ETA proxy, never a measured free-flow speed.
+  unknown_cost_multiplier: 2.0
+evaluation:
+  maximum_unknown_distance_fraction: 0.5
+

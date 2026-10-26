@@ -1,0 +1,21 @@
+name: Verify standalone pipeline
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -c requirements/constraints.txt -e '.[app,test,fastmm]'
+      - run: python scripts/build_kaggle.py
+      - run: python scripts/build_report_recovery.py
+      - run: python scripts/build_report_continue.py
+      - run: python -m pytest -q

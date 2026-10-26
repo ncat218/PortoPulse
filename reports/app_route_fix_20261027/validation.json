@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-27",
+  "tests": "44 passed in 48.74s",
+  "app_regressions": "8 passed, including Streamlit AppTest",
+  "frozen_scientific_source_files_unchanged": 19,
+  "routing": "App-only edge endpoint projection, proportional first/last edge costs, directed one-way constraints",
+  "colors": "Original direction-specific profile colors; overlapping reverse geometries separated only for map display",
+  "readme": "PowerShell git clone/install/run_demo instructions for ncat218/PortoPulse",
+  "real_graph_check": "real_graph_check.json",
+  "browser_or_app_server_started_by_agent": false
+}

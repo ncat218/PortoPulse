@@ -1,0 +1,495 @@
+{
+  "schema_version": "1.1.0",
+  "status": "Incremental pipeline contracts; physical GPS, match, observation and profile schemas tested on synthetic fixtures only",
+  "coordinate_order": "[lon, lat]",
+  "tables": {
+    "gps_points": {
+      "description": "One retained GPS point per trip index; no inferred edge speed.",
+      "primary_key": [
+        "trip_id",
+        "point_idx"
+      ],
+      "fields": {
+        "trip_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Raw TRIP_ID"
+        },
+        "taxi_id": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Raw TAXI_ID"
+        },
+        "point_idx": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Zero-based POLYLINE index"
+        },
+        "lon": {
+          "type": "float64",
+          "nullable": false,
+          "description": "WGS84 longitude, degrees"
+        },
+        "lat": {
+          "type": "float64",
+          "nullable": false,
+          "description": "WGS84 latitude, degrees"
+        },
+        "event_time_utc": {
+          "type": "timestamp[us,UTC]",
+          "nullable": false,
+          "description": "UTC instant"
+        },
+        "event_time_local": {
+          "type": "timestamp[us,Europe/Lisbon]",
+          "nullable": false,
+          "description": "Same instant rendered in Lisbon civil time"
+        },
+        "quality_flag": {
+          "type": "string",
+          "nullable": false,
+          "description": "Point QC label"
+        }
+      }
+    },
+    "road_edges": {
+      "description": "Directed OSM edge on one immutable graph version.",
+      "primary_key": [
+        "graph_version",
+        "edge_id"
+      ],
+      "fields": {
+        "edge_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Canonical u:v:key string, unique within graph_version"
+        },
+        "u": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Source OSM node"
+        },
+        "v": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Target OSM node"
+        },
+        "key": {
+          "type": "int64",
+          "nullable": false,
+          "description": "MultiDiGraph parallel-edge key"
+        },
+        "length_m": {
+          "type": "float64",
+          "nullable": false,
+          "description": "Projected metric edge length"
+        },
+        "highway": {
+          "type": "string",
+          "nullable": true,
+          "description": "Normalized OSM highway class"
+        },
+        "maxspeed_raw": {
+          "type": "string",
+          "nullable": true,
+          "description": "Unparsed OSM maxspeed"
+        },
+        "geometry": {
+          "type": "binary:wkb",
+          "nullable": false,
+          "description": "Directed LineString WKB in EPSG:4326"
+        },
+        "graph_version": {
+          "type": "string",
+          "nullable": false,
+          "description": "Hash/version of fetched and normalized graph"
+        }
+      }
+    },
+    "match_results": {
+      "description": "Ordered traversal candidates; failed trips are recorded separately in per-trip result.json and matching_statistics.json",
+      "primary_key": [
+        "graph_version",
+        "trip_id",
+        "matched_subtrajectory_id",
+        "position"
+      ],
+      "fields": {
+        "trip_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Raw trip ID"
+        },
+        "matched_subtrajectory_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Subtrajectory identifier, null on total match failure"
+        },
+        "edge_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Directed edge ID, null on failure"
+        },
+        "position": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Zero-based order within matched subtrajectory"
+        },
+        "estimated_entry_utc": {
+          "type": "timestamp[us,UTC]",
+          "nullable": false,
+          "description": "Inferred edge entry"
+        },
+        "estimated_exit_utc": {
+          "type": "timestamp[us,UTC]",
+          "nullable": false,
+          "description": "Inferred edge exit"
+        },
+        "match_method": {
+          "type": "string",
+          "nullable": false,
+          "description": "Matcher and version"
+        },
+        "match_quality": {
+          "type": "string",
+          "nullable": false,
+          "description": "QC outcome/code"
+        },
+        "time_allocation_method": {
+          "type": "string",
+          "nullable": false,
+          "description": "Model used to divide GPS interval"
+        },
+        "graph_version": {
+          "type": "string",
+          "nullable": false,
+          "description": "Same graph version as road_edges"
+        },
+        "taxi_id": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Raw taxi identifier"
+        },
+        "gap_index": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Original nominal GPS interval index"
+        },
+        "start_offset_m": {
+          "type": "float64",
+          "nullable": false,
+          "description": "Projected distance from directed edge start"
+        },
+        "end_offset_m": {
+          "type": "float64",
+          "nullable": false,
+          "description": "Projected distance from directed edge start"
+        },
+        "traveled_distance_m": {
+          "type": "float64",
+          "nullable": false,
+          "description": "Partial edge distance within this GPS gap"
+        }
+      }
+    },
+    "edge_observations": {
+      "description": "One accepted/inferred directed-edge traversal from a trip.",
+      "primary_key": [
+        "graph_version",
+        "trip_id",
+        "traversal_idx"
+      ],
+      "fields": {
+        "trip_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Raw trip ID"
+        },
+        "taxi_id": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Taxi ID"
+        },
+        "edge_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Directed edge ID"
+        },
+        "traversal_idx": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Zero-based accepted traversal order within trip"
+        },
+        "estimated_entry_utc": {
+          "type": "timestamp[us,UTC]",
+          "nullable": false,
+          "description": "Inferred directed-edge entry instant"
+        },
+        "estimated_exit_utc": {
+          "type": "timestamp[us,UTC]",
+          "nullable": false,
+          "description": "Inferred directed-edge exit instant"
+        },
+        "observed_or_inferred_duration_s": {
+          "type": "float64",
+          "nullable": false,
+          "description": "Seconds; provenance in time_inference_flag"
+        },
+        "estimated_speed_kmh": {
+          "type": "float64",
+          "nullable": false,
+          "description": "Edge speed estimate, not direct observation"
+        },
+        "local_date": {
+          "type": "date32",
+          "nullable": false,
+          "description": "Date at passage in Lisbon"
+        },
+        "day_group": {
+          "type": "string",
+          "nullable": false,
+          "description": "weekday or weekend at passage"
+        },
+        "time_bucket": {
+          "type": "string",
+          "nullable": false,
+          "description": "Local half-open bucket label"
+        },
+        "time_inference_flag": {
+          "type": "string",
+          "nullable": false,
+          "description": "Observed interval/inferred edge allocation code"
+        },
+        "quality_flag": {
+          "type": "string",
+          "nullable": false,
+          "description": "QC decision"
+        },
+        "graph_version": {
+          "type": "string",
+          "nullable": false,
+          "description": "Graph version"
+        },
+        "gap_index": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Original GPS interval index"
+        },
+        "traveled_distance_m": {
+          "type": "float64",
+          "nullable": false,
+          "description": "Partial edge distance; proportionally split at bucket boundaries"
+        },
+        "gap_edge_count": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Number of edge pieces inferred in the original GPS interval"
+        },
+        "split": {
+          "type": "string",
+          "nullable": false,
+          "description": "train or holdout; only train may enter profile fitting"
+        }
+      }
+    },
+    "congestion_profiles": {
+      "description": "One directed-edge and historical weekly bucket, including unknown coverage.",
+      "primary_key": [
+        "graph_version",
+        "edge_id",
+        "day_group",
+        "time_bucket"
+      ],
+      "fields": {
+        "edge_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Directed edge ID"
+        },
+        "day_group": {
+          "type": "string",
+          "nullable": false,
+          "description": "weekday or weekend"
+        },
+        "time_bucket": {
+          "type": "string",
+          "nullable": false,
+          "description": "Local bucket label"
+        },
+        "median_speed_kmh": {
+          "type": "float64",
+          "nullable": true,
+          "description": "Robust inferred speed; null if unsupported"
+        },
+        "reference_speed_kmh": {
+          "type": "float64",
+          "nullable": true,
+          "description": "Free-flow proxy; null if unavailable"
+        },
+        "reference_source": {
+          "type": "string",
+          "nullable": true,
+          "description": "edge_p85/class_night/maxspeed/none"
+        },
+        "slowdown_ratio": {
+          "type": "float64",
+          "nullable": true,
+          "description": "max(0, 1 - median/reference), null if unsupported"
+        },
+        "distinct_taxis": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Independent taxi count"
+        },
+        "distinct_trips": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Independent trip count"
+        },
+        "distinct_dates": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Distinct local dates"
+        },
+        "confidence": {
+          "type": "string",
+          "nullable": false,
+          "description": "Source/support confidence label"
+        },
+        "status": {
+          "type": "string",
+          "nullable": false,
+          "description": "normal/slow/high_slowdown/unknown"
+        },
+        "graph_version": {
+          "type": "string",
+          "nullable": false,
+          "description": "Graph version"
+        },
+        "train_cutoff": {
+          "type": "timestamp[us,UTC]",
+          "nullable": false,
+          "description": "Last eligible training instant"
+        },
+        "static_speed_kmh": {
+          "type": "float64",
+          "nullable": true,
+          "description": "Supported median per-trip inferred speed across training buckets"
+        }
+      }
+    },
+    "recurrent_corridors": {
+      "description": "Connected slow edges in one aggregated weekly bucket; not a simultaneous jam event.",
+      "primary_key": [
+        "graph_version",
+        "cluster_id"
+      ],
+      "fields": {
+        "cluster_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Deterministic cluster ID"
+        },
+        "day_group": {
+          "type": "string",
+          "nullable": false,
+          "description": "weekday or weekend"
+        },
+        "time_bucket": {
+          "type": "string",
+          "nullable": false,
+          "description": "Local bucket"
+        },
+        "edge_ids": {
+          "type": "list<string>",
+          "nullable": false,
+          "description": "Directed edge IDs"
+        },
+        "edge_count": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Count of connected edges"
+        },
+        "summary_metrics": {
+          "type": "string",
+          "nullable": false,
+          "description": "Canonical JSON; contents defined at S07"
+        },
+        "confidence": {
+          "type": "string",
+          "nullable": false,
+          "description": "Support quality"
+        },
+        "graph_version": {
+          "type": "string",
+          "nullable": false,
+          "description": "Graph version"
+        }
+      }
+    },
+    "dated_events": {
+      "description": "Optional actual same-date overlapping-time cluster; omit table if support fails.",
+      "primary_key": [
+        "graph_version",
+        "cluster_id"
+      ],
+      "fields": {
+        "cluster_id": {
+          "type": "string",
+          "nullable": false,
+          "description": "Deterministic event ID"
+        },
+        "day_group": {
+          "type": "string",
+          "nullable": false,
+          "description": "weekday or weekend"
+        },
+        "time_bucket": {
+          "type": "string",
+          "nullable": false,
+          "description": "Local bucket"
+        },
+        "local_date": {
+          "type": "date32",
+          "nullable": false,
+          "description": "Observed Lisbon date"
+        },
+        "edge_ids": {
+          "type": "list<string>",
+          "nullable": false,
+          "description": "Directed edge IDs"
+        },
+        "edge_count": {
+          "type": "int64",
+          "nullable": false,
+          "description": "Count of edges"
+        },
+        "summary_metrics": {
+          "type": "string",
+          "nullable": false,
+          "description": "Canonical JSON; contents defined at S07"
+        },
+        "confidence": {
+          "type": "string",
+          "nullable": false,
+          "description": "Same-date support quality"
+        },
+        "graph_version": {
+          "type": "string",
+          "nullable": false,
+          "description": "Graph version"
+        },
+        "window_start_utc": {
+          "type": "timestamp[us,UTC]",
+          "nullable": false,
+          "description": "Start of overlapping actual observation envelopes"
+        },
+        "window_end_utc": {
+          "type": "timestamp[us,UTC]",
+          "nullable": false,
+          "description": "End of overlapping actual observation envelopes"
+        }
+      }
+    }
+  }
+}

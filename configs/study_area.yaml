@@ -1,0 +1,29 @@
+# User selected 10 x 10 km and full relevant Porto data on 2026-10-25.
+authorization: PORTOFLOW_FULL_SOURCE_V1
+center_lonlat: [-8.63, 41.16]  # Center of the existing reviewed Porto footprint.
+width_m: 10000
+height_m: 10000
+matching_buffer_m: 500
+metric_crs: EPSG:32629
+window_start_local: '2013-07-01'
+window_end_local_exclusive: '2014-07-01'
+train_cutoff_utc: '2014-05-01T00:00:00Z'
+max_raw_rows: 2000000
+raw_batch_rows: 1000
+max_points_per_trip: 2000
+minimum_block_points: 6
+match_batch_trips: 20
+max_batch_observations: 250000
+max_graph_edges: 60000
+scan_timeout_seconds: 5400
+matching_timeout_seconds: 21600
+report_timeout_seconds: 1800
+max_rss_mb: 12000
+max_output_gb: 12
+partial_policy: validated_blocks_v1
+partial_minimum_gap_fraction: 0.90
+partial_boundary_trim_gaps: 1
+partial_minimum_block_gaps: 3
+reference_coverage_fraction: 0.80
+stop_at_coverage_target: false
+automatic_app_update: false
