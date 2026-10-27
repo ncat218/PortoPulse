@@ -1,3 +1,22 @@
+# PortoPulse — đề xuất cân bằng theo giảm tốc lịch sử 2026-10-27
+
+App mặc định đề xuất balanced, dùng ETA theo giờ và tỷ lệ quãng đường so với
+đường ngắn nhất. Mặc định trọng số80/20, người dùng điều chỉnh được; đây là
+sở thích đánh đổi, không phải độ chính xác. Phần unknown chịu khoản phạt cũ;
+không phạt màu đỏ/vàng thêm lần nữa. Dijkstra tìm minimum tổng chi phí chuẩn hóa
+trên graph có hướng, gồm vị trí A/B giữa cạnh. Các tuyến cũ là mốc đối chiếu.
+
+UI công bố mét/phần trăm đi vòng, ETA thay đổi và quãng đường chậm/unknown.
+54 kiểm thử đạt, gồm tình huống230m/8giây, đổi dữ liệu giảm tốc làm đổi tuyến,
+tìm tuyến cân bằng khác ba mốc và điều chỉnh ưu tiên trên Streamlit AppTest.
+Một A/B minh họa với profile thật qua6khung giờ cho2đường đề xuất khác nhau;
+không phải đúng tọa độ bấm gốc trong ảnh, chưa đo lợi ích ngoài thực tế.
+19 file khoa học và matching checkpoints giữ nguyên; không có matching mới.
+
+Xem docs/BALANCED_ROUTING.md và reports/balanced_routing_20261027.
+Hiệu năng vẽ lại bản đồ vẫn cần tối ưu riêng; phép đo cũ được ghi rõ commit nguồn.
+
+---
 # PortoPulse — sửa điểm B, màu chiều đường và demo 2026-10-27
 
 App định tuyến tới vị trí A/B trên cạnh gần nhất, gồm cạnh đầu/cuối bị cắt,

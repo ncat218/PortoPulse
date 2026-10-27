@@ -103,6 +103,11 @@ def render_view(metadata,profiles,features,config,root,day,bucket,selected,backg
                         min_value=-180.,max_value=180.,format='%.6f',on_change=invalidate_route)
                     st.number_input('Vĩ độ '+role,key='route_'+role.lower()+'_lat',value=None,
                         min_value=-90.,max_value=90.,format='%.6f',on_change=invalidate_route)
+        with st.expander('Ưu tiên thời gian hay quãng đường'):
+            st.slider('Ưu tiên thời gian',min_value=0,max_value=100,value=80,step=5,format='%d%%',
+                      key='route_time_priority',on_change=invalidate_route)
+            st.caption('Giá trị cao hơn ưu tiên ETA lịch sử; thấp hơn hạn chế đi vòng. '
+                       'Đây là mức đánh đổi bạn chọn, không phải độ chính xác hoặc độ tin cậy của ETA.')
         if state['route_pick_mode']!='Xem bản đồ':
             role='A' if state['route_pick_mode']=='Chọn điểm A' else 'B'
             st.info(f'Bấm lên bản đồ để chọn điểm {role}. Có đủ A và B, tuyến sẽ tự hiển thị.')
@@ -115,8 +120,8 @@ def render_view(metadata,profiles,features,config,root,day,bucket,selected,backg
                 network=load_route_network(str(root.resolve()),metadata['graph_version'])
                 result=recommend_coordinate_routes(network,profiles,
                     (state['route_a_lon'],state['route_a_lat']),(state['route_b_lon'],state['route_b_lat']),
-                    day,bucket,config)
-                state.update(route_result=result,route_signature=request)
+                    day,bucket,config,time_priority=state.get('route_time_priority',80)/100)
+                state.update(route_result=result,route_signature=request,route_choice='balanced')
         except ValueError as exc:
             state.update(route_signature=None,route_error=str(exc))
     result=(state.get('route_result') if journey and points_ready(state)
@@ -124,13 +129,31 @@ def render_view(metadata,profiles,features,config,root,day,bucket,selected,backg
     if journey and state.get('route_attempt_signature')==request and state.get('route_error'):
         st.error(state['route_error'])
     if result:
-        choice=st.selectbox('Tuyến hiển thị trên bản đồ',['bucket','distance','static'],key='route_choice',
+        proposal=result['routes']['balanced'];recommendation=result['recommendation']
+        gain=recommendation['eta_gain_vs_shortest_s'];extra=max(0.,recommendation['extra_distance_vs_shortest_m'])
+        extra_fraction=max(0.,recommendation['extra_distance_vs_shortest_fraction'])
+        change=f'giảm {gain:.1f} giây' if gain>=.5 else f'tăng {-gain:.1f} giây' if gain<=-.5 else 'gần như không đổi'
+        st.markdown('**Tuyến đề xuất · cân bằng thời gian và quãng đường**')
+        if extra<.5:
+            st.info('Đề xuất giữ tuyến ngắn nhất theo mức ưu tiên đang chọn. '
+                    'ETA theo tốc độ lịch sử và độ phủ được công bố để bạn đánh giá.')
+        else:
+            st.info(f'Đề xuất đi thêm {extra:.0f} m (+{extra_fraction:.1%}) so với tuyến ngắn nhất; '
+                    f'ETA ước lượng {change}. Kết quả cân bằng thời gian, quãng đường và phần chưa xác định.')
+        alternate=result['routes']['bucket']
+        if alternate['estimated_eta_s']<proposal['estimated_eta_s']-.5 and alternate['distance_m']>proposal['distance_m']+.5:
+            st.caption(f"Tuyến ưu tiên ETA ước lượng nhanh hơn {proposal['estimated_eta_s']-alternate['estimated_eta_s']:.1f} giây, "
+                       f"nhưng dài thêm {alternate['distance_m']-proposal['distance_m']:.0f} m "
+                       f"(+{alternate['distance_m']/proposal['distance_m']-1:.1%}) so với đề xuất cân bằng.")
+        choice=st.selectbox('Tuyến trên bản đồ',['balanced','bucket','distance','static'],key='route_choice',
                            format_func=lambda name:ROUTE_LABELS[name])
         chosen=result['routes'][choice]
         left,middle,right=st.columns(3)
         left.metric('Quãng đường',f"{chosen['distance_m']/1000:.2f} km")
         middle.metric('ETA ước lượng',f"{chosen['estimated_eta_s']/60:.1f} phút")
         right.metric('Quãng đường chưa xác định',f"{chosen['unknown_distance_fraction']:.1%}")
+        st.caption(f"Trên tuyến đang xem: {chosen['slow_distance_m']:.0f} m qua các đoạn chậm tương đối "
+                   f"({chosen['slow_distance_fraction']:.1%} quãng đường). Tình trạng chậm đã được phản ánh bằng tốc độ lịch sử trong ETA.")
         comparisons,groups=route_comparison(result,choice)
         best_eta,leaders=minimum_eta_routes(result)
         multiplier=config['route_rules']['unknown_cost_multiplier']
@@ -142,13 +165,16 @@ def render_view(metadata,profiles,features,config,root,day,bucket,selected,backg
         with st.expander('So sánh các phương án'):
             st.dataframe(pd.DataFrame(comparisons),hide_index=True,
                          column_order=['Hiển thị','route','Đường đi','Quãng đường (km)',
-                                       'ETA ước lượng (phút)','Quãng đường chưa xác định (%)'],
+                                       'Đi vòng so với ngắn nhất (%)','ETA ước lượng (phút)',
+                                       'ETA giảm so với ngắn nhất (giây)','Quãng đường chưa xác định (%)'],
                          column_config={
                              'Hiển thị':st.column_config.TextColumn('Bản đồ',width='small'),
                              'route':st.column_config.TextColumn('Phương án',width='medium'),
                              'Đường đi':st.column_config.TextColumn('Đường đi',width='small'),
                              'Quãng đường (km)':st.column_config.NumberColumn('km',format='%.4f',width='small'),
                              'ETA ước lượng (phút)':st.column_config.NumberColumn('ETA (phút)',format='%.4f',width='small'),
+                             'Đi vòng so với ngắn nhất (%)':st.column_config.NumberColumn('Đi vòng (%)',format='%.2f',width='small'),
+                             'ETA giảm so với ngắn nhất (giây)':st.column_config.NumberColumn('Giảm ETA (giây)',format='%.1f',width='small'),
                              'Quãng đường chưa xác định (%)':st.column_config.NumberColumn('Chưa xác định (%)',format='%.2f',width='small')})
             for group,names in groups.items():
                 if len(names)>1:
@@ -157,7 +183,11 @@ def render_view(metadata,profiles,features,config,root,day,bucket,selected,backg
             st.info('Chênh lệch ETA là ước lượng từ dữ liệu lịch sử; chưa đo thời gian tiết kiệm thực tế.')
             st.caption('Tên phương án cho biết cách chọn đường; ETA của mọi phương án đều được ước lượng '
                        'bằng khung giờ đang xem. Cùng một đường đi sẽ có cùng số liệu so sánh.')
-            st.caption(f'Tuyến theo khung giờ tối ưu chi phí có xét độ phủ: thời gian ước lượng trên đoạn chưa xác định '
+            priority=result['recommendation']['policy']['time_priority']
+            st.caption(f'Đề xuất cân bằng dùng trọng số thời gian {priority:.0%}, quãng đường {1-priority:.0%}, '
+                       'chuẩn hóa theo tuyến ngắn nhất của chính A/B. Đây là sở thích đánh đổi, không phải bảo đảm độ chính xác; '
+                       'không đặt trần cứng cho tỷ lệ đi vòng.')
+            st.caption(f'Đề xuất cân bằng và tuyến ưu tiên ETA cùng xét độ phủ: thời gian ước lượng trên đoạn chưa xác định '
                        f'được nhân {multiplier:g} khi chọn tuyến. ETA trong bảng là thời gian ước lượng chưa cộng phần phạt. '
                        'Giữ khung giờ khởi hành cho toàn tuyến.')
             st.caption('Tuyến được tính đến vị trí A/B trên đoạn đường gần nhất, có xét chiều xe chạy. '

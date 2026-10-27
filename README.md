@@ -1,7 +1,8 @@
 # PortoPulse
 
 Demo **PortoFlow**: xem giao thông taxi lịch sử trong vùng Porto **10×10 km**,
-chọn điểm A/B và so sánh ba cách chọn tuyến trên mạng đường ô tô có hướng.
+chọn điểm A/B để nhận tuyến đề xuất cân bằng thời gian–quãng đường theo giao thông lịch sử.
+Các tuyến ngắn nhất, tốc độ tĩnh và ưu tiên ETA được giữ làm mốc đối chiếu.
 Giao diện tiếng Việt; ứng dụng chạy cục bộ bằng Streamlit.
 
 ![Vùng nghiên cứu Porto 10×10 km](data/region_preview.png)
@@ -47,9 +48,13 @@ Mở http://localhost:8503. Nếu đã có export riêng, chạy trực tiếp:
 3. Chuyển sang **Chọn hành trình**. Bấm **A · Điểm đi**, chọn A trên bản đồ;
    bấm/chọn tiếp B. Có đủ hai điểm, app tự tính tuyến. Có thể nhập tọa độ trong
    **Nhập tọa độ A/B**, đổi A↔B hoặc chọn lại.
-4. Đổi giữa **Ngắn nhất theo quãng đường**, **Theo tốc độ trung bình** và
-   **Theo khung giờ, có xét độ phủ**. Mở bảng so sánh để xem quãng đường, ETA
-   và tỷ lệ quãng đường chưa xác định. Các phương án có thể trùng đường đi.
+4. App tự chọn **Đề xuất cân bằng thời gian–quãng đường**. Thẻ giải thích công bố
+   đi thêm bao nhiêu mét/phần trăm so với đường ngắn nhất và ETA ước lượng thay đổi
+   bao nhiêu giây. Bảng so sánh giữ các mốc ngắn nhất, tốc độ tĩnh và ưu tiên ETA;
+   các phương án có thể trùng đường đi.
+5. Mở **Ưu tiên thời gian hay quãng đường** để điều chỉnh. Mặc định80% thời gian,
+   20% quãng đường là sở thích đánh đổi của demo, không phải độ chính xác80% hay
+   cam kết lợi ích ngoài thực tế. Giá trị cao hơn sẵn sàng đi vòng để giảm ETA.
 
 Tuyến bắt đầu/kết thúc tại vị trí chiếu của A/B trên đoạn đường gần nhất,
 bao gồm phần cạnh đầu và cuối, thay vì chỉ đi đến nút giao gần nhất.
@@ -73,9 +78,25 @@ phép tách nét chỉ dùng để hiển thị, không thay hình học dùng t
 
 ETA dùng tốc độ lịch sử, giữ khung giờ khởi hành cho toàn tuyến. Đoạn thiếu
 dữ liệu dùng proxy dự phòng và được công bố trong tỷ lệ chưa xác định.
-Phương án theo khung giờ phạt chi phí chọn đường trên đoạn chưa xác định;
-ETA trong bảng dùng cùng một bộ ước lượng cho cả ba phương án. Đây chưa phải
+Đề xuất cân bằng dùng tốc độ lịch sử theo nhóm ngày/giờ để tính thời gian qua
+từng cạnh. Đoạn chậm tốn thời gian hơn; màu đỏ/vàng không bị phạt thêm lần nữa.
+Chi phí chọn tuyến còn cân nhắc tỷ lệ đi vòng và phạt phần chưa xác định.
+ETA trong bảng dùng cùng một bộ ước lượng cho mọi phương án. Đây chưa phải
 thời gian thực tế đo được hoặc bằng chứng tiết kiệm thời gian ngoài đường.
+
+Quy tắc hiện tại tối thiểu hóa `alpha*T_risk/T_short + (1-alpha)*D/D_short`
+trên toàn graph có hướng, với `alpha=0.8` mặc định. `D_short` và `T_short` là
+quãng đường và ETA lịch sử của tuyến ngắn nhất cho chính A/B; `T_risk` bằng ETA
+cộng phần phạt hiện có cho thời gian trên đoạn chưa xác định (hệ số2).
+Đây là tổng chi phí cộng được trên cạnh nên vẫn dùng Dijkstra hai chiều; tuyến
+cân bằng được tìm riêng, có thể khác cả ba mốc so sánh. Không đặt trần cứng cho
+tỷ lệ đi vòng. [Chi tiết chính sách đề xuất](docs/BALANCED_ROUTING.md).
+
+Ví dụ kiểm thử theo số liệu ảnh demo: tuyến1.0395km/3.5194phút và tuyến
+1.2699km/3.3832phút. Với80/20, quy tắc cân bằng chọn tuyến ngắn hơn thay vì
+đi thêm230m chỉ để giảm ETA khoảng8giây. Khi tốc độ trên đường chính giảm mạnh,
+đề xuất có thể chuyển sang đường vòng. Đây là ví dụ tổng hợp để kiểm tra hành vi,
+không phải xác minh lợi ích thực tế của đúng lần bấm A/B trong ảnh.
 
 ## Kết quả hiện có và giới hạn
 

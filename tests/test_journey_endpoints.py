@@ -148,3 +148,9 @@ def test_app_renders_partial_final_edge_and_centered_markers(monkeypatch,tmp_pat
     assert app.session_state['route_result']['routes']['bucket']['distance_m']==pytest.approx(120,abs=1e-4)
     assert any('B cách đường' in caption.value for caption in app.caption)
     assert any(metric.value=='0.12 km' for metric in app.metric)
+    assert app.session_state['route_choice']=='balanced'
+    assert app.session_state['route_result']['recommendation']['policy']['time_priority']==.8
+    app.slider[0].set_value(95).run(timeout=45)
+    assert not app.exception
+    assert app.session_state['route_result']['recommendation']['policy']['time_priority']==.95
+    assert app.session_state['route_choice']=='balanced'

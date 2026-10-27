@@ -3,8 +3,9 @@ import math
 
 STATUS_LABELS = {'normal':'Di chuyển bình thường','slow':'Chậm',
     'high_slowdown':'Chậm nhiều','unknown':'Chưa xác định'}
-ROUTE_LABELS = {'distance':'Ngắn nhất theo quãng đường','static':'Theo tốc độ trung bình',
-    'bucket':'Theo khung giờ, có xét độ phủ'}
+ROUTE_LABELS = {'balanced':'Đề xuất cân bằng thời gian–quãng đường',
+    'distance':'Mốc so sánh: ngắn nhất','static':'Mốc so sánh: tốc độ tĩnh',
+    'bucket':'Ưu tiên ETA theo giờ, có xét độ phủ'}
 
 
 def display_feature(feature):
@@ -69,7 +70,7 @@ def clear_journey(state):
         for axis in ('lon','lat'):
             state['route_'+point+'_'+axis]=None
     state.update(route_result=None,route_signature=None,route_attempt_signature=None,
-                 route_error=None,route_pick_mode='Chọn điểm A',route_choice='bucket')
+                 route_error=None,route_pick_mode='Chọn điểm A',route_choice='balanced')
 
 
 def route_features(features,edge_ids,segments=None):
@@ -84,7 +85,8 @@ def route_features(features,edge_ids,segments=None):
 
 
 def route_signature(run_id,day,bucket,state):
-    return ('edge_endpoints_v2',run_id,day,bucket,*(state['route_'+point+'_'+axis] for point in ('a','b') for axis in ('lon','lat')))
+    return ('balanced_v3',run_id,day,bucket,state.get('route_time_priority',80),
+            *(state['route_'+point+'_'+axis] for point in ('a','b') for axis in ('lon','lat')))
 
 
 def consume_map_event(state,event):
@@ -109,9 +111,12 @@ def consume_map_event(state,event):
 
 
 def route_table(result):
+    baseline=result['routes']['distance']
     return [{'route':ROUTE_LABELS[name],
         'Quãng đường (km)':row['distance_m']/1000,
         'ETA ước lượng (phút)':row['estimated_eta_s']/60,
+        'Đi vòng so với ngắn nhất (%)':max(0.,100*(row['distance_m']/baseline['distance_m']-1)),
+        'ETA giảm so với ngắn nhất (giây)':baseline['estimated_eta_s']-row['estimated_eta_s'],
         'Quãng đường chưa xác định (%)':100*row['unknown_distance_fraction']}
         for name,row in result['routes'].items()]
 

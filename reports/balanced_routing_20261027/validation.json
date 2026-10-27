@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-27",
+  "tests": "54 passed in 77.50s",
+  "focused_tests": "18 passed",
+  "algorithm": "Bidirectional Dijkstra on an additive normalized historical-time/distance/risk objective",
+  "default_time_priority": 0.8,
+  "default_distance_priority": 0.2,
+  "preference_is_accuracy_claim": false,
+  "hard_detour_cap": false,
+  "unknown_cost_multiplier": 2,
+  "extra_penalty_for_red_or_yellow": false,
+  "real_profile_cases": 6,
+  "real_profile_different_recommended_paths": 2,
+  "exact_original_user_click_coordinates_available": false,
+  "real_world_saving_verified": false,
+  "frozen_scientific_source_files_unchanged": 19,
+  "app_default": "balanced",
+  "benchmark_from_previous_commit": "893928991fd9c049421f043d2a9e5026008ba7eb"
+}

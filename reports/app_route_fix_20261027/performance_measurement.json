@@ -1,0 +1,31 @@
+{
+  "graph_load_seconds": 5.269990500004496,
+  "profile_read_decode_seconds_without_datetime": 4.077773199998774,
+  "routing_total_seconds": 1.0354474999476224,
+  "routing_substeps_seconds": {
+    "profile_lookup": [
+      0.19761249999282882
+    ],
+    "snap_endpoint_including_new_strtree": [
+      0.014020000002346933,
+      0.013480700028594583
+    ],
+    "bidirectional_dijkstra": [
+      0.0004981000092811882,
+      6.0399994254112244E-05,
+      5.670002428814769E-05
+    ]
+  },
+  "routing_other_graph_build_scoring_geometry_seconds": 0.8097190998960286,
+  "direction_display_preparation_seconds": 2.2611011000117287,
+  "folium_layer_build_seconds": 0.03140959999291226,
+  "folium_html_render_seconds": 2.1259964000200853,
+  "folium_html_bytes": 13928909,
+  "date": "2026-10-27",
+  "profile_rows": 274320,
+  "display_edges": 22860,
+  "source_geojson_bytes": 191952146,
+  "note": "One local measurement for the short route derived from the screenshot. Folium HTML generation only; browser drawing, Streamlit serialization/websocket, live interactions and network tiles were not timed. No app source changed or server opened.",
+  "code_commit_measured": "893928991fd9c049421f043d2a9e5026008ba7eb",
+  "scope": "Before balanced objective; this is not a benchmark of the updated four-objective router."
+}
