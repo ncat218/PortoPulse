@@ -19,3 +19,7 @@ jobs:
       - run: python scripts/build_report_recovery.py
       - run: python scripts/build_report_continue.py
       - run: python -m pytest -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --test tests/map_frontend.test.cjs

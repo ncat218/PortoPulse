@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "scope": "Isolated real Leaflet component in headless Chromium; parent simulates Streamlit render messages",
+  "roads": 22860,
+  "first_component_render_ms": 6776,
+  "checks": [
+    "actual Leaflet Canvas rendering",
+    "A/B markers",
+    "pan/zoom sends no server events",
+    "A/B click returns coordinates",
+    "warm overlay preserves map DOM and viewport",
+    "view-only click sends no server event",
+    "bucket switch preserves map DOM",
+    "iframe reload requests missing roads and recovers",
+    "no JavaScript exceptions"
+  ],
+  "limits": [
+    "Tile requests stubbed; no real browser FPS or end-user latency claim.",
+    "Full Streamlit Python UI integration covered by AppTest separately."
+  ]
+}

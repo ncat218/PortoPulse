@@ -169,7 +169,8 @@ def build():
     names = ['pyproject.toml', 'README.md', 'configs/default.yaml', 'configs/study_area.yaml',
              'scripts/run_pipeline.py', 'scripts/report_recovery.py', 'scripts/probe_fastmm_native.py', 'scripts/launch_app.py',
              'app/streamlit_app.py', 'app/journey_view.py', 'app/ui_logic.py',
-             'app/journey_routing.py', 'app/road_display.py',
+             'app/journey_routing.py', 'app/road_display.py', 'app/persistent_map.py',
+             'app/map_frontend/index.html', 'app/map_frontend/map.js',
              'tests/test_pipeline.py', 'docs/PIPELINE.md', 'requirements/constraints.txt']
     names += [p.relative_to(ROOT).as_posix() for p in (ROOT/'src/portoflow').iterdir() if p.suffix in {'.py','.json'}]
     names = sorted(set(names))

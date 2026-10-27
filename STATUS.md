@@ -1,3 +1,24 @@
+# PortoPulse — tối ưu bản đồ và chẩn đoán độ phủ 2026-10-28
+
+Thay dựng lại Folium bằng component Leaflet giữ trạng thái và giao thức xác
+nhận lớp đường. Sau nạp lớp nền, A/B/tuyến chỉ gửi overlay; kéo/zoom và popup
+ở trình duyệt, chỉ vẽ cạnh giao viewport. Streamlit fragment cô lập hành trình.
+Đổi nhóm giờ, tải lại iframe có cơ chế nạp lại; màu từng chiều và điểm cuối giữ
+đúng hình học. Không thay thuật toán đề xuất, nguồn khoa học, profile hay guard.
+
+Đo22.860cạnh: HTML nền cũ14.491.123byte, cập nhật overlay mới5.934byte sau xác
+nhận. Dựng nền cũ median2,44s; không diễn giải thành FPS hay độ trễ toàn app.
+60 kiểm thử Python và2 kiểm thử chỉ mục JavaScript đạt. Kiểm thử browser
+Leaflet thật chạy riêng đạt, có stub tile; AppTest kiểm Python UI.
+Xem docs/MAP_PERFORMANCE.md và reports/map_performance_20261028.
+
+Audit profile thật cho1.568cạnh chưa có lượt hợp lệ ở cả12nhóm. Mỗi nhóm có
+4.017–7.761cạnh chưa có lượt và2.730–3.587cạnh có lượt nhưng thiếu hỗ trợ.
+Độ phủ giữ50,36–70,49%; chưa có dữ liệu train mới được nhập. Có danh sách ưu
+tiên cạnh gần ngưỡng và hướng QC checkpoint gốc; không nới ngưỡng, không nhập
+holdout vào train, không submit lại toàn nguồn. Xem docs/COVERAGE_GAPS.md.
+
+---
 # PortoPulse — đề xuất cân bằng theo giảm tốc lịch sử 2026-10-27
 
 App mặc định đề xuất balanced, dùng ETA theo giờ và tỷ lệ quãng đường so với

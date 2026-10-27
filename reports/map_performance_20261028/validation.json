@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-28",
+  "status": "PASS_LOCAL_VALIDATION",
+  "scope": "Persistent map transport/rendering and read-only coverage gap audit",
+  "python_suite": {
+    "passed": 60,
+    "elapsed_s": 55.2,
+    "warnings": 8,
+    "warnings_kind": "pandas/Streamlit deprecations"
+  },
+  "node_geometry_tests": {
+    "passed": 2
+  },
+  "browser_component": "PASS (see browser_check.json)",
+  "frozen_scientific_files_byte_unchanged": 19,
+  "routing_scoring_algorithm_unchanged": true,
+  "recovery_v1_sha256": "c24d11ad11917b2bee742e8eb114aaf51b42c69cc2127ec4c355f5a1eb254263",
+  "kaggle_code_zip_sha256": "791b5c9c753af2634ecc57cd9b2ccb6d043fc58cf79bc045f1656422dfd9bc6e",
+  "packaged_frontend_assets_verified": true,
+  "serving_profile_sha256": "6d57765b4b5edfca8be46a715a247f93ad3221caf42064cffec2e1eeb83b1314",
+  "coverage_changed": false,
+  "new_train_observations": 0,
+  "new_heavy_jobs_submitted": 0,
+  "limits": [
+    "No measured end-user FPS or actual road travel-time saving.",
+    "Browser harness uses real Leaflet with stubbed background tiles and simulated Streamlit parent; Python UI uses AppTest.",
+    "GitHub CI status not inspected.",
+    "Export support audited; raw GPS/matching identity independence and QC cannot be independently recomputed from the small review ZIP."
+  ]
+}

@@ -1,0 +1,1652 @@
+{
+  "status": "DIAGNOSIS_ONLY_NO_NEW_COVERAGE",
+  "fixed_directed_edges": 22860,
+  "graph_version": "401fea1a982be227710b427ea651784d87d78b0ded45433c5c8f72866b385031",
+  "thresholds": {
+    "distinct_trips": 3,
+    "distinct_taxis": 2,
+    "distinct_dates": 2
+  },
+  "buckets": {
+    "weekday/00-06": {
+      "edges": 22860,
+      "known": 14636,
+      "unknown": 8224,
+      "known_fraction": 0.6402449693788277,
+      "needed_for_80pct": 3652,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 3230,
+        "no_accepted_visits": 4994
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 8193,
+        "distinct_taxis": 7064,
+        "distinct_dates": 6986
+      },
+      "near_support_edges": 1268,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.6957130358705161
+    },
+    "weekday/06-09": {
+      "edges": 22860,
+      "known": 13892,
+      "unknown": 8968,
+      "known_fraction": 0.6076990376202974,
+      "needed_for_80pct": 4396,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 3010,
+        "no_accepted_visits": 5958
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 8902,
+        "distinct_taxis": 7961,
+        "distinct_dates": 7859
+      },
+      "near_support_edges": 1133,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.6572615923009624
+    },
+    "weekday/09-12": {
+      "edges": 22860,
+      "known": 15467,
+      "unknown": 7393,
+      "known_fraction": 0.676596675415573,
+      "needed_for_80pct": 2821,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 2732,
+        "no_accepted_visits": 4661
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 7343,
+        "distinct_taxis": 6397,
+        "distinct_dates": 6308
+      },
+      "near_support_edges": 1098,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.7246281714785652
+    },
+    "weekday/12-16": {
+      "edges": 22860,
+      "known": 16113,
+      "unknown": 6747,
+      "known_fraction": 0.7048556430446195,
+      "needed_for_80pct": 2175,
+      "exclusive_unknown_reasons": {
+        "no_accepted_visits": 4017,
+        "insufficient_support": 2730
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 6685,
+        "distinct_taxis": 5799,
+        "distinct_dates": 5697
+      },
+      "near_support_edges": 1059,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.7511811023622047
+    },
+    "weekday/16-19": {
+      "edges": 22860,
+      "known": 15796,
+      "unknown": 7064,
+      "known_fraction": 0.6909886264216973,
+      "needed_for_80pct": 2492,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 2771,
+        "no_accepted_visits": 4293
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 7001,
+        "distinct_taxis": 6070,
+        "distinct_dates": 5966
+      },
+      "near_support_edges": 1107,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.739413823272091
+    },
+    "weekday/19-24": {
+      "edges": 22860,
+      "known": 15768,
+      "unknown": 7092,
+      "known_fraction": 0.6897637795275591,
+      "needed_for_80pct": 2520,
+      "exclusive_unknown_reasons": {
+        "no_accepted_visits": 4287,
+        "insufficient_support": 2805
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 7071,
+        "distinct_taxis": 6032,
+        "distinct_dates": 5982
+      },
+      "near_support_edges": 1117,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.7386264216972879
+    },
+    "weekend/00-06": {
+      "edges": 22860,
+      "known": 15056,
+      "unknown": 7804,
+      "known_fraction": 0.6586176727909011,
+      "needed_for_80pct": 3232,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 3010,
+        "no_accepted_visits": 4794
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 7796,
+        "distinct_taxis": 6631,
+        "distinct_dates": 6636
+      },
+      "near_support_edges": 1207,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.7114173228346456
+    },
+    "weekend/06-09": {
+      "edges": 22860,
+      "known": 12994,
+      "unknown": 9866,
+      "known_fraction": 0.568416447944007,
+      "needed_for_80pct": 5294,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 3269,
+        "no_accepted_visits": 6597
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 9860,
+        "distinct_taxis": 8672,
+        "distinct_dates": 8679
+      },
+      "near_support_edges": 1220,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.6217847769028871
+    },
+    "weekend/09-12": {
+      "edges": 22860,
+      "known": 11512,
+      "unknown": 11348,
+      "known_fraction": 0.5035870516185477,
+      "needed_for_80pct": 6776,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 3587,
+        "no_accepted_visits": 7761
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 11300,
+        "distinct_taxis": 10171,
+        "distinct_dates": 10096
+      },
+      "near_support_edges": 1271,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.5591863517060367
+    },
+    "weekend/12-16": {
+      "edges": 22860,
+      "known": 12451,
+      "unknown": 10409,
+      "known_fraction": 0.544663167104112,
+      "needed_for_80pct": 5837,
+      "exclusive_unknown_reasons": {
+        "no_accepted_visits": 6850,
+        "insufficient_support": 3559
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 10365,
+        "distinct_taxis": 9219,
+        "distinct_dates": 9166
+      },
+      "near_support_edges": 1277,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.6005249343832021
+    },
+    "weekend/16-19": {
+      "edges": 22860,
+      "known": 11845,
+      "unknown": 11015,
+      "known_fraction": 0.5181539807524059,
+      "needed_for_80pct": 6443,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 3541,
+        "no_accepted_visits": 7474
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 10988,
+        "distinct_taxis": 9770,
+        "distinct_dates": 9725
+      },
+      "near_support_edges": 1316,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.5757217847769028
+    },
+    "weekend/19-24": {
+      "edges": 22860,
+      "known": 13321,
+      "unknown": 9539,
+      "known_fraction": 0.5827209098862642,
+      "needed_for_80pct": 4967,
+      "exclusive_unknown_reasons": {
+        "insufficient_support": 3418,
+        "no_accepted_visits": 6121
+      },
+      "overlapping_support_failures": {
+        "distinct_trips": 9517,
+        "distinct_taxis": 8333,
+        "distinct_dates": 8285
+      },
+      "near_support_edges": 1284,
+      "optimistic_fraction_if_all_near_support_received_valid_new_evidence": 0.6388888888888888
+    }
+  },
+  "never_visited_in_any_bucket_edges": 1568,
+  "never_visited_road_classes": {
+    "residential": 1295,
+    "living_street": 191,
+    "unclassified": 44,
+    "motorway_link": 2,
+    "tertiary": 12,
+    "secondary": 6,
+    "primary": 3,
+    "primary_link": 4,
+    "tertiary_link": 1,
+    "ladder": 10
+  },
+  "near_support_examples": [
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "25507467:3693344877:0",
+      "highway": "motorway",
+      "length_m": 3548.744903690348,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edge_id": "1316579972:6349272748:0",
+      "highway": "residential",
+      "length_m": 1161.7044572558018,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/19-24",
+      "edge_id": "1316579972:6349272748:0",
+      "highway": "residential",
+      "length_m": 1161.7044572558018,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "1142603879:11367589525:0",
+      "highway": "residential",
+      "length_m": 974.4919504578514,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edge_id": "1142603879:11367589525:0",
+      "highway": "residential",
+      "length_m": 974.4919504578514,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "11367589525:1142603879:0",
+      "highway": "residential",
+      "length_m": 974.4919504578507,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/19-24",
+      "edge_id": "11367589525:1142603879:0",
+      "highway": "residential",
+      "length_m": 974.4919504578507,
+      "distinct_trips": 2,
+      "distinct_taxis": 1,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 1,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/19-24",
+      "edge_id": "446361538:446361555:0",
+      "highway": "unclassified",
+      "length_m": 808.4882631290985,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "446361555:446361538:0",
+      "highway": "unclassified",
+      "length_m": 808.4882631290985,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/12-16",
+      "edge_id": "14088885863:2642235418:0",
+      "highway": "tertiary",
+      "length_m": 795.5364240746109,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "2642235418:14088885863:0",
+      "highway": "tertiary",
+      "length_m": 795.5364240746107,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/09-12",
+      "edge_id": "3693344877:3693344927:0",
+      "highway": "motorway_link",
+      "length_m": 748.636512188236,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edge_id": "3693344877:3693344927:0",
+      "highway": "motorway_link",
+      "length_m": 748.636512188236,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edge_id": "3693344877:3693344927:0",
+      "highway": "motorway_link",
+      "length_m": 748.636512188236,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edge_id": "3679308970:280241604:0",
+      "highway": "motorway_link",
+      "length_m": 729.9321235969958,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "3679308970:280241604:0",
+      "highway": "motorway_link",
+      "length_m": 729.9321235969958,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "446361566:292257951:0",
+      "highway": "tertiary",
+      "length_m": 686.7537711672296,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/00-06",
+      "edge_id": "446361566:292257951:0",
+      "highway": "tertiary",
+      "length_m": 686.7537711672296,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "7638563754:4488861344:0",
+      "highway": "tertiary",
+      "length_m": 680.266948673328,
+      "distinct_trips": 7,
+      "distinct_taxis": 1,
+      "distinct_dates": 7,
+      "deficits": {
+        "distinct_trips": 0,
+        "distinct_taxis": 1,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "7638563754:4488861344:0",
+      "highway": "tertiary",
+      "length_m": 680.266948673328,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "7638563754:4488861344:0",
+      "highway": "tertiary",
+      "length_m": 680.266948673328,
+      "distinct_trips": 2,
+      "distinct_taxis": 1,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 1,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/19-24",
+      "edge_id": "7638563754:4488861344:0",
+      "highway": "tertiary",
+      "length_m": 680.266948673328,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 1,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 1
+      }
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edge_id": "4488861344:7638563754:0",
+      "highway": "tertiary",
+      "length_m": 680.2669486733279,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/00-06",
+      "edge_id": "497871140:497871060:0",
+      "highway": "tertiary",
+      "length_m": 613.7287644088458,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "3677975497:3677979834:0",
+      "highway": "motorway_link",
+      "length_m": 611.1420093438119,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edge_id": "1131292146:1131292353:0",
+      "highway": "residential",
+      "length_m": 600.817260579381,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/19-24",
+      "edge_id": "1131292146:1131292353:0",
+      "highway": "residential",
+      "length_m": 600.817260579381,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/19-24",
+      "edge_id": "1131292146:1131292353:0",
+      "highway": "residential",
+      "length_m": 600.817260579381,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "11017063570:1731169370:0",
+      "highway": "residential",
+      "length_m": 596.8412357166168,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/19-24",
+      "edge_id": "11017063570:1731169370:0",
+      "highway": "residential",
+      "length_m": 596.8412357166168,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "3108592810:1214152736:0",
+      "highway": "motorway_link",
+      "length_m": 594.5984607441261,
+      "distinct_trips": 2,
+      "distinct_taxis": 1,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 1,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "1731169375:1731169833:0",
+      "highway": "residential",
+      "length_m": 579.3201269642398,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "1731169375:1731169833:0",
+      "highway": "residential",
+      "length_m": 579.3201269642398,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 1,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 1
+      }
+    },
+    {
+      "bucket": "weekday/12-16",
+      "edge_id": "1731169375:1731169833:0",
+      "highway": "residential",
+      "length_m": 579.3201269642398,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edge_id": "1731169375:1731169833:0",
+      "highway": "residential",
+      "length_m": 579.3201269642398,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/00-06",
+      "edge_id": "1731169375:1731169833:0",
+      "highway": "residential",
+      "length_m": 579.3201269642398,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "280064795:280252525:0",
+      "highway": "secondary",
+      "length_m": 562.9447985233817,
+      "distinct_trips": 2,
+      "distinct_taxis": 1,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 1,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/12-16",
+      "edge_id": "280064795:280252525:0",
+      "highway": "secondary",
+      "length_m": 562.9447985233817,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edge_id": "280064795:280252525:0",
+      "highway": "secondary",
+      "length_m": 562.9447985233817,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/00-06",
+      "edge_id": "777426099:64660155:0",
+      "highway": "tertiary",
+      "length_m": 559.371924940796,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "64660155:777426099:0",
+      "highway": "tertiary",
+      "length_m": 559.371924940796,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "777426099:64660155:0",
+      "highway": "tertiary",
+      "length_m": 559.371924940796,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "2083726534:87009296:0",
+      "highway": "secondary",
+      "length_m": 544.1416613418809,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "87009296:2083726534:0",
+      "highway": "secondary",
+      "length_m": 544.1416613418809,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "2083726534:87009296:0",
+      "highway": "secondary",
+      "length_m": 544.1416613418809,
+      "distinct_trips": 3,
+      "distinct_taxis": 1,
+      "distinct_dates": 3,
+      "deficits": {
+        "distinct_trips": 0,
+        "distinct_taxis": 1,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "87009296:2083726534:0",
+      "highway": "secondary",
+      "length_m": 544.1416613418809,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "87009296:2083726534:0",
+      "highway": "secondary",
+      "length_m": 544.1416613418809,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/19-24",
+      "edge_id": "87009296:2083726534:0",
+      "highway": "secondary",
+      "length_m": 544.1416613418809,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edge_id": "1262328949:1146570394:0",
+      "highway": "residential",
+      "length_m": 518.5044946599047,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "1262328949:1146570394:0",
+      "highway": "residential",
+      "length_m": 518.5044946599047,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "1262328949:1146570394:0",
+      "highway": "residential",
+      "length_m": 518.5044946599047,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/19-24",
+      "edge_id": "1147306980:685216130:0",
+      "highway": "residential",
+      "length_m": 501.76147959419995,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "685216130:1147306980:0",
+      "highway": "residential",
+      "length_m": 501.76147959419995,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "685216130:1147306980:0",
+      "highway": "residential",
+      "length_m": 501.76147959419995,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "685216130:1147306980:0",
+      "highway": "residential",
+      "length_m": 501.76147959419995,
+      "distinct_trips": 2,
+      "distinct_taxis": 1,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 1,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "430023751:430391870:0",
+      "highway": "residential",
+      "length_m": 485.78792073865174,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "428217022:428216714:0",
+      "highway": "residential",
+      "length_m": 480.02202149446293,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "1148228017:1143318727:0",
+      "highway": "secondary",
+      "length_m": 479.1815332345247,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 1,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 1
+      }
+    },
+    {
+      "bucket": "weekday/09-12",
+      "edge_id": "1143318727:1148228017:0",
+      "highway": "secondary",
+      "length_m": 479.1815332345247,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/12-16",
+      "edge_id": "1148228017:1143318727:0",
+      "highway": "secondary",
+      "length_m": 479.1815332345247,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "1143318727:1148228017:0",
+      "highway": "secondary",
+      "length_m": 479.1815332345247,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "2637456688:1143318126:0",
+      "highway": "tertiary",
+      "length_m": 477.3223900500915,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "1143318126:2637456688:0",
+      "highway": "tertiary",
+      "length_m": 477.3223900500914,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "1143318126:2637456688:0",
+      "highway": "tertiary",
+      "length_m": 477.3223900500914,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "478863896:1594649037:0",
+      "highway": "living_street",
+      "length_m": 472.41615239632523,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "64669973:64668915:0",
+      "highway": "tertiary",
+      "length_m": 468.6449689512428,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edge_id": "64669973:64668915:0",
+      "highway": "tertiary",
+      "length_m": 468.6449689512428,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "64668915:64669973:0",
+      "highway": "tertiary",
+      "length_m": 468.6449689512427,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "4527005337:1725591089:0",
+      "highway": "tertiary",
+      "length_m": 464.3073027361747,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "4527005337:1725591089:0",
+      "highway": "tertiary",
+      "length_m": 464.3073027361747,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "4527005337:1725591089:0",
+      "highway": "tertiary",
+      "length_m": 464.3073027361747,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "1725591089:4527005337:0",
+      "highway": "tertiary",
+      "length_m": 464.3073027361746,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "1725591089:4527005337:0",
+      "highway": "tertiary",
+      "length_m": 464.3073027361746,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "1148143711:1145535981:0",
+      "highway": "secondary",
+      "length_m": 458.79797732715633,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "609061540:1866964626:0",
+      "highway": "tertiary",
+      "length_m": 451.0537781262829,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/09-12",
+      "edge_id": "609061540:1866964626:0",
+      "highway": "tertiary",
+      "length_m": 451.0537781262829,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edge_id": "609061540:1866964626:0",
+      "highway": "tertiary",
+      "length_m": 451.0537781262829,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "766033565:729856258:0",
+      "highway": "tertiary",
+      "length_m": 448.1928000095157,
+      "distinct_trips": 2,
+      "distinct_taxis": 1,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 1,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/09-12",
+      "edge_id": "729856258:766033565:0",
+      "highway": "tertiary",
+      "length_m": 448.1928000095157,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/09-12",
+      "edge_id": "766033565:729856258:0",
+      "highway": "tertiary",
+      "length_m": 448.1928000095157,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/12-16",
+      "edge_id": "766033565:729856258:0",
+      "highway": "tertiary",
+      "length_m": 448.1928000095157,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "3693344877:3693344629:0",
+      "highway": "motorway",
+      "length_m": 445.0583141477202,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "705402097:112694575:0",
+      "highway": "motorway_link",
+      "length_m": 439.2059577335369,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "26122807:292302542:0",
+      "highway": "motorway_link",
+      "length_m": 437.7708211118539,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/12-16",
+      "edge_id": "4282469015:13264802059:0",
+      "highway": "residential",
+      "length_m": 434.6611955303673,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "1037307091:12673080559:0",
+      "highway": "tertiary",
+      "length_m": 434.3620440144677,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/16-19",
+      "edge_id": "12673080559:1037307091:0",
+      "highway": "tertiary",
+      "length_m": 434.3620440144677,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/00-06",
+      "edge_id": "301110450:301110779:0",
+      "highway": "residential",
+      "length_m": 432.51042474967625,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edge_id": "301110450:301110779:0",
+      "highway": "residential",
+      "length_m": 432.51042474967625,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/00-06",
+      "edge_id": "301110450:301110779:0",
+      "highway": "residential",
+      "length_m": 432.51042474967625,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edge_id": "301110450:301110779:0",
+      "highway": "residential",
+      "length_m": 432.51042474967625,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/09-12",
+      "edge_id": "280248012:263572016:0",
+      "highway": "motorway_link",
+      "length_m": 431.7149666169478,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/19-24",
+      "edge_id": "280248012:263572016:0",
+      "highway": "motorway_link",
+      "length_m": 431.7149666169478,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/16-19",
+      "edge_id": "1132441800:1132441852:0",
+      "highway": "residential",
+      "length_m": 429.42536632950396,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/09-12",
+      "edge_id": "1132441852:1132441800:0",
+      "highway": "residential",
+      "length_m": 429.4253663295039,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/12-16",
+      "edge_id": "12459480735:11367589526:0",
+      "highway": "residential",
+      "length_m": 429.19099262778485,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/19-24",
+      "edge_id": "11367589526:12459480735:0",
+      "highway": "residential",
+      "length_m": 429.1909926277847,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/06-09",
+      "edge_id": "1142606958:1142605030:0",
+      "highway": "tertiary",
+      "length_m": 423.6964152465754,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekday/09-12",
+      "edge_id": "1142606958:1142605030:0",
+      "highway": "tertiary",
+      "length_m": 423.6964152465754,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    },
+    {
+      "bucket": "weekend/06-09",
+      "edge_id": "1142606958:1142605030:0",
+      "highway": "tertiary",
+      "length_m": 423.6964152465754,
+      "distinct_trips": 2,
+      "distinct_taxis": 2,
+      "distinct_dates": 2,
+      "deficits": {
+        "distinct_trips": 1,
+        "distinct_taxis": 0,
+        "distinct_dates": 0
+      }
+    }
+  ],
+  "limits": [
+    "Counts taken from verified exported profiles; raw identity independence not re-audited.",
+    "Near-support counts are optimistic targeting diagnostics, not available extra observations.",
+    "No labels, thresholds, graph, train cutoff or serving files were changed.",
+    "Holdout observations must never be merged into train profiles."
+  ],
+  "source_manifest_sha256": "4dec610aa2cbef5f347922b7af2ddbc6bbdac2f1aa00fbbc0a705bf6fa6cc355",
+  "profile_sha256": "6d57765b4b5edfca8be46a715a247f93ad3221caf42064cffec2e1eeb83b1314",
+  "data_kind": "REAL_INPUT_UNVERIFIED_PROVENANCE"
+}

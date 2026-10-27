@@ -1,0 +1,20 @@
+{
+  "scope": "Python assembly/serialization, not measured end-user or websocket latency",
+  "data_kind": "REAL_INPUT_UNVERIFIED_PROVENANCE",
+  "directed_edges": 22860,
+  "day_group": "weekday",
+  "time_bucket": "09-12",
+  "display_index_cold_s": 5.781753899995238,
+  "routing_s_unchanged_algorithm": 1.0062000999459997,
+  "previous_folium_rebuild_median_s": 2.442514599999413,
+  "previous_full_html_bytes": 14491123,
+  "new_initial_arguments_json_bytes": 8004470,
+  "new_acknowledged_overlay_arguments_json_bytes": 5934,
+  "new_warm_arguments_serialize_median_s": 0.00016569998115301132,
+  "warm_payload_reduction_fraction": 0.9995905079268184,
+  "notes": [
+    "Old baseline is full Folium base HTML; new measurement is component JSON arguments.",
+    "Initial artifact verification/profile loading and routing are separate costs.",
+    "Browser component integration is tested separately; no real user FPS measured."
+  ]
+}

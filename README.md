@@ -62,6 +62,21 @@ bao gồm phần cạnh đầu và cuối, thay vì chỉ đi đến nút giao g
 nét đứt nối tới đường chỉ là khoảng cách hình học, không phải tuyến đi bộ/ô tô
 đã kiểm chứng và không được tính vào ETA.
 
+## Thao tác bản đồ và hiệu năng
+
+Bản đồ giữ nguyên trong trình duyệt khi chọn A/B hoặc đổi tuyến. Sau lần nạp
+lớp đường, các cập nhật chỉ gửi điểm và tuyến; kéo/zoom, xem popup không chạy
+lại Python. Lớp đường chỉ vẽ các cạnh giao vùng đang xem, giữ đúng màu và hai
+chiều. Đổi nhóm ngày/giờ cần nạp lớp đường mới; tải lại trang tự yêu cầu lại dữ
+liệu nếu bộ nhớ trình duyệt đã mất. Bảng và biểu đồ chi tiết nằm ngoài phần
+cập nhật hành trình. Lần mở đầu vẫn cần đọc/kiểm hash export và nạp thư viện
+bản đồ qua Internet; tính tuyến mới vẫn mất thời gian riêng.
+
+Phép đo cục bộ trên22.860cạnh: HTML nền Folium trước đây khoảng14,49MB;
+đối số cập nhật tuyến mới khoảng5,93KB sau xác nhận nạp lớp đường. Đây là số
+byte và chi phí dựng dữ liệu, không phải cam kết FPS hoặc độ trễ trên mọi máy.
+[Đo lường và kiểm chứng](docs/MAP_PERFORMANCE.md).
+
 ## Đọc màu và ETA
 
 | Màu | Ý nghĩa |
@@ -124,6 +139,17 @@ mạng đường thời kỳ dữ liệu2013–2014. Train/holdout tách nguyên
 holdout không được đưa vào profile. Giữ support3chuyến/2taxi/2ngày và ngưỡng
 tỷ lệ0,7/0,4; unknown giữ xám. Chạy nốt holdout để hoàn thiện đánh giá không làm
 tăng độ phủ train. [Báo cáo kiểm tra](reports/real_run_20261026/REPORT.md).
+
+Chẩn đoán bổ sung ngày28/10:1.568cạnh không có lượt hợp lệ ở cả12nhóm giờ.
+Mỗi nhóm còn4.017–7.761cạnh chưa có lượt, và2.730–3.587cạnh có lượt nhưng
+thiếu hỗ trợ. Chưa bổ sung được quan sát train mới, vì vậy độ phủ chưa tăng.
+[Phân tích khoảng trống và hướng bổ sung](docs/COVERAGE_GAPS.md).
+
+Để đếm lại từ export cục bộ (chỉ đọc):
+
+```powershell
+.\.venv\Scripts\python.exe scripts\audit_coverage_gaps.py --export runs\demo --output artifacts\coverage_gaps.json
+```
 
 ## Pipeline và khôi phục Kaggle
 

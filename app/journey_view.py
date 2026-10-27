@@ -1,13 +1,12 @@
 """Two map modes and automatic A/B routing on precomputed historical profiles."""
-import folium
 import pandas as pd
 import streamlit as st
 
 from portoflow.graph import RoadNetwork
 from journey_routing import recommend_coordinate_routes
-from streamlit_folium import st_folium
+from persistent_map import render_map, journey_overlay
 from ui_logic import (ROUTE_LABELS,select_point,route_signature,
-                      consume_map_event,points_ready,clear_journey,route_features,route_comparison,minimum_eta_routes)
+                      consume_map_event,points_ready,clear_journey,route_comparison,minimum_eta_routes)
 
 
 @st.cache_resource(max_entries=2)
@@ -61,6 +60,7 @@ def coordinate_label(state,point):
     return 'Chưa chọn' if lat is None or lon is None else f'{lat:.6f}, {lon:.6f}'
 
 
+@st.fragment
 def render_view(metadata,profiles,features,config,root,day,bucket,selected,background_features=None):
     state=st.session_state
     if state.get('route_export')!=metadata['run_id']:
@@ -204,39 +204,9 @@ def render_view(metadata,profiles,features,config,root,day,bucket,selected,backg
     st.caption('Hai chiều xe có thể khác màu; các nét song song thể hiện từng chiều. Tuyến dùng màu của đúng chiều đang đi.')
     center=([features[0]['geometry']['coordinates'][0][1],features[0]['geometry']['coordinates'][0][0]]
             if metadata['data_kind']=='SYNTHETIC' else [41.16,-8.63])
-    map_view=folium.Map(center,zoom_start=14,prefer_canvas=True)
-    fields=['edge_id','status_label','median_speed_kmh','reference_speed_kmh','distinct_trips','distinct_taxis','distinct_dates']
-    aliases=['Mã cạnh','Tình trạng','Tốc độ ước lượng (km/h)','Tốc độ tham chiếu (km/h)','Số chuyến','Số taxi','Số ngày']
-    ordered=sorted(background_features or features,key=lambda f:f['properties']['status']!='unknown')
-    folium.GeoJson({'type':'FeatureCollection','features':ordered},name='Tình trạng đường',
-        style_function=lambda f:{'color':f['properties']['color'],'weight':4,'opacity':0.85},
-        tooltip=folium.GeoJsonTooltip(fields=['edge_id','status_label'],aliases=aliases[:2]),
-        popup=folium.GeoJsonPopup(fields=fields,aliases=aliases)).add_to(map_view)
-    if journey:
-        for role,color in (('a','#2563eb'),('b','#7c3aed')):
-            lon,lat=state['route_'+role+'_lon'],state['route_'+role+'_lat']
-            if lon is not None and lat is not None:
-                folium.Marker([lat,lon],tooltip='Điểm '+role.upper(),icon=folium.DivIcon(icon_size=(28,28),icon_anchor=(14,14),html=
-                    '<div style="border-radius:50%;background:'+color+';color:white;width:28px;height:28px;'
-                    'text-align:center;line-height:28px;font-weight:bold">'+role.upper()+'</div>')).add_to(map_view)
-    if result:
-        chosen=result['routes'][state['route_choice']]
-        route=route_features(features,chosen['edge_ids'],chosen['segments'])
-        folium.GeoJson(route,name='Viền tuyến',interactive=False,
-            style_function=lambda f:{'color':'#2563eb','weight':11,'opacity':.95,'interactive':False}).add_to(map_view)
-        folium.GeoJson(route,name='Tình trạng trên tuyến',
-            style_function=lambda f:{'color':f['properties']['color'],'weight':5,'opacity':1},
-            tooltip=folium.GeoJsonTooltip(fields=['edge_id','status_label'],aliases=aliases[:2]),
-            popup=folium.GeoJsonPopup(fields=fields,aliases=aliases)).add_to(map_view)
-        for role in ('A','B'):
-            if chosen['endpoint_gaps_m'][role]>.5:
-                requested=result['requested_coordinates'][role];snapped=chosen['snapped_coordinates'][role]
-                folium.PolyLine([[requested[1],requested[0]],[snapped[1],snapped[0]]],color='#64748b',
-                    weight=2,dash_array='5 5',tooltip='Khoảng nối tới đường · không tính vào ETA').add_to(map_view)
-                folium.CircleMarker([snapped[1],snapped[0]],radius=3,color='#64748b',fill=True).add_to(map_view)
-        bounds=[[lat,lon] for feature in route['features'] for lon,lat in feature['geometry']['coordinates']]
-        bounds.extend([[lat,lon] for lon,lat in result['requested_coordinates'].values()])
-        if bounds:
-            map_view.fit_bounds(bounds,padding=[35,35])
-    st_folium(map_view,key='porto_map',height=560,use_container_width=True,
-        returned_objects=['last_clicked','last_object_clicked'],on_change=map_point_selected)
+    dataset_id='|'.join(('persistent_v1',metadata['run_id'],metadata['graph_version'],
+        metadata.get('outputs_sha256',{}).get('traffic.geojson',''),day,bucket))
+    overlay=(journey_overlay(features,state,result,repr((request,state['route_choice'])) if result else None)
+             if journey else {'markers':[],'route':[],'connectors':[],'bounds':[],'fit_id':None})
+    render_map(dataset_id,background_features or features,overlay,center,
+               state['route_pick_mode'] if journey else 'Xem bản đồ',map_point_selected)
