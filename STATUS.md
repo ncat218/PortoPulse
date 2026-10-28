@@ -1,3 +1,18 @@
+# PortoPulse — nhận kiểm toán parent/QC thật 2026-10-28
+
+Đã nhận portoflow_coverage_audit_review.zip, CRC và đối chiếu receipt đạt.
+Audit đủ70.936batch; train1.343.398parent,1.183.504có quan sát core hợp lệ,
+159.894chưa có. Trong nhóm chưa có:158.820không có gap qua block QC,485mọi
+native block có status không thành công,589có block accepted_gaps nhưng0core.
+25ví dụ của nhóm zero-QC đều partial và valid-gap fraction dưới90%; mẫu có
+chọn trước, chưa đại diện toàn bộ nhóm hay chứng minh lỗi. Giữ nguyên guard.
+
+Độ phủ chưa tăng; chưa matching/profile mới. Bước hữu ích kế tiếp là kiểm raw/
+native trên tập train nhỏ, không chạy lại toàn bộ hay nới QC. ZIP gốc/SQLite
+audit không có trong gói nhỏ; chưa hash lại hoặc kiểm độc lập raw ở laptop.
+Xem reports/parent_qc_audit_20261028/REPORT.md và verification.json.
+
+---
 # PortoPulse — chuẩn bị kiểm toán parent/QC trên Kaggle 2026-10-28
 
 Có notebook riêng PortoFlow_Coverage_Audit.ipynb, tự chứa mã stdlib và checksum;

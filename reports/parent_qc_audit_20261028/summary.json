@@ -1,0 +1,71 @@
+{
+  "audit_state_sha256": "2a14ea06458cd59db4abf75b49ac073eab5947f5a2a8111d321920c168e9a4a6",
+  "available_batches": 70936,
+  "budget": {
+    "max_new_batches": 100000,
+    "output_bytes": 805306368,
+    "reserve_bytes": 268435456,
+    "rss_mb": 1536,
+    "seconds": 2700
+  },
+  "can_estimate_additional_coverage": false,
+  "committed_batches": 70936,
+  "coverage_changed": false,
+  "data_kind": "REAL_SAVED_METADATA_PENDING_RAW_QC",
+  "error": null,
+  "interpretation": "Parent/block QC metadata audit only; zero accepted core observations is not proof of a matcher bug.",
+  "limits": [
+    "No observation Parquet, raw GPS, sealed ledger or matching is read or executed.",
+    "Block accepted_gaps is before later trimming/clipping/speed filtering; not a causal diagnosis.",
+    "No rejected parent is accepted or recolored by this tool.",
+    "Holdout counts are bookkeeping only; examples/recovery targets are train only."
+  ],
+  "matching_complete_reported": false,
+  "matching_completed_parents_reported": {
+    "holdout": 75322,
+    "train": 1343398
+  },
+  "matching_expected_parents_reported": {
+    "holdout": 303479,
+    "train": 1343398
+  },
+  "metrics": {
+    "holdout": {
+      "accepted_observation_rows_reported": 5607523,
+      "parents": 75322,
+      "parents_with_accepted_core_observations": 67421,
+      "whole_parent_complete": 32475
+    },
+    "train": {
+      "accepted_observation_rows_reported": 95252795,
+      "native_status/failed": 137,
+      "native_status/failed_quality": 372,
+      "native_status/partial": 736964,
+      "native_status/success": 619169,
+      "parent_reason/all_native_blocks_unsuccessful": 485,
+      "parent_reason/block_qc_accepted_gaps_but_no_accepted_core_observations": 589,
+      "parent_reason/has_accepted_core_observations": 1183504,
+      "parent_reason/no_accepted_gaps_in_saved_block_qc": 158820,
+      "parents": 1343398,
+      "parents_with_accepted_core_observations": 1183504,
+      "qc_rejection/status_or_candidate_residual": 1568,
+      "rejected_gap_reason/disconnected_offsets": 2422,
+      "whole_parent_complete": 538439
+    }
+  },
+  "phase": "complete",
+  "source_scan_inventory_reported": {
+    "candidate_holdout": 303486,
+    "candidate_train": 1343432,
+    "missing_gps_data": 10,
+    "no_eligible_continuous_region_block": 26674,
+    "outside_qc_bbox": 354,
+    "outside_study_year": 124,
+    "point_budget_exceeded": 45,
+    "short_trajectory": 36508,
+    "temporal_boundary_purged": 37
+  },
+  "source_zip_sha256": "71e0a5ee45f1a241835b32254068e9009983d4c5067ef8f4edc821840803a93b",
+  "status": "PARENT_QC_AUDIT_COMPLETE",
+  "tool_version": "PORTOFLOW_PARENT_QC_AUDIT_V1"
+}

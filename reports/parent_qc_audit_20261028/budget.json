@@ -1,0 +1,7 @@
+{
+  "max_new_batches": 100000,
+  "output_bytes": 805306368,
+  "reserve_bytes": 268435456,
+  "rss_mb": 1536,
+  "seconds": 2700
+}

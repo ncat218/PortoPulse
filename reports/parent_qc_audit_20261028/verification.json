@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-28",
+  "status": "REVIEW_CONSISTENCY_CHECKS_PASSED_METADATA_ONLY",
+  "review_zip_sha256": "49f4548cfd734c1b1ab2d97117ea8c833161f1c41a6ec1f0e62df259c93ea079",
+  "review_zip_bytes": 3911,
+  "crc_all_members_passed": true,
+  "matching_source_sha_matches_prior_receipt": true,
+  "committed_batches_reconcile": 70936,
+  "parent_counts_reconcile_with_prior_receipt": true,
+  "budget_matches_prepared_caps": true,
+  "saved_examples_unique_train_parents": 75,
+  "train_parents_without_accepted_core_observations": 159894,
+  "train_zero_accepted_pct": 11.902206196525528,
+  "zero_observation_groups": {
+    "all_native_blocks_unsuccessful": {
+      "parents": 485,
+      "pct_among_zero_observation_train": 0.30332595344415675
+    },
+    "block_qc_accepted_gaps_but_no_accepted_core_observations": {
+      "parents": 589,
+      "pct_among_zero_observation_train": 0.36836904449197594
+    },
+    "no_accepted_gaps_in_saved_block_qc": {
+      "parents": 158820,
+      "pct_among_zero_observation_train": 99.32830500206387
+    }
+  },
+  "saved_example_groups": {
+    "all_native_blocks_unsuccessful": 25,
+    "block_qc_accepted_gaps_but_no_accepted_core_observations": 25,
+    "no_accepted_gaps_in_saved_block_qc": 25
+  },
+  "saved_partial_zero_qc_sample": {
+    "parents": 25,
+    "blocks": 25,
+    "all_below_90pct": true,
+    "min_valid_gap_fraction": 0.5,
+    "max_valid_gap_fraction": 0.8904109589041096,
+    "sampling": "First retained examples per reason; not random or representative."
+  },
+  "profile_coverage_unchanged": {
+    "weekday/00-06": {
+      "known": 14636,
+      "unknown": 8224,
+      "known_fraction": 0.6402449693788277
+    },
+    "weekday/06-09": {
+      "known": 13892,
+      "unknown": 8968,
+      "known_fraction": 0.6076990376202974
+    },
+    "weekday/09-12": {
+      "known": 15467,
+      "unknown": 7393,
+      "known_fraction": 0.676596675415573
+    },
+    "weekday/12-16": {
+      "known": 16113,
+      "unknown": 6747,
+      "known_fraction": 0.7048556430446195
+    },
+    "weekday/16-19": {
+      "known": 15796,
+      "unknown": 7064,
+      "known_fraction": 0.6909886264216973
+    },
+    "weekday/19-24": {
+      "known": 15768,
+      "unknown": 7092,
+      "known_fraction": 0.6897637795275591
+    },
+    "weekend/00-06": {
+      "known": 15056,
+      "unknown": 7804,
+      "known_fraction": 0.6586176727909011
+    },
+    "weekend/06-09": {
+      "known": 12994,
+      "unknown": 9866,
+      "known_fraction": 0.568416447944007
+    },
+    "weekend/09-12": {
+      "known": 11512,
+      "unknown": 11348,
+      "known_fraction": 0.5035870516185477
+    },
+    "weekend/12-16": {
+      "known": 12451,
+      "unknown": 10409,
+      "known_fraction": 0.544663167104112
+    },
+    "weekend/16-19": {
+      "known": 11845,
+      "unknown": 11015,
+      "known_fraction": 0.5181539807524059
+    },
+    "weekend/19-24": {
+      "known": 13321,
+      "unknown": 9539,
+      "known_fraction": 0.5827209098862642
+    }
+  },
+  "new_train_observations": 0,
+  "coverage_changed": false,
+  "next_action": "Inspect raw/native diagnostics for a bounded train-only set of partial matches; keep current guards and export.",
+  "limits": [
+    "Original matching ZIP and audit SQLite are not in this small review; reported SHA seals cannot be rehashed locally.",
+    "Raw GPS, parent independence and observation counts were not independently recomputed.",
+    "Executed auditor SHA is not included in this V1 small report; tool version is consistent with the prepared notebook.",
+    "Sample partial coverage below90pct does not prove the same cause for every one of158820parents.",
+    "Block accepted_gaps precedes later trimming/clipping/speed QC;589zero-core cases are not established bugs.",
+    "Existing12bucket coverage is repeated from the verified profile audit; no new profile export was generated."
+  ]
+}
