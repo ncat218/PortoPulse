@@ -1,3 +1,19 @@
+# PortoPulse — chuẩn bị kiểm toán parent/QC trên Kaggle 2026-10-28
+
+Có notebook riêng PortoFlow_Coverage_Audit.ipynb, tự chứa mã stdlib và checksum;
+chỉ cần Input Output matching gốc anhthu128/porto-flow có _output_.zip5,48GB.
+Không cần Dataset code, pip install, Internet hoặc ledger recovery13GB.
+Ngân sách45phút, RAM mềm1.536MiB, Output mềm768MiB; đọc metadata theo batch,
+deduplicate parent/source row, đối chiếu summary và giữ state resume đã seal.
+Gói review nhỏ chỉ gồm JSON, không chứa SQLite. App/thuật toán/profile giữ nguyên.
+
+11 kiểm thử mới đạt, gồm thực thi bootstrap/cell và review ZIP; toàn bộ71kiểm
+thử Python đạt. Đây là
+chuẩn bị công cụ, chưa chạy trên Saved Output thật, chưa có quan sát/độ phủ mới.
+Máy không có Kaggle CLI/cấu hình auth được xác minh; chưa submit job từ đây.
+Xem docs/COVERAGE_AUDIT_KAGGLE.md và reports/coverage_audit_preparation_20261028.json.
+
+---
 # PortoPulse — tối ưu bản đồ và chẩn đoán độ phủ 2026-10-28
 
 Thay dựng lại Folium bằng component Leaflet giữ trạng thái và giao thức xác

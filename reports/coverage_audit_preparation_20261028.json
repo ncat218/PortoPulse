@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-28",
+  "status": "READY_FOR_KAGGLE_EXECUTION_NOT_A_REAL_RUN",
+  "notebook": "notebooks/PortoFlow_Coverage_Audit.ipynb",
+  "auditor_sha256": "d40f62527c1a7c556649d19c9e8968e7ba46194ded6cb84ea04f7752225bbc58",
+  "notebook_sha256": "3efc00bf44795689dd45f5176e00835c9e70445d69a61cc318e509bd8ad3d82c",
+  "expected_original_output_sha256": "71e0a5ee45f1a241835b32254068e9009983d4c5067ef8f4edc821840803a93b",
+  "resume_source": "optional prior small portoflow_coverage_audit Output; sealed audit_state.sqlite plus summary.json",
+  "original_input": "anhthu128/porto-flow original matching Saved Output, _output_.zip approximately5.48GB",
+  "per_run_budget": {
+    "audit_seconds": 2700,
+    "soft_rss_mib": 1536,
+    "soft_audit_output_mib": 768,
+    "disk_reserve_mib": 256,
+    "scratch_ledger_bytes": 0,
+    "max_new_batches": 100000,
+    "max_examples_train_only": 100,
+    "max_metadata_member_mib": 16
+  },
+  "resources": "Kaggle CPU/None; InternetOff; private; one job at a time; stdlib only; no pip setup or code Dataset",
+  "validation": {
+    "targeted_synthetic_tests_passed": 11,
+    "targeted_s": 1.31,
+    "full_suite_passed": 71,
+    "full_suite_s": 78.28,
+    "deprecation_warnings": 8,
+    "notebook_cells_executed_on_synthetic_fixture": true,
+    "frozen_scientific_sources_byte_unchanged": 19
+  },
+  "real_run_submitted": false,
+  "new_train_observations": 0,
+  "coverage_changed": false,
+  "holdout_used_to_fit_profiles": false,
+  "limits": [
+    "Metadata-only audit cannot establish raw QC correctness or estimate recoverable coverage.",
+    "Per-batch resource guards are soft; a single metadata batch may exceed a soft cap before the next check.",
+    "No authenticated Kaggle CLI access verified on this machine; user-run notebook required.",
+    "GitHub CI status not inspected."
+  ]
+}

@@ -156,6 +156,7 @@ thiếu hỗ trợ. Chưa bổ sung được quan sát train mới, vì vậy đ
 Xử lý raw toàn nguồn chạy trên Kaggle CPU; demo không chạy bước nặng trên laptop.
 
 - [Notebook pipeline đầy đủ](notebooks/PortoFlow_Kaggle.ipynb)
+- [Notebook kiểm toán độ phủ/QC từ Output gốc](notebooks/PortoFlow_Coverage_Audit.ipynb) · [Cách chạy](docs/COVERAGE_AUDIT_KAGGLE.md)
 - [Khôi phục report sau timeout](docs/REPORT_RECOVERY.md)
 - [Tiếp tục ledger sau lỗi dung lượng](docs/REPORT_CONTINUE.md)
 - [Thiết kế pipeline](docs/PIPELINE.md) · [Tiến độ](STATUS.md)
@@ -173,6 +174,7 @@ Xử lý raw toàn nguồn chạy trên Kaggle CPU; demo không chạy bước n
 .\.venv\Scripts\python.exe scripts\build_kaggle.py
 .\.venv\Scripts\python.exe scripts\build_report_recovery.py
 .\.venv\Scripts\python.exe scripts\build_report_continue.py
+.\.venv\Scripts\python.exe scripts\build_coverage_audit.py
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
