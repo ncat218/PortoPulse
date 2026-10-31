@@ -1,0 +1,110 @@
+{
+  "scope": "Reference plausibility screen only;90km/h is a diagnostic threshold, not a new color/QC rule.",
+  "residential_or_living_street_reference_above90_distinct_edges": 1146,
+  "road_classes": {
+    "residential": 849,
+    "living_street": 297
+  },
+  "examples": [
+    {
+      "edge_id": "301110937:301110938:0",
+      "reference_speed_kmh": 139.49312969372812,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "2413467921:343646801:0",
+      "reference_speed_kmh": 139.44045332641238,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "513925568:4492375932:0",
+      "reference_speed_kmh": 139.38676610111617,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "479225864:479225907:0",
+      "reference_speed_kmh": 139.2017684665699,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "479225996:479225864:0",
+      "reference_speed_kmh": 139.19996379203184,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "478928715:479225996:0",
+      "reference_speed_kmh": 139.16874603197886,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "301110938:111508660:0",
+      "reference_speed_kmh": 139.14953972293705,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "1142607078:1142607643:0",
+      "reference_speed_kmh": 139.1333301263953,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "1142607643:1142606331:0",
+      "reference_speed_kmh": 139.06046842890993,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "1142606331:1142605793:0",
+      "reference_speed_kmh": 139.04234092717573,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "428050285:416007742:0",
+      "reference_speed_kmh": 138.7798273062356,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "428050267:428050290:0",
+      "reference_speed_kmh": 138.70312696306019,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "428050290:428050285:0",
+      "reference_speed_kmh": 138.70309899199876,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "416007742:1209790954:0",
+      "reference_speed_kmh": 138.70309049181023,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "4468090984:4468090988:0",
+      "reference_speed_kmh": 138.58422736385558,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "2086201346:2086201352:0",
+      "reference_speed_kmh": 138.40286499302462,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "1143316216:2086201346:0",
+      "reference_speed_kmh": 138.34235346051292,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "1739857678:1236467501:0",
+      "reference_speed_kmh": 137.97664014562804,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "3149005231:1264279444:0",
+      "reference_speed_kmh": 137.9756125459875,
+      "reference_source": "edge_p85"
+    },
+    {
+      "edge_id": "64640479:64644549:0",
+      "reference_speed_kmh": 137.95134029032104,
+      "reference_source": "edge_p85"
+    }
+  ]
+}

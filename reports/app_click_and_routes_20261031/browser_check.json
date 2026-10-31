@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "scope": "Full Streamlit app + real Leaflet click/callback loop on SYNTHETIC export",
+  "checks": [
+    "quality warning preserved in collapsed source details",
+    "coverage counts available on demand",
+    "single click ON a road selects and displays A",
+    "next single click ON a road selects and displays B",
+    "automatic route appears",
+    "two markers remain",
+    "map is not remounted when route controls change",
+    "view road popup works without Python rerun",
+    "reset clears markers without remount",
+    "no Streamlit/JavaScript exception"
+  ],
+  "limits": [
+    "Synthetic graph; background tile images stubbed."
+  ]
+}

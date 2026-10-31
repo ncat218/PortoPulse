@@ -16,7 +16,7 @@ from portoflow.storage import sha256_file, verify_checkpoint
 st.set_page_config(page_title="Porto historical taxi patterns", layout="wide")
 st.title("PortoFlow · Giao thông lịch sử")
 st.caption("Ước lượng từ quỹ đạo taxi lịch sử · Tốc độ trên cạnh được nội suy · Không phải giao thông trực tiếp")
-source_details = st.sidebar.expander('Nguồn dữ liệu')
+source_details = st.sidebar.expander('Nguồn & chất lượng dữ liệu')
 artifact_root = source_details.text_input("Thư mục kết quả", os.environ.get("PORTOFLOW_ARTIFACTS", "runs/current"))
 root = Path(artifact_root)
 if not (root / "run_metadata.json").is_file():
@@ -63,7 +63,7 @@ if metadata["data_kind"] == "SYNTHETIC":
 else:
     source_details.info("Mẫu taxi lịch sử; nguồn đầu vào và chất lượng matching cần đối chiếu báo cáo kiểm chứng.")
 if metadata.get('status', '').startswith('CANDIDATE'):
-    st.warning('Kết quả đang chờ review matching và holdout; chưa phải bản nghiệm thu.')
+    source_details.warning('Bản thử nghiệm: QC matching và đánh giá holdout chưa hoàn tất.')
 source_details.caption(f"Đồ thị: {metadata['graph_version'][:16]} · Train cutoff UTC: {metadata['cutoff_utc']} · Ngưỡng hỗ trợ đang là cấu hình thí nghiệm")
 day = st.sidebar.selectbox("Nhóm ngày", ["weekday", "weekend"])
 bucket = st.sidebar.selectbox("Giờ Europe/Lisbon", sorted({key[1] for key in views}))

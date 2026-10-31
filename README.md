@@ -48,6 +48,8 @@ Mở http://localhost:8503. Nếu đã có export riêng, chạy trực tiếp:
 3. Chuyển sang **Chọn hành trình**. Bấm **A · Điểm đi**, chọn A trên bản đồ;
    bấm/chọn tiếp B. Có đủ hai điểm, app tự tính tuyến. Có thể nhập tọa độ trong
    **Nhập tọa độ A/B**, đổi A↔B hoặc chọn lại.
+   Chỉ **click một lần**, kể cả click trên nét đường. Sau khi đặt A, app chuyển
+   sang chọn B; double-click là thao tác zoom. Đổi A/B bằng nút tương ứng.
 4. App tự chọn **Đề xuất cân bằng thời gian–quãng đường**. Thẻ giải thích công bố
    đi thêm bao nhiêu mét/phần trăm so với đường ngắn nhất và ETA ước lượng thay đổi
    bao nhiêu giây. Bảng so sánh giữ các mốc ngắn nhất, tốc độ tĩnh và ưu tiên ETA;
@@ -55,6 +57,15 @@ Mở http://localhost:8503. Nếu đã có export riêng, chạy trực tiếp:
 5. Mở **Ưu tiên thời gian hay quãng đường** để điều chỉnh. Mặc định80% thời gian,
    20% quãng đường là sở thích đánh đổi của demo, không phải độ chính xác80% hay
    cam kết lợi ích ngoài thực tế. Giá trị cao hơn sẵn sàng đi vòng để giảm ETA.
+
+Độ phủ toàn vùng nằm trong **Độ phủ dữ liệu trong khung giờ**; cảnh báo candidate
+nằm trong **Nguồn & chất lượng dữ liệu** ở thanh bên. Thu gọn thông tin giúp
+màn hình chính gọn hơn, không đồng nghĩa QC/holdout đã nghiệm thu. Tỷ lệ thiếu
+dữ liệu trên tuyến vẫn hiện cạnh ETA. **Tốc độ và ETA từng đoạn** công bố đúng
+vận tốc dùng tính thời gian, gồm fallback, và tốc độ tham chiếu để đọc màu.
+Các hàng trong bảng là bốn tiêu chí chọn tuyến, có thể chỉ tạo một đường đi.
+
+Sau cập nhật frontend, dừng/chạy lại app rồi dùng **Ctrl+F5** để tải JavaScript mới.
 
 Tuyến bắt đầu/kết thúc tại vị trí chiếu của A/B trên đoạn đường gần nhất,
 bao gồm phần cạnh đầu và cuối, thay vì chỉ đi đến nút giao gần nhất.

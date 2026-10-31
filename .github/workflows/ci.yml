@@ -24,3 +24,8 @@ jobs:
         with:
           node-version: '20'
       - run: node --test tests/map_frontend.test.cjs
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/verify_app_browser.cjs
+        env:
+          PORTOFLOW_TEST_PYTHON: python

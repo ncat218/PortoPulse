@@ -1,0 +1,673 @@
+{
+  "coordinates": {
+    "A": [
+      -8.662529,
+      41.161484
+    ],
+    "B": [
+      -8.664889,
+      41.161759
+    ]
+  },
+  "day_group": "weekday",
+  "time_bucket": "09-12",
+  "scope": "User coordinates rounded to6decimals from screenshot; immutable historical profiles, not observed travel time.",
+  "routes": {
+    "distance": {
+      "distance_m": 257.11335280745226,
+      "estimated_eta_s": 31.10372163384302,
+      "slow_distance_m": 213.32000195771724,
+      "unknown_distance_fraction": 0.0,
+      "edge_ids": [
+        "314048657:420446037:0",
+        "420446037:314048477:0",
+        "314048477:314074035:0",
+        "314074035:495503905:0",
+        "495503905:495504087:0"
+      ],
+      "edges": [
+        {
+          "edge_id": "314048657:420446037:0",
+          "distance_m": 20.278663181102146,
+          "start_offset_m": 51.56703085122504,
+          "end_offset_m": 71.84569403232719,
+          "status": "normal",
+          "median_speed_kmh": 36.18671855751172,
+          "reference_speed_kmh": 44.19440695308389,
+          "static_speed_kmh": 36.51695261612671,
+          "reference_source": "edge_p85",
+          "distinct_trips": 141,
+          "distinct_taxis": 114,
+          "distinct_dates": 99
+        },
+        {
+          "edge_id": "420446037:314048477:0",
+          "distance_m": 45.595582375302776,
+          "start_offset_m": 0.0,
+          "end_offset_m": 45.595582375302776,
+          "status": "high_slowdown",
+          "median_speed_kmh": 35.14977770011293,
+          "reference_speed_kmh": 112.78135127948762,
+          "static_speed_kmh": 34.37591443939645,
+          "reference_source": "edge_p85",
+          "distinct_trips": 193,
+          "distinct_taxis": 119,
+          "distinct_dates": 124
+        },
+        {
+          "edge_id": "314048477:314074035:0",
+          "distance_m": 138.78044967794702,
+          "start_offset_m": 0.0,
+          "end_offset_m": 138.78044967794702,
+          "status": "high_slowdown",
+          "median_speed_kmh": 27.66647514853052,
+          "reference_speed_kmh": 109.44804853294309,
+          "static_speed_kmh": 28.840272693533162,
+          "reference_source": "edge_p85",
+          "distinct_trips": 123,
+          "distinct_taxis": 91,
+          "distinct_dates": 91
+        },
+        {
+          "edge_id": "314074035:495503905:0",
+          "distance_m": 28.943969904467448,
+          "start_offset_m": 0.0,
+          "end_offset_m": 28.943969904467448,
+          "status": "high_slowdown",
+          "median_speed_kmh": 25.076769783797833,
+          "reference_speed_kmh": 121.7546413723643,
+          "static_speed_kmh": 28.303249459496932,
+          "reference_source": "edge_p85",
+          "distinct_trips": 155,
+          "distinct_taxis": 97,
+          "distinct_dates": 105
+        },
+        {
+          "edge_id": "495503905:495504087:0",
+          "distance_m": 23.514687668632863,
+          "start_offset_m": 0.0,
+          "end_offset_m": 23.514687668632863,
+          "status": "normal",
+          "median_speed_kmh": 38.42625946336125,
+          "reference_speed_kmh": 51.989719048789254,
+          "static_speed_kmh": 40.66724565489275,
+          "reference_source": "edge_p85",
+          "distinct_trips": 996,
+          "distinct_taxis": 282,
+          "distinct_dates": 216
+        }
+      ]
+    },
+    "static": {
+      "distance_m": 257.11335280745226,
+      "estimated_eta_s": 31.10372163384302,
+      "slow_distance_m": 213.32000195771724,
+      "unknown_distance_fraction": 0.0,
+      "edge_ids": [
+        "314048657:420446037:0",
+        "420446037:314048477:0",
+        "314048477:314074035:0",
+        "314074035:495503905:0",
+        "495503905:495504087:0"
+      ],
+      "edges": [
+        {
+          "edge_id": "314048657:420446037:0",
+          "distance_m": 20.278663181102146,
+          "start_offset_m": 51.56703085122504,
+          "end_offset_m": 71.84569403232719,
+          "status": "normal",
+          "median_speed_kmh": 36.18671855751172,
+          "reference_speed_kmh": 44.19440695308389,
+          "static_speed_kmh": 36.51695261612671,
+          "reference_source": "edge_p85",
+          "distinct_trips": 141,
+          "distinct_taxis": 114,
+          "distinct_dates": 99
+        },
+        {
+          "edge_id": "420446037:314048477:0",
+          "distance_m": 45.595582375302776,
+          "start_offset_m": 0.0,
+          "end_offset_m": 45.595582375302776,
+          "status": "high_slowdown",
+          "median_speed_kmh": 35.14977770011293,
+          "reference_speed_kmh": 112.78135127948762,
+          "static_speed_kmh": 34.37591443939645,
+          "reference_source": "edge_p85",
+          "distinct_trips": 193,
+          "distinct_taxis": 119,
+          "distinct_dates": 124
+        },
+        {
+          "edge_id": "314048477:314074035:0",
+          "distance_m": 138.78044967794702,
+          "start_offset_m": 0.0,
+          "end_offset_m": 138.78044967794702,
+          "status": "high_slowdown",
+          "median_speed_kmh": 27.66647514853052,
+          "reference_speed_kmh": 109.44804853294309,
+          "static_speed_kmh": 28.840272693533162,
+          "reference_source": "edge_p85",
+          "distinct_trips": 123,
+          "distinct_taxis": 91,
+          "distinct_dates": 91
+        },
+        {
+          "edge_id": "314074035:495503905:0",
+          "distance_m": 28.943969904467448,
+          "start_offset_m": 0.0,
+          "end_offset_m": 28.943969904467448,
+          "status": "high_slowdown",
+          "median_speed_kmh": 25.076769783797833,
+          "reference_speed_kmh": 121.7546413723643,
+          "static_speed_kmh": 28.303249459496932,
+          "reference_source": "edge_p85",
+          "distinct_trips": 155,
+          "distinct_taxis": 97,
+          "distinct_dates": 105
+        },
+        {
+          "edge_id": "495503905:495504087:0",
+          "distance_m": 23.514687668632863,
+          "start_offset_m": 0.0,
+          "end_offset_m": 23.514687668632863,
+          "status": "normal",
+          "median_speed_kmh": 38.42625946336125,
+          "reference_speed_kmh": 51.989719048789254,
+          "static_speed_kmh": 40.66724565489275,
+          "reference_source": "edge_p85",
+          "distinct_trips": 996,
+          "distinct_taxis": 282,
+          "distinct_dates": 216
+        }
+      ]
+    },
+    "bucket": {
+      "distance_m": 257.11335280745226,
+      "estimated_eta_s": 31.10372163384302,
+      "slow_distance_m": 213.32000195771724,
+      "unknown_distance_fraction": 0.0,
+      "edge_ids": [
+        "314048657:420446037:0",
+        "420446037:314048477:0",
+        "314048477:314074035:0",
+        "314074035:495503905:0",
+        "495503905:495504087:0"
+      ],
+      "edges": [
+        {
+          "edge_id": "314048657:420446037:0",
+          "distance_m": 20.278663181102146,
+          "start_offset_m": 51.56703085122504,
+          "end_offset_m": 71.84569403232719,
+          "status": "normal",
+          "median_speed_kmh": 36.18671855751172,
+          "reference_speed_kmh": 44.19440695308389,
+          "static_speed_kmh": 36.51695261612671,
+          "reference_source": "edge_p85",
+          "distinct_trips": 141,
+          "distinct_taxis": 114,
+          "distinct_dates": 99
+        },
+        {
+          "edge_id": "420446037:314048477:0",
+          "distance_m": 45.595582375302776,
+          "start_offset_m": 0.0,
+          "end_offset_m": 45.595582375302776,
+          "status": "high_slowdown",
+          "median_speed_kmh": 35.14977770011293,
+          "reference_speed_kmh": 112.78135127948762,
+          "static_speed_kmh": 34.37591443939645,
+          "reference_source": "edge_p85",
+          "distinct_trips": 193,
+          "distinct_taxis": 119,
+          "distinct_dates": 124
+        },
+        {
+          "edge_id": "314048477:314074035:0",
+          "distance_m": 138.78044967794702,
+          "start_offset_m": 0.0,
+          "end_offset_m": 138.78044967794702,
+          "status": "high_slowdown",
+          "median_speed_kmh": 27.66647514853052,
+          "reference_speed_kmh": 109.44804853294309,
+          "static_speed_kmh": 28.840272693533162,
+          "reference_source": "edge_p85",
+          "distinct_trips": 123,
+          "distinct_taxis": 91,
+          "distinct_dates": 91
+        },
+        {
+          "edge_id": "314074035:495503905:0",
+          "distance_m": 28.943969904467448,
+          "start_offset_m": 0.0,
+          "end_offset_m": 28.943969904467448,
+          "status": "high_slowdown",
+          "median_speed_kmh": 25.076769783797833,
+          "reference_speed_kmh": 121.7546413723643,
+          "static_speed_kmh": 28.303249459496932,
+          "reference_source": "edge_p85",
+          "distinct_trips": 155,
+          "distinct_taxis": 97,
+          "distinct_dates": 105
+        },
+        {
+          "edge_id": "495503905:495504087:0",
+          "distance_m": 23.514687668632863,
+          "start_offset_m": 0.0,
+          "end_offset_m": 23.514687668632863,
+          "status": "normal",
+          "median_speed_kmh": 38.42625946336125,
+          "reference_speed_kmh": 51.989719048789254,
+          "static_speed_kmh": 40.66724565489275,
+          "reference_source": "edge_p85",
+          "distinct_trips": 996,
+          "distinct_taxis": 282,
+          "distinct_dates": 216
+        }
+      ]
+    },
+    "balanced": {
+      "distance_m": 257.11335280745226,
+      "estimated_eta_s": 31.10372163384302,
+      "slow_distance_m": 213.32000195771724,
+      "unknown_distance_fraction": 0.0,
+      "edge_ids": [
+        "314048657:420446037:0",
+        "420446037:314048477:0",
+        "314048477:314074035:0",
+        "314074035:495503905:0",
+        "495503905:495504087:0"
+      ],
+      "edges": [
+        {
+          "edge_id": "314048657:420446037:0",
+          "distance_m": 20.278663181102146,
+          "start_offset_m": 51.56703085122504,
+          "end_offset_m": 71.84569403232719,
+          "status": "normal",
+          "median_speed_kmh": 36.18671855751172,
+          "reference_speed_kmh": 44.19440695308389,
+          "static_speed_kmh": 36.51695261612671,
+          "reference_source": "edge_p85",
+          "distinct_trips": 141,
+          "distinct_taxis": 114,
+          "distinct_dates": 99
+        },
+        {
+          "edge_id": "420446037:314048477:0",
+          "distance_m": 45.595582375302776,
+          "start_offset_m": 0.0,
+          "end_offset_m": 45.595582375302776,
+          "status": "high_slowdown",
+          "median_speed_kmh": 35.14977770011293,
+          "reference_speed_kmh": 112.78135127948762,
+          "static_speed_kmh": 34.37591443939645,
+          "reference_source": "edge_p85",
+          "distinct_trips": 193,
+          "distinct_taxis": 119,
+          "distinct_dates": 124
+        },
+        {
+          "edge_id": "314048477:314074035:0",
+          "distance_m": 138.78044967794702,
+          "start_offset_m": 0.0,
+          "end_offset_m": 138.78044967794702,
+          "status": "high_slowdown",
+          "median_speed_kmh": 27.66647514853052,
+          "reference_speed_kmh": 109.44804853294309,
+          "static_speed_kmh": 28.840272693533162,
+          "reference_source": "edge_p85",
+          "distinct_trips": 123,
+          "distinct_taxis": 91,
+          "distinct_dates": 91
+        },
+        {
+          "edge_id": "314074035:495503905:0",
+          "distance_m": 28.943969904467448,
+          "start_offset_m": 0.0,
+          "end_offset_m": 28.943969904467448,
+          "status": "high_slowdown",
+          "median_speed_kmh": 25.076769783797833,
+          "reference_speed_kmh": 121.7546413723643,
+          "static_speed_kmh": 28.303249459496932,
+          "reference_source": "edge_p85",
+          "distinct_trips": 155,
+          "distinct_taxis": 97,
+          "distinct_dates": 105
+        },
+        {
+          "edge_id": "495503905:495504087:0",
+          "distance_m": 23.514687668632863,
+          "start_offset_m": 0.0,
+          "end_offset_m": 23.514687668632863,
+          "status": "normal",
+          "median_speed_kmh": 38.42625946336125,
+          "reference_speed_kmh": 51.989719048789254,
+          "static_speed_kmh": 40.66724565489275,
+          "reference_source": "edge_p85",
+          "distinct_trips": 996,
+          "distinct_taxis": 282,
+          "distinct_dates": 216
+        }
+      ]
+    }
+  },
+  "snap_candidates": {
+    "A": [
+      {
+        "edge_id": "314048657:420446037:0",
+        "offset_m": 51.56703085122504,
+        "distance_m": 0.45430438044510074,
+        "coordinate": [
+          -8.662533787598358,
+          41.16148208789481
+        ]
+      }
+    ],
+    "B": [
+      {
+        "edge_id": "495503905:495504087:0",
+        "offset_m": 23.514687668632863,
+        "distance_m": 1.5115254289540718,
+        "coordinate": [
+          -8.664879258030712,
+          41.16174754648957
+        ]
+      },
+      {
+        "edge_id": "495504087:495503905:0",
+        "offset_m": 4.731583739306848,
+        "distance_m": 1.5115254289540725,
+        "coordinate": [
+          -8.664879258030712,
+          41.16174754648957
+        ]
+      }
+    ]
+  },
+  "example_different_path": {
+    "distance_m": 1717.5831903375765,
+    "estimated_eta_s": 176.3492585820083,
+    "unknown_eta_s": 0.0,
+    "slow_distance_m": 485.0424173242011,
+    "slow_distance_fraction": 0.28239820932857995,
+    "relative_slowdown_delay_s": 49.93416655845407,
+    "unknown_distance_fraction": 0.0,
+    "unknown_edge_fraction": 0.0,
+    "risk_cost_s": 176.34925858200836,
+    "edge_ids": [
+      "314048657:420446037:0",
+      "420446037:314048477:0",
+      "314048477:314074036:0",
+      "314074036:495503487:0",
+      "495503487:4567404026:0",
+      "4567404026:1766403800:0",
+      "1766403800:314048417:0",
+      "314048417:312404716:0",
+      "312404716:11371504971:0",
+      "11371504971:1788787978:0",
+      "1788787978:2585388375:0",
+      "2585388375:1788788338:0",
+      "1788788338:1788788359:0",
+      "1788788359:314041366:0",
+      "314041366:2585381433:0",
+      "2585381433:495504087:0",
+      "495504087:495503905:0"
+    ],
+    "edges": [
+      {
+        "edge_id": "314048657:420446037:0",
+        "distance_m": 20.278663181102146,
+        "start_offset_m": 51.56703085122504,
+        "end_offset_m": 71.84569403232719,
+        "status": "normal",
+        "median_speed_kmh": 36.18671855751172,
+        "reference_speed_kmh": 44.19440695308389,
+        "static_speed_kmh": 36.51695261612671,
+        "reference_source": "edge_p85",
+        "distinct_trips": 141,
+        "distinct_taxis": 114,
+        "distinct_dates": 99
+      },
+      {
+        "edge_id": "420446037:314048477:0",
+        "distance_m": 45.595582375302776,
+        "start_offset_m": 0.0,
+        "end_offset_m": 45.595582375302776,
+        "status": "high_slowdown",
+        "median_speed_kmh": 35.14977770011293,
+        "reference_speed_kmh": 112.78135127948762,
+        "static_speed_kmh": 34.37591443939645,
+        "reference_source": "edge_p85",
+        "distinct_trips": 193,
+        "distinct_taxis": 119,
+        "distinct_dates": 124
+      },
+      {
+        "edge_id": "314048477:314074036:0",
+        "distance_m": 126.85609430948067,
+        "start_offset_m": 0.0,
+        "end_offset_m": 126.85609430948067,
+        "status": "normal",
+        "median_speed_kmh": 28.671735420180614,
+        "reference_speed_kmh": 35.7671778396602,
+        "static_speed_kmh": 27.22358412176538,
+        "reference_source": "edge_p85",
+        "distinct_trips": 89,
+        "distinct_taxis": 55,
+        "distinct_dates": 71
+      },
+      {
+        "edge_id": "314074036:495503487:0",
+        "distance_m": 65.0336179470485,
+        "start_offset_m": 0.0,
+        "end_offset_m": 65.0336179470485,
+        "status": "slow",
+        "median_speed_kmh": 25.267104634664605,
+        "reference_speed_kmh": 41.05379503165285,
+        "static_speed_kmh": 27.269383636470895,
+        "reference_source": "edge_p85",
+        "distinct_trips": 215,
+        "distinct_taxis": 129,
+        "distinct_dates": 135
+      },
+      {
+        "edge_id": "495503487:4567404026:0",
+        "distance_m": 242.6329361649283,
+        "start_offset_m": 0.0,
+        "end_offset_m": 242.6329361649283,
+        "status": "slow",
+        "median_speed_kmh": 26.174900222816653,
+        "reference_speed_kmh": 40.44118545891067,
+        "static_speed_kmh": 29.20942639886083,
+        "reference_source": "edge_p85",
+        "distinct_trips": 106,
+        "distinct_taxis": 87,
+        "distinct_dates": 84
+      },
+      {
+        "edge_id": "4567404026:1766403800:0",
+        "distance_m": 181.2969987257228,
+        "start_offset_m": 0.0,
+        "end_offset_m": 181.2969987257228,
+        "status": "normal",
+        "median_speed_kmh": 48.24206013391171,
+        "reference_speed_kmh": 61.89432265739161,
+        "static_speed_kmh": 50.523281278761345,
+        "reference_source": "edge_p85",
+        "distinct_trips": 2579,
+        "distinct_taxis": 408,
+        "distinct_dates": 218
+      },
+      {
+        "edge_id": "1766403800:314048417:0",
+        "distance_m": 99.88685196089064,
+        "start_offset_m": 0.0,
+        "end_offset_m": 99.88685196089064,
+        "status": "normal",
+        "median_speed_kmh": 51.46983175602665,
+        "reference_speed_kmh": 65.83153386427375,
+        "static_speed_kmh": 53.85191575196957,
+        "reference_source": "edge_p85",
+        "distinct_trips": 2584,
+        "distinct_taxis": 410,
+        "distinct_dates": 218
+      },
+      {
+        "edge_id": "314048417:312404716:0",
+        "distance_m": 201.48318353905773,
+        "start_offset_m": 0.0,
+        "end_offset_m": 201.48318353905773,
+        "status": "normal",
+        "median_speed_kmh": 52.021768110333205,
+        "reference_speed_kmh": 66.35731441206772,
+        "static_speed_kmh": 54.11954798277488,
+        "reference_source": "edge_p85",
+        "distinct_trips": 2233,
+        "distinct_taxis": 404,
+        "distinct_dates": 218
+      },
+      {
+        "edge_id": "312404716:11371504971:0",
+        "distance_m": 131.78028083692155,
+        "start_offset_m": 0.0,
+        "end_offset_m": 131.78028083692155,
+        "status": "slow",
+        "median_speed_kmh": 40.715771733254684,
+        "reference_speed_kmh": 58.654672583112514,
+        "static_speed_kmh": 42.235867184568534,
+        "reference_source": "edge_p85",
+        "distinct_trips": 2436,
+        "distinct_taxis": 403,
+        "distinct_dates": 218
+      },
+      {
+        "edge_id": "11371504971:1788787978:0",
+        "distance_m": 110.34186331462656,
+        "start_offset_m": 0.0,
+        "end_offset_m": 110.34186331462656,
+        "status": "normal",
+        "median_speed_kmh": 28.839024660831893,
+        "reference_speed_kmh": 39.47571766378299,
+        "static_speed_kmh": 30.364522013993795,
+        "reference_source": "edge_p85",
+        "distinct_trips": 1236,
+        "distinct_taxis": 333,
+        "distinct_dates": 216
+      },
+      {
+        "edge_id": "1788787978:2585388375:0",
+        "distance_m": 63.97680465112805,
+        "start_offset_m": 0.0,
+        "end_offset_m": 63.97680465112805,
+        "status": "normal",
+        "median_speed_kmh": 32.86365792075239,
+        "reference_speed_kmh": 46.55252966427735,
+        "static_speed_kmh": 36.56079428726204,
+        "reference_source": "edge_p85",
+        "distinct_trips": 1270,
+        "distinct_taxis": 331,
+        "distinct_dates": 216
+      },
+      {
+        "edge_id": "2585388375:1788788338:0",
+        "distance_m": 216.0847705033023,
+        "start_offset_m": 0.0,
+        "end_offset_m": 216.0847705033023,
+        "status": "normal",
+        "median_speed_kmh": 32.51323973917817,
+        "reference_speed_kmh": 45.01459821154791,
+        "static_speed_kmh": 35.63429162727272,
+        "reference_source": "edge_p85",
+        "distinct_trips": 1165,
+        "distinct_taxis": 323,
+        "distinct_dates": 216
+      },
+      {
+        "edge_id": "1788788338:1788788359:0",
+        "distance_m": 16.750037677524237,
+        "start_offset_m": 0.0,
+        "end_offset_m": 16.750037677524237,
+        "status": "normal",
+        "median_speed_kmh": 29.280858229402565,
+        "reference_speed_kmh": 41.054103358006024,
+        "static_speed_kmh": 31.520294430385487,
+        "reference_source": "edge_p85",
+        "distinct_trips": 1594,
+        "distinct_taxis": 335,
+        "distinct_dates": 218
+      },
+      {
+        "edge_id": "1788788359:314041366:0",
+        "distance_m": 81.5100999668555,
+        "start_offset_m": 0.0,
+        "end_offset_m": 81.5100999668555,
+        "status": "normal",
+        "median_speed_kmh": 35.5604530815519,
+        "reference_speed_kmh": 45.049376824121296,
+        "static_speed_kmh": 37.79444147582285,
+        "reference_source": "edge_p85",
+        "distinct_trips": 709,
+        "distinct_taxis": 196,
+        "distinct_dates": 210
+      },
+      {
+        "edge_id": "314041366:2585381433:0",
+        "distance_m": 69.19107418709505,
+        "start_offset_m": 0.0,
+        "end_offset_m": 69.19107418709505,
+        "status": "normal",
+        "median_speed_kmh": 40.446604726741896,
+        "reference_speed_kmh": 50.59044216007917,
+        "static_speed_kmh": 42.439471328881055,
+        "reference_source": "edge_p85",
+        "distinct_trips": 715,
+        "distinct_taxis": 196,
+        "distinct_dates": 210
+      },
+      {
+        "edge_id": "2585381433:495504087:0",
+        "distance_m": 40.15274725728301,
+        "start_offset_m": 0.0,
+        "end_offset_m": 40.15274725728301,
+        "status": "normal",
+        "median_speed_kmh": 42.602303283289814,
+        "reference_speed_kmh": 53.653647413376774,
+        "static_speed_kmh": 46.28835343607888,
+        "reference_source": "edge_p85",
+        "distinct_trips": 564,
+        "distinct_taxis": 178,
+        "distinct_dates": 204
+      },
+      {
+        "edge_id": "495504087:495503905:0",
+        "distance_m": 4.731583739306848,
+        "start_offset_m": 0.0,
+        "end_offset_m": 4.731583739306848,
+        "status": "normal",
+        "median_speed_kmh": 40.90330674062956,
+        "reference_speed_kmh": 53.162159518054544,
+        "static_speed_kmh": 44.1323186817948,
+        "reference_source": "edge_p85",
+        "distinct_trips": 686,
+        "distinct_taxis": 219,
+        "distinct_dates": 211
+      }
+    ]
+  },
+  "alternative_method": "First10 ETA/risk-ranked node-simple paths using the same augmented directed graph; rank2 retraces the destination road, rank3 takes different streets.",
+  "direction_check": {
+    "source_edge": "314048657:420446037:0",
+    "reverse_edge_present": false,
+    "next_node": 420446037,
+    "next_node_outgoing_edges": [
+      "420446037:314048477:0"
+    ]
+  },
+  "limits": [
+    "Graph directionality was checked; actual current street rules and historic network were not externally verified.",
+    "Red color depends on P85 proxy; no actual jam or observed travel time verified."
+  ]
+}

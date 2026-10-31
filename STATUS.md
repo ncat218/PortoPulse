@@ -1,3 +1,24 @@
+# PortoPulse — sửa click trên đường và kiểm hai ca thực tế 2026-10-31
+
+Sửa lỗi popup Leaflet chặn click trên nét đường trước map handler. Single click
+đặt A/B trên đường đã qua kiểm thử full Streamlit/browser; kiểm thử component
+riêng trước đây đã bỏ sót vòng này. Giữ map ở container path cố định, marker
+không chặn click, chống replay theo instance/sequence và cho chọn lại cùng vị trí.
+Candidate warning chuyển vào Nguồn & chất lượng dữ liệu; số cạnh trong expander
+độ phủ, vẫn công bố unknown trên tuyến. Có bảng tốc độ/ETA từng đoạn dùng đúng
+estimator/fallback cũ; bảng so sánh ghi rõ bốn tiêu chí có thể trùng một đường.
+
+Ca người dùng weekday09–12:257,1m/31,1s tái hiện khớp. Graph thiếu chiều ngược
+từ A xuống đường song song; đường vòng khác tìm được1,718km/176,3s. Ba cạnh đỏ
+có median25–35km/h nhưng P85tham chiếu109–122km/h trên tag residential; cần QC
+tham chiếu/GPS, chưa phải bằng chứng kẹt xe thật. Screen90km/h cho1.146cạnh
+residential/living_street có tham chiếu cao; đây chỉ là chẩn đoán, không đổi guard.
+Ca thứ hai có đường đề xuất1.035,2m/112,0s so ngắn nhất913,0m/117,6s, thêm122,2m
+để giảm ETA5,6s. Chưa đo lợi ích ngoài đường. Không sửa thuật toán/trọng số,
+19file khoa học/profile/màu hoặc độ phủ.76kiểm thử Python,2Node và browser
+full-app smoke đạt. Xem reports/app_click_and_routes_20261031.
+
+---
 # PortoPulse — nhận kiểm toán parent/QC thật 2026-10-28
 
 Đã nhận portoflow_coverage_audit_review.zip, CRC và đối chiếu receipt đạt.

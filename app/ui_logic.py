@@ -93,6 +93,23 @@ def consume_map_event(state,event):
     """Road layers emit object-click events; bare map emits last_clicked."""
     if not isinstance(event,dict):
         return False
+    # The persistent component supplies a unique event ID: two deliberate
+    # clicks at the same coordinates are different events, while reruns aren't.
+    if event.get('instance') is not None and event.get('sequence') is not None:
+        token=(event['instance'],event['sequence'])
+        if token==state.get('map_consumed_event'):
+            return False
+        state['map_consumed_event']=token
+        if event.get('kind')!='click':
+            return False
+        point=event.get('last_clicked')
+        mode=state.get('route_pick_mode')
+        if not isinstance(point,dict) or mode not in {'Chọn điểm A','Chọn điểm B'}:
+            return False
+        role='A' if mode=='Chọn điểm A' else 'B'
+        select_point(state,role,point['lng'],point['lat'])
+        state['route_pick_mode']='Xem bản đồ' if points_ready(state) else ('Chọn điểm B' if role=='A' else 'Chọn điểm A')
+        return True
     fields=('last_clicked','last_object_clicked')
     previous=state.get('map_previous_events',{})
     points=[event.get(field) for field in fields if event.get(field) and event.get(field)!=previous.get(field)]
@@ -145,3 +162,20 @@ def minimum_eta_routes(result):
     names=[name for name,route in result['routes'].items()
            if math.isclose(route['estimated_eta_s'],best,rel_tol=0,abs_tol=1e-6)]
     return best,names
+
+
+def route_speed_details(network, selected, route, config):
+    """Explain the SAME speed estimator as the displayed ETA, including fallback."""
+    from portoflow.route import edge_speed
+    lookup={row['edge_id']:row for row in selected}
+    rows=[]
+    for index,segment in enumerate(route['segments'],1):
+        edge=network.edges[segment['edge_id']];profile=lookup.get(edge.edge_id)
+        speed,unknown,source=edge_speed(edge,profile,'bucket',config['route_rules']['fallback_speed_kmh'])
+        rows.append({'Đoạn':index,'Mã cạnh':edge.edge_id,'Tình trạng':STATUS_LABELS[profile['status']] if profile else STATUS_LABELS['unknown'],
+            'Mét đi qua':segment['distance_m'],'Vận tốc tính ETA (km/h)':speed,
+            'Thời gian đoạn (giây)':3.6*segment['distance_m']/speed,
+            'Tốc độ tham chiếu (km/h)':profile.get('reference_speed_kmh') if profile else None,
+            'Nguồn tốc độ':source,'Nguồn tham chiếu':profile.get('reference_source') if profile else None,
+            'Dùng dự phòng':unknown})
+    return rows

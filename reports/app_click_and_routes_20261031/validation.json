@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-31",
+  "status": "PASS_LOCAL_UI_FIX_VALIDATION_WITH_REFERENCE_QC_FINDING",
+  "full_python_suite": {
+    "passed": 76,
+    "elapsed_s": 127.61,
+    "deprecation_warnings": 8
+  },
+  "node_index_tests_passed": 2,
+  "full_streamlit_browser": "PASS; see browser_check.json",
+  "original_failure_reproduced": "Single click on road opened bound popup and never emitted a point event.",
+  "frozen_scientific_files_byte_unchanged": 19,
+  "routing_scoring_unchanged": true,
+  "profile_sha256_unchanged": "6d57765b4b5edfca8be46a715a247f93ad3221caf42064cffec2e1eeb83b1314",
+  "kaggle_code_zip_sha256": "8cc40b8fbe0c27d7d50951b5f7f31c4f5135f175bc6e8353693792e597668c7d",
+  "reference_qc_issue_open": true,
+  "new_train_observations": 0,
+  "coverage_changed": false,
+  "limits": [
+    "Synthetic browser export with background tiles stubbed; no end-user FPS measurement.",
+    "Two user route cases reproduced from6decimal coordinates using current immutable profiles, not observed travel times.",
+    "Reference plausibility screen is a diagnostic, not a changed threshold or proof of raw-data cause.",
+    "Actual street directions were not externally verified; analysis is of the fixed directed graph.",
+    "GitHub CI status not inspected; full browser smoke test has now been added to CI."
+  ]
+}

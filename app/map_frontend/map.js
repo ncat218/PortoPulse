@@ -53,7 +53,18 @@
     const layer=L.polyline(row[0].map(p=>[p[1],p[0]]),{color:row[3],weight,opacity:.85,
       pane:pane||(row[2]==="unknown"?"roadsUnknown":"roadsKnown"),smoothFactor:0});
     layer.bindTooltip(()=>String(row[1])+" · "+args.status_labels[row[2]]);
-    layer.bindPopup(()=>popup(row));return layer;
+    // Leaflet's bound popup stops propagation to map.on('click'). Handle road
+    // clicks explicitly, so selecting a point ON a road reaches Python too.
+    layer.on("click",e => {
+      L.DomEvent.stopPropagation(e);
+      if(args.pick_mode!=="Xem bản đồ") pick(e);
+      else L.popup().setLatLng(e.latlng).setContent(popup(row)).openOn(map);
+    });return layer;
+  }
+  function pick(e) {
+    if(args.pick_mode==="Chọn điểm A" || args.pick_mode==="Chọn điểm B") {
+      map.closePopup();emit("click",{lat:e.latlng.lat,lng:e.latlng.lng});
+    }
   }
   function redraw() {
     frame=null;if(!index) return;
@@ -68,7 +79,7 @@
     const signature=JSON.stringify(overlay);
     if(signature===overlaySignature) return;
     overlaySignature=signature;overlayGroup.clearLayers();
-    for(const item of overlay.markers||[]) L.marker([item.lat,item.lon],{icon:L.divIcon({
+    for(const item of overlay.markers||[]) L.marker([item.lat,item.lon],{interactive:false,icon:L.divIcon({
       className:"",iconSize:[28,28],iconAnchor:[14,14],html:'<div class="point" style="background:'+item.color+'">'+item.role+'</div>'
     })}).addTo(overlayGroup);
     for(const row of overlay.route||[]) {
@@ -99,7 +110,7 @@
         map.createPane(name).style.zIndex=z;
       overlayGroup=L.featureGroup().addTo(map);
       map.on("moveend zoomend",schedule);
-      map.on("click",e => {if(args.pick_mode!=="Xem bản đồ") emit("click",{lat:e.latlng.lat,lng:e.latlng.lng});});
+      map.on("click",pick);
       new ResizeObserver(()=>{map.invalidateSize({pan:false});schedule();}).observe(document.getElementById("map"));
     }
     map.getContainer().style.cursor=args.pick_mode==="Xem bản đồ"?"":"crosshair";
