@@ -117,6 +117,7 @@ Candidate chờ review; không tự cập nhật app.
     notebook_path=ROOT/'notebooks/PortoFlow_Report_Continue.ipynb'
     notebook_path.write_bytes((json.dumps(notebook,ensure_ascii=False,indent=1)+'\n').encode('utf-8'))
     archive_path=ROOT/'deliverables/portoflow_report_continue.zip'
+    archive_path.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(archive_path,'w',zipfile.ZIP_DEFLATED) as archive:
         for name,path in sources.items():
             archive.writestr('portoflow_report_continue/'+name,path.read_bytes())

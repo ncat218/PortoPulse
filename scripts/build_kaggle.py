@@ -217,6 +217,7 @@ Notebook tạo candidate riêng, không tự kích hoạt app. Chưa có kết q
     path = ROOT/'notebooks/PortoFlow_Kaggle.ipynb'
     path.write_text(json.dumps(notebook, ensure_ascii=False, indent=1)+'\n', encoding='utf-8')
     archive_path = ROOT/'deliverables/portoflow_kaggle.zip'
+    archive_path.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(archive_path,'w',zipfile.ZIP_DEFLATED) as archive:
         for name,path in sorted(sources.items()):
             archive.writestr('portoflow_project/'+name,path.read_bytes())

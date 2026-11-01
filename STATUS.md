@@ -1,3 +1,17 @@
+# PortoPulse — sửa đóng gói trên clone sạch 2026-11-02
+
+Đọc log GitHub Actions: bước build_kaggle dừng vì deliverables chưa tồn tại;
+pytest/Node/browser phía sau chưa chạy. Ba builder Kaggle/recovery/continue
+được sửa tự tạo thư mục cha trước ghi ZIP. Ba kiểm thử hồi quy tái hiện đúng lỗi
+trước sửa và đạt sau sửa, gồm CRC/SHA và chạy lại khi thư mục đã có.
+
+Clone nguồn mới, không dùng ZIP/cache/runs cũ, áp candidate: cả 4 builder chạy
+xong; 85 kiểm thử Python, 2 Node và full-app browser đạt trên Windows. Kết quả
+Ubuntu được kiểm bởi GitHub Actions của commit sửa sau push. Không đổi nguồn
+khoa học đóng băng, profile, graph, dữ liệu hay thuật toán. Xem
+reports/ci_packaging_20261102/REPORT.md để đối chiếu phạm vi và bằng chứng.
+
+---
 # PortoPulse — lưu tài liệu công thức bốn phương án 2026-11-01
 
 Thêm docs/ROUTING_METHODS.md để tra cứu và trình bày: công thức trọng số distance,

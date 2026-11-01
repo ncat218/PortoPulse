@@ -219,6 +219,7 @@ Candidate vẫn chờ review source/QC/holdout; không tự cập nhật app.
     path=ROOT/'notebooks/PortoFlow_Report_Recovery.ipynb'
     path.write_bytes((json.dumps(notebook,ensure_ascii=False,indent=1)+'\n').encode('utf-8'))
     archive_path=ROOT/'deliverables/portoflow_report_recovery.zip'
+    archive_path.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(archive_path,'w',zipfile.ZIP_DEFLATED) as archive:
         for name,path in sources.items():
             archive.writestr('portoflow_report_recovery/'+name,path.read_bytes())
