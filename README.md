@@ -119,6 +119,10 @@ byte và chi phí dựng dữ liệu, không phải cam kết FPS hoặc độ t
 
 ## Đọc màu và ETA
 
+Để chuẩn bị trình bày, xem **[Công thức và cách xây dựng bốn phương án định tuyến](docs/ROUTING_METHODS.md)**:
+định nghĩa ETA, công thức từng trọng số Dijkstra, ví dụ bốn tuyến tính từng bước,
+đánh đổi phút/km và xử lý thiếu dữ liệu. Tài liệu mô tả thuật toán đang chạy.
+
 | Màu | Ý nghĩa |
 |---|---|
 | Xanh lá | Di chuyển tương đối bình thường |

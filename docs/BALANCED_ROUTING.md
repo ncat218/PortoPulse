@@ -1,5 +1,8 @@
 # Đề xuất tuyến theo giảm tốc lịch sử và mức đi vòng
 
+Xem [công thức và ví dụ tính từng bước cho cả bốn phương án](ROUTING_METHODS.md),
+gồm cách lấy tốc độ, trọng số cạnh, điểm cân bằng, ngưỡng phút/km và phần thiếu dữ liệu.
+
 Mục tiêu app là tự đề xuất tuyến có đánh đổi rõ ràng giữa thời gian, quãng đường
 và phần chưa đủ dữ liệu. Đường ngắn nhất chỉ là mốc để chuẩn hóa và giải thích.
 Mã nằm trong app/journey_routing.py; package khoa học và profile Kaggle không đổi.

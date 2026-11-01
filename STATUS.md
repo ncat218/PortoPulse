@@ -1,3 +1,15 @@
+# PortoPulse — lưu tài liệu công thức bốn phương án 2026-11-01
+
+Thêm docs/ROUTING_METHODS.md để tra cứu và trình bày: công thức trọng số distance,
+static, bucket và balanced; cách lấy median tốc độ, ETA và dự phòng; chuẩn hóa
+D0/T0; hệ số thiếu dữ liệu; chuyển công thức cân bằng thành mức đánh đổi phút/km.
+Có ví dụ tổng hợp bốn hành lang chọn ra bốn tuyến khác nhau, tính điểm từng bước
+và ví dụ riêng về unknown. Liên kết từ README và tài liệu cân bằng cũ.
+Đây là tài liệu hóa cách chạy hiện tại, không sửa thuật toán, profile hay độ phủ.
+Ví dụ số đã đối chiếu trực tiếp hàm _cost; kiểm 11 liên kết nội bộ và các khối
+công thức. Đồng bộ gói notebook theo README mới, 3 kiểm thử delivery đạt.
+
+---
 # PortoPulse — giao diện gọn và giảm trễ chọn A/B 2026-11-01
 
 Màn hình chính giữ chọn A/B, tùy chọn gộp, ba chỉ số và bản đồ. Bảng so sánh,
