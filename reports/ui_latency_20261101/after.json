@@ -1,0 +1,29 @@
+{
+  "scope": "Actual headless browser mouse click B to route overlay after2animation frames; localhost full Streamlit, real22,860edge export.",
+  "requested_coordinates": {
+    "A": [
+      41.132423,
+      -8.604602
+    ],
+    "B": [
+      41.135227,
+      -8.607853
+    ]
+  },
+  "day_group": "weekday",
+  "time_bucket": "00-06",
+  "initial_ready_ms": 25001,
+  "b_to_route_ms": [
+    1303,
+    1250,
+    1612
+  ],
+  "target_ms": 5000,
+  "all_samples_within_target": true,
+  "limits": [
+    "Local machine/browser sample, not universal latency guarantee.",
+    "Background map tiles stubbed; Leaflet library still loaded from CDN.",
+    "Mouse positions are projected to CSS pixels, so input coordinates can differ slightly from screenshots.",
+    "Test-only JS exposes map and timestamp; production source is not modified."
+  ]
+}

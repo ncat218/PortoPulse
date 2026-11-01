@@ -17,12 +17,26 @@ EPS=1e-6
 DEFAULT_TIME_PRIORITY=.8
 
 
-def snap_candidates(network,lon,lat,*,maximum_distance_m=300):
+class PreparedRouting:
+    """Read-only app resources shared across A/B requests; no policy changes."""
+    def __init__(self,network,profiles):
+        self.network=network;self.profiles=profiles
+        self.lookup=profile_lookup(profiles,network.graph_version)
+        self.edges=tuple(network.edges.values())
+        self.geometries=tuple(edge.metric_geometry for edge in self.edges)
+        self.tree=STRtree(self.geometries)
+
+
+def snap_candidates(network,lon,lat,*,maximum_distance_m=300,prepared=None):
     if not all(isinstance(v,(int,float)) and math.isfinite(v) for v in (lon,lat)) or not (-180<=lon<=180 and -90<=lat<=90):
         raise ValueError('Tọa độ A/B không hợp lệ')
     point=Point(*network.to_metric.transform(lon,lat))
-    edges=list(network.edges.values()); geometries=[edge.metric_geometry for edge in edges]
-    tree=STRtree(geometries)
+    if prepared is not None:
+        if prepared.network is not network:raise ValueError('Prepared routing network mismatch')
+        edges,geometries,tree=prepared.edges,prepared.geometries,prepared.tree
+    else:
+        edges=list(network.edges.values()); geometries=[edge.metric_geometry for edge in edges]
+        tree=STRtree(geometries)
     nearest=int(tree.nearest(point)); distance=point.distance(geometries[nearest])
     if distance>maximum_distance_m:
         raise ValueError(f'Điểm cách mạng đường {distance:.1f} m, vượt giới hạn {maximum_distance_m:g} m')
@@ -91,11 +105,13 @@ def _score(network,segments,lookup,day,bucket,config,model):
         'unknown_edge_fraction':unknown_edges/len(segments) if segments else 0.}
 
 
-def recommend_coordinate_routes(network,profiles,a,b,day,bucket,config,*,time_priority=DEFAULT_TIME_PRIORITY):
+def recommend_coordinate_routes(network,profiles,a,b,day,bucket,config,*,time_priority=DEFAULT_TIME_PRIORITY,prepared=None):
     if isinstance(time_priority,bool) or not isinstance(time_priority,(int,float)) or not math.isfinite(time_priority) or not 0<=time_priority<=1:
         raise ValueError('Time priority must be a finite preference between0and1')
-    lookup=profile_lookup(profiles,network.graph_version)
-    start=snap_candidates(network,*a);end=snap_candidates(network,*b)
+    if prepared is not None and (prepared.network is not network or prepared.profiles is not profiles):
+        raise ValueError('Prepared routing profile/network mismatch')
+    lookup=prepared.lookup if prepared is not None else profile_lookup(profiles,network.graph_version)
+    start=snap_candidates(network,*a,prepared=prepared);end=snap_candidates(network,*b,prepared=prepared)
     if not start or not end:
         raise ValueError('Không tìm thấy đoạn đường gần A/B')
     choices={};source='__PORTOFLOW_A__';target='__PORTOFLOW_B__';balance=None

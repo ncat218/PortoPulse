@@ -47,23 +47,42 @@ Mở http://localhost:8503. Nếu đã có export riêng, chạy trực tiếp:
 2. Xem **Bản đồ giao thông**, bấm vào đường để xem tốc độ, số chuyến, taxi và ngày hỗ trợ.
 3. Chuyển sang **Chọn hành trình**. Bấm **A · Điểm đi**, chọn A trên bản đồ;
    bấm/chọn tiếp B. Có đủ hai điểm, app tự tính tuyến. Có thể nhập tọa độ trong
-   **Nhập tọa độ A/B**, đổi A↔B hoặc chọn lại.
+   **Tùy chọn hành trình**, đổi A↔B hoặc chọn lại.
    Chỉ **click một lần**, kể cả click trên nét đường. Sau khi đặt A, app chuyển
    sang chọn B; double-click là thao tác zoom. Đổi A/B bằng nút tương ứng.
-4. App tự chọn **Đề xuất cân bằng thời gian–quãng đường**. Thẻ giải thích công bố
-   đi thêm bao nhiêu mét/phần trăm so với đường ngắn nhất và ETA ước lượng thay đổi
-   bao nhiêu giây. Bảng so sánh giữ các mốc ngắn nhất, tốc độ tĩnh và ưu tiên ETA;
-   các phương án có thể trùng đường đi.
-5. Mở **Ưu tiên thời gian hay quãng đường** để điều chỉnh. Mặc định80% thời gian,
+4. App tự chọn **Đề xuất cân bằng thời gian–quãng đường**. Màn hình chính hiển thị
+   quãng đường, ETA lịch sử, tỷ lệ thiếu dữ liệu trên tuyến và bản đồ. Một dòng
+   giải thích cho biết tuyến đề xuất đi thêm bao nhiêu mét và ETA đổi bao nhiêu giây.
+5. Mở **Tùy chọn hành trình** để điều chỉnh ưu tiên. Mặc định80% thời gian,
    20% quãng đường là sở thích đánh đổi của demo, không phải độ chính xác80% hay
    cam kết lợi ích ngoài thực tế. Giá trị cao hơn sẵn sàng đi vòng để giảm ETA.
 
 Độ phủ toàn vùng nằm trong **Độ phủ dữ liệu trong khung giờ**; cảnh báo candidate
 nằm trong **Nguồn & chất lượng dữ liệu** ở thanh bên. Thu gọn thông tin giúp
 màn hình chính gọn hơn, không đồng nghĩa QC/holdout đã nghiệm thu. Tỷ lệ thiếu
-dữ liệu trên tuyến vẫn hiện cạnh ETA. **Tốc độ và ETA từng đoạn** công bố đúng
-vận tốc dùng tính thời gian, gồm fallback, và tốc độ tham chiếu để đọc màu.
-Các hàng trong bảng là bốn tiêu chí chọn tuyến, có thể chỉ tạo một đường đi.
+dữ liệu trên tuyến vẫn hiện cạnh ETA. Bật **Phân tích & kiểm chứng** ở thanh bên
+khi muốn xem bảng so sánh, **Tốc độ và ETA từng đoạn**, hồ sơ cạnh hoặc chẩn đoán.
+Các bảng này chỉ được dựng khi bật; mặc định không chiếm màn hình.
+Bảng từng đoạn công bố vận tốc dùng tính ETA, cả dự phòng, và mức tham chiếu
+để đọc màu. Bốn tiêu chí có thể tạo cùng một đường đi. Đoạn không có tốc độ
+lịch sử hiện thông báo rõ thay cho biểu đồ trống.
+
+## Cập nhật bản đã clone
+
+Dừng app bằng **Ctrl+C** trong PowerShell đang chạy, rồi ở thư mục repo:
+
+```powershell
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe scripts\run_demo.py
+```
+
+Nếu đang dùng bản xem thử trong thư mục PortoFlow trên máy hiện tại:
+
+```powershell
+cd "C:\Users\ADMIN\Documents\CS313\PortoFlow"
+git pull --ff-only origin main
+.\.venv\Scripts\python.exe scripts\launch_app.py --export runs\preview_20261027
+```
 
 Sau cập nhật frontend, dừng/chạy lại app rồi dùng **Ctrl+F5** để tải JavaScript mới.
 
@@ -81,7 +100,17 @@ lại Python. Lớp đường chỉ vẽ các cạnh giao vùng đang xem, giữ
 chiều. Đổi nhóm ngày/giờ cần nạp lớp đường mới; tải lại trang tự yêu cầu lại dữ
 liệu nếu bộ nhớ trình duyệt đã mất. Bảng và biểu đồ chi tiết nằm ngoài phần
 cập nhật hành trình. Lần mở đầu vẫn cần đọc/kiểm hash export và nạp thư viện
-bản đồ qua Internet; tính tuyến mới vẫn mất thời gian riêng.
+bản đồ qua Internet. Graph, bảng tra profile và chỉ mục chiếu A/B được chuẩn bị
+một lần khi mở app, dùng lại giữa các yêu cầu. Không dựng lại các bảng phân tích
+chi tiết khi chúng đang tắt. Các spinner dùng lời mô tả, không hiện tên hàm cache.
+
+Đo trên máy cục bộ ngày01/11/2026, cùng22.860cạnh và ca A/B người dùng:
+click B→tuyến hiện trước sửa **8,100 / 1,103 / 2,478 giây**, sau sửa
+**1,303 / 1,250 / 1,612 giây**. Lần mở đầu mất khoảng25giây, gồm chuẩn bị
+tài nguyên định tuyến. Ba lần sau sửa đều dưới5giây; đây là mẫu thử trên một máy,
+không phải cam kết mọi tuyến/máy. Ảnh tile nền được thay bằng ảnh rỗng trong
+kiểm thử để tránh phụ thuộc mạng. Thuật toán và dữ liệu tốc độ giữ nguyên.
+[Bằng chứng và giới hạn phép đo](reports/ui_latency_20261101/REPORT.md).
 
 Phép đo cục bộ trên22.860cạnh: HTML nền Folium trước đây khoảng14,49MB;
 đối số cập nhật tuyến mới khoảng5,93KB sau xác nhận nạp lớp đường. Đây là số

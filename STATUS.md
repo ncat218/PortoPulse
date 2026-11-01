@@ -1,3 +1,21 @@
+# PortoPulse — giao diện gọn và giảm trễ chọn A/B 2026-11-01
+
+Màn hình chính giữ chọn A/B, tùy chọn gộp, ba chỉ số và bản đồ. Bảng so sánh,
+tốc độ từng đoạn, hồ sơ cạnh và chẩn đoán chỉ dựng khi bật Phân tích & kiểm chứng.
+Không vẽ biểu đồ trống khi cạnh không có tốc độ. Các spinner dùng mô tả tiếng Việt,
+không hiển thị tên hàm cache. Cảnh báo candidate và unknown vẫn được công bố.
+
+Nạp graph, bảng tra profile và STRtree một lần khi mở app; dùng lại giữa các yêu cầu.
+Đo browser thật với22.860cạnh và A/B người dùng: click B→tuyến hiện
+8.100/1.103/2.478ms trước sửa, 1.303/1.250/1.612ms sau sửa.
+Ba mẫu sau đều dưới5s; mở đầu khoảng25s. Ảnh tile nền stub, không cam kết mọi
+máy/tuyến. Đối chiếu ba ca A/B thật: cả bốn tuyến có nguyên kết quả khớp bản ccbfb9a.
+82kiểm thử Python,2JavaScript và browser full-app đạt.19file nguồn khoa học,
+recoveryV1 và profile đã đối chiếu hash không đổi. Đồng bộ gói nguồn/notebook.
+Không đổi thuật toán, trọng số, profile, màu, support hoặc độ phủ.
+Xem reports/ui_latency_20261101/REPORT.md và README để cập nhật/chạy app.
+
+---
 # PortoPulse — sửa click trên đường và kiểm hai ca thực tế 2026-10-31
 
 Sửa lỗi popup Leaflet chặn click trên nét đường trước map handler. Single click

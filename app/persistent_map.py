@@ -22,7 +22,7 @@ def compact_roads(features):
              *[feature['properties'][field] for field in ROAD_FIELDS]] for feature in features]
 
 
-@st.cache_resource(max_entries=4)
+@st.cache_resource(max_entries=4,show_spinner=False)
 def road_payload(dataset_id, _features):
     # The ID contains the export identity/hash and selected day/bucket.
     return compact_roads(_features)
