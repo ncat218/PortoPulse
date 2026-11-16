@@ -196,8 +196,8 @@ def render_route_comparison(result, state):
                 state[key] = state.get('comparison_routes', {}).get(name, False)
                 columns[-1].checkbox(label, key=key, label_visibility='collapsed',
                                      on_change=update_comparison_route, args=(name,))
-        st.caption('Bật Hiển thị để xem phần tách nhánh của tuyến so sánh bằng nét đứt nâu. '
-                   'Nếu hai tuyến đi trùng đường, phần chung giữ viền xanh dương.')
+        st.caption('Viền đứt nâu đánh dấu phần tách nhánh của tuyến so sánh. '
+                   'Màu bên trong theo trạng thái giao thông của từng đoạn.')
         st.caption(f'{len(groups)} đường đi khác nhau từ bốn tiêu chí. ETA dùng cùng khung giờ lịch sử.')
         priority = result['recommendation']['policy']['time_priority']
         st.caption(f'Ưu tiên thời gian {priority:.0%} · Quãng đường {1-priority:.0%}.')

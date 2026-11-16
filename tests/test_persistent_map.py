@@ -71,6 +71,9 @@ def test_comparison_only_draws_distinct_branches_and_joins_consecutive_edges():
         'distance': {'segments': shortest},
         'static': {'segments': shortest},
     }
-    assert comparison_branches(routes, 'balanced', {}) == []
-    assert comparison_branches(routes, 'balanced', {'distance': True, 'static': True}) == [[b, c, e]]
-    assert comparison_branches(routes, 'distance', {'static': True}) == []
+    colors = {'left': '#de2d26', 'right': '#fec44f'}
+    expected = [[{'coordinates': [b, c], 'color': '#de2d26'},
+                 {'coordinates': [c, e], 'color': '#fec44f'}]]
+    assert comparison_branches(routes, 'balanced', {}, colors) == []
+    assert comparison_branches(routes, 'balanced', {'distance': True, 'static': True}, colors) == expected
+    assert comparison_branches(routes, 'distance', {'static': True}, colors) == []

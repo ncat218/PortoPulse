@@ -1,3 +1,12 @@
+# PortoPulse — giữ màu giao thông trên tuyến so sánh 2026-11-16
+
+Tuyến so sánh giữ viền đứt nâu. Lõi của mỗi đoạn dùng màu lưu trong hồ sơ
+của đúng cạnh có hướng và khung giờ đang xem. Tuyến chính ở lớp trên cùng.
+Đã đồng bộ các tệp giao diện vào thư mục PortoFlow trên laptop. Kiểm thử
+payload, tuyến A/B, gói notebook và chỉ mục bản đồ đạt.
+
+---
+
 # PortoPulse — so sánh tuyến trực tiếp trên bản đồ 2026-11-16
 
 Đồng bộ giao diện Streamlit đang dùng trên máy, gồm bố cục hành trình và khung

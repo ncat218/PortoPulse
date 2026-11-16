@@ -36,8 +36,8 @@ def component_arguments(dataset_id, event, features, overlay, center, pick_mode)
                 status_labels=STATUS_LABELS, height=560)
 
 
-def comparison_branches(routes, primary, enabled):
-    """Return contiguous pieces of enabled routes that differ from the primary."""
+def comparison_branches(routes, primary, enabled, colors):
+    """Group alternative segments into branches, retaining each directed edge color."""
     def segment_key(segment):
         return (segment['edge_id'], round(segment['start_offset_m'], 6), round(segment['end_offset_m'], 6))
 
@@ -54,11 +54,10 @@ def comparison_branches(routes, primary, enabled):
                 continue
             drawn.add(key)
             coordinates = segment['geometry']['coordinates']
-            if branch is None or branch[-1] != coordinates[0]:
-                branch = list(coordinates)
+            if branch is None or branch[-1]['coordinates'][-1] != coordinates[0]:
+                branch = []
                 branches.append(branch)
-            else:
-                branch.extend(coordinates[1:])
+            branch.append({'coordinates': coordinates, 'color': colors[segment['edge_id']]})
     return branches
 
 
@@ -72,8 +71,10 @@ def journey_overlay(features, state, result, fit_id=None):
         chosen = result['routes'][state['route_choice']]
         route = route_features(features, chosen['edge_ids'], chosen['segments'])['features']
         overlay['route'] = compact_roads(route)
-        overlay['comparisons'] = comparison_branches(result['routes'], state['route_choice'],
-                                                     state.get('comparison_routes', {}))
+        enabled = state.get('comparison_routes', {})
+        if any(enabled.values()):
+            colors = {row['properties']['edge_id']: row['properties']['color'] for row in features}
+            overlay['comparisons'] = comparison_branches(result['routes'], state['route_choice'], enabled, colors)
         for role in ('A', 'B'):
             if chosen['endpoint_gaps_m'][role] > .5:
                 overlay['connectors'].append([[p[1], p[0]] for p in

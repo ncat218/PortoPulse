@@ -57,8 +57,8 @@ Mở http://localhost:8503. Nếu đã có export riêng, chạy trực tiếp:
    20% quãng đường là sở thích đánh đổi của demo, không phải độ chính xác80% hay
    cam kết lợi ích ngoài thực tế. Giá trị cao hơn sẵn sàng đi vòng để giảm ETA.
 6. Mở **So sánh tuyến**. Tick cột **Hiển thị** ở hàng **Mốc so sánh: ngắn nhất**
-   để bật nét đứt nâu ở phần tuyến ngắn nhất tách khỏi tuyến đang xem. Bỏ tick
-   để ẩn nét đứt. Tuyến đang xem giữ viền xanh dương.
+   để bật viền đứt nâu ở phần tuyến ngắn nhất tách khỏi tuyến đang xem. Màu bên
+   trong thể hiện trạng thái giao thông của từng đoạn. Bỏ tick để ẩn tuyến so sánh.
 
 Độ phủ toàn vùng nằm trong **Độ phủ dữ liệu trong khung giờ**; cảnh báo candidate
 nằm trong **Nguồn & chất lượng dữ liệu**. Thu gọn thông tin giúp
