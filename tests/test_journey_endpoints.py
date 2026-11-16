@@ -145,6 +145,9 @@ def test_app_renders_partial_final_edge_and_centered_markers(monkeypatch,tmp_pat
         app.session_state['route_'+role+'_lat']=coordinates[1]
     app.run(timeout=45)
     assert not app.exception
+    assert app.session_state['route_result'] is None
+    app.button(key='find_route').click().run(timeout=45)
+    assert not app.exception
     assert app.session_state['route_result']['routes']['bucket']['distance_m']==pytest.approx(120,abs=1e-4)
     assert any('B cách đường' in caption.value for caption in app.caption)
     assert any(metric.value=='0.12 km' for metric in app.metric)
@@ -154,3 +157,24 @@ def test_app_renders_partial_final_edge_and_centered_markers(monkeypatch,tmp_pat
     assert not app.exception
     assert app.session_state['route_result']['recommendation']['policy']['time_priority']==.95
     assert app.session_state['route_choice']=='balanced'
+    app.selectbox(key='_route_choice').set_value('distance').run(timeout=45)
+    next(item for item in app.selectbox if item.label.startswith('Khung giờ Porto')).set_value('09-12').run(timeout=45)
+    assert not app.exception
+    assert app.session_state['route_choice']=='distance'
+    assert app.session_state['route_signature'][3]=='09-12'
+    app.radio(key='app_mode').set_value('Bản đồ giao thông').run(timeout=45)
+    app.radio(key='app_mode').set_value('Chọn hành trình').run(timeout=45)
+    assert not app.exception
+    assert app.session_state['route_choice']=='distance'
+    assert app.session_state['route_b_lon']==b[0]
+    app.button(key='pick_A').click().run(timeout=45)
+    assert app.session_state['route_pick_mode']=='Chọn điểm A'
+    assert app.session_state['route_b_lon']==b[0]
+    app.number_input(key='_route_a_lon').set_value(point(25,0)[0]).run(timeout=45)
+    assert app.session_state['route_b_lon']==b[0]
+    assert app.session_state['route_result'] is None
+    app.button(key='clear_A').click().run(timeout=45)
+    assert not app.exception
+    assert app.session_state['route_a_lon'] is None
+    assert app.session_state['route_b_lon']==b[0]
+    assert app.button(key='find_route').proto.disabled

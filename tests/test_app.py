@@ -14,6 +14,31 @@ def test_graph_preview_without_export(monkeypatch, tmp_path):
     assert any('22,860' in item.value for item in app.markdown)
 
 
+def test_time_picker_shows_vietnam_time_for_both_lisbon_offsets(monkeypatch, tmp_path):
+    from create_browser_fixture import create
+
+    create(tmp_path)
+    monkeypatch.syspath_prepend(str(ROOT / 'app'))
+    monkeypatch.setenv('PORTOFLOW_ARTIFACTS', str(tmp_path))
+    app = AppTest.from_file(str(ROOT / 'app/streamlit_app.py')).run(timeout=45)
+    assert not app.exception
+    captions = [item.value for item in app.caption]
+    assert any('01/05/2014 07:00' in value for value in captions)
+    assert any('UTC+0 → 07:00–13:00' in value and 'UTC+1 → 06:00–12:00' in value for value in captions)
+    bucket = next(item for item in app.selectbox if item.label.startswith('Khung giờ Porto'))
+    assert '00–06 Porto · VN 07–13 mùa đông / 06–12 mùa hè' in bucket.options
+    assert '16–19 Porto · VN 23–02 (+1) mùa đông / 22–01 (+1) mùa hè' in bucket.options
+    bucket.set_value('16-19').run(timeout=45)
+    assert not app.exception
+    assert any('23:00–02:00 (kết thúc ngày hôm sau)' in item.value
+               and '22:00–01:00 (kết thúc ngày hôm sau)' in item.value for item in app.caption)
+    bucket = next(item for item in app.selectbox if item.label.startswith('Khung giờ Porto'))
+    bucket.set_value('19-24').run(timeout=45)
+    assert not app.exception
+    assert any('02:00–07:00 (cả khung sang ngày hôm sau)' in item.value
+               and '01:00–06:00 (cả khung sang ngày hôm sau)' in item.value for item in app.caption)
+
+
 def test_details_are_opt_in_and_unknown_edge_has_no_empty_chart(monkeypatch,tmp_path):
     import json
     from create_browser_fixture import create

@@ -8,13 +8,18 @@
     html,body,#map {margin:0;width:100%;height:100%;font-family:system-ui,sans-serif}
     #message {position:absolute;z-index:1100;top:10px;left:50px;background:white;padding:6px 10px;border-radius:4px;font-size:13px}
     #message:empty {display:none}
-    .point {border-radius:50%;color:white;width:28px;height:28px;text-align:center;line-height:28px;font-weight:bold}
+    #pick-hint {position:absolute;z-index:950;top:12px;left:50%;transform:translateX(-50%);
+      max-width:calc(100% - 105px);box-sizing:border-box;padding:7px 12px;background:#172b4d;color:white;
+      border-radius:8px;box-shadow:0 2px 9px #172b4d40;font-size:13px;font-weight:650;pointer-events:none}
+    .point {display:grid;place-items:center;border:2px solid white;box-sizing:border-box;border-radius:50%;
+      color:white;width:34px;height:34px;font-size:16px;font-weight:750;box-shadow:0 2px 8px #172b4d65}
     .road-detail td {padding:2px 5px;vertical-align:top}
   </style>
 </head>
 <body>
   <div id="map" role="application" aria-label="Bản đồ giao thông lịch sử Porto"></div><div id="message">Đang tải bản đồ…</div>
+  <div id="pick-hint" role="status" hidden></div>
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="map.js?v=20261031-road-click"></script>
+  <script src="map.js?v=route-comparison"></script>
 </body>
 </html>

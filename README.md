@@ -43,10 +43,10 @@ Mở http://localhost:8503. Nếu đã có export riêng, chạy trực tiếp:
 
 ## Chơi thử app
 
-1. Chọn **weekday/weekend** và khung giờ **Europe/Lisbon** ở thanh bên.
+1. Chọn **Ngày làm việc** hoặc **Cuối tuần** và khung giờ Porto ở đầu trang. App hiển thị cả giờ tương ứng ở Việt Nam.
 2. Xem **Bản đồ giao thông**, bấm vào đường để xem tốc độ, số chuyến, taxi và ngày hỗ trợ.
 3. Chuyển sang **Chọn hành trình**. Bấm **A · Điểm đi**, chọn A trên bản đồ;
-   bấm/chọn tiếp B. Có đủ hai điểm, app tự tính tuyến. Có thể nhập tọa độ trong
+   bấm/chọn tiếp B rồi bấm **Tìm tuyến đường**. Có thể nhập tọa độ trong
    **Tùy chọn hành trình**, đổi A↔B hoặc chọn lại.
    Chỉ **click một lần**, kể cả click trên nét đường. Sau khi đặt A, app chuyển
    sang chọn B; double-click là thao tác zoom. Đổi A/B bằng nút tương ứng.
@@ -56,12 +56,15 @@ Mở http://localhost:8503. Nếu đã có export riêng, chạy trực tiếp:
 5. Mở **Tùy chọn hành trình** để điều chỉnh ưu tiên. Mặc định80% thời gian,
    20% quãng đường là sở thích đánh đổi của demo, không phải độ chính xác80% hay
    cam kết lợi ích ngoài thực tế. Giá trị cao hơn sẵn sàng đi vòng để giảm ETA.
+6. Mở **So sánh tuyến**. Tick cột **Hiển thị** ở hàng **Mốc so sánh: ngắn nhất**
+   để bật nét đứt nâu ở phần tuyến ngắn nhất tách khỏi tuyến đang xem. Bỏ tick
+   để ẩn nét đứt. Tuyến đang xem giữ viền xanh dương.
 
 Độ phủ toàn vùng nằm trong **Độ phủ dữ liệu trong khung giờ**; cảnh báo candidate
-nằm trong **Nguồn & chất lượng dữ liệu** ở thanh bên. Thu gọn thông tin giúp
+nằm trong **Nguồn & chất lượng dữ liệu**. Thu gọn thông tin giúp
 màn hình chính gọn hơn, không đồng nghĩa QC/holdout đã nghiệm thu. Tỷ lệ thiếu
-dữ liệu trên tuyến vẫn hiện cạnh ETA. Bật **Phân tích & kiểm chứng** ở thanh bên
-khi muốn xem bảng so sánh, **Tốc độ và ETA từng đoạn**, hồ sơ cạnh hoặc chẩn đoán.
+dữ liệu trên tuyến vẫn hiện cạnh ETA. Bật **Phân tích & kiểm chứng** khi muốn xem
+**Tốc độ và ETA từng đoạn**, hồ sơ cạnh hoặc chẩn đoán.
 Các bảng này chỉ được dựng khi bật; mặc định không chiếm màn hình.
 Bảng từng đoạn công bố vận tốc dùng tính ETA, cả dự phòng, và mức tham chiếu
 để đọc màu. Bốn tiêu chí có thể tạo cùng một đường đi. Đoạn không có tốc độ

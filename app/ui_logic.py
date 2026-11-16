@@ -8,6 +8,26 @@ ROUTE_LABELS = {'balanced':'Đề xuất cân bằng thời gian–quãng đư�
     'bucket':'Ưu tiên ETA theo giờ, có xét độ phủ'}
 
 
+def vietnam_time_range(bucket: str, lisbon_utc_offset: int, *, compact=False) -> str:
+    """Convert a Lisbon bucket at one fixed seasonal offset for display."""
+    start, end = (int(hour) + 7 - lisbon_utc_offset for hour in bucket.split('-'))
+    if compact:
+        suffix = ' (+1)' if end >= 24 else ''
+        return f'{start % 24:02d}–{end % 24:02d}{suffix}'
+    interval = f'{start % 24:02d}:00–{end % 24:02d}:00'
+    if start >= 24:
+        return f'{interval} (cả khung sang ngày hôm sau)'
+    if end >= 24:
+        return f'{interval} (kết thúc ngày hôm sau)'
+    return interval
+
+
+def bucket_picker_label(bucket: str) -> str:
+    winter = vietnam_time_range(bucket, 0, compact=True)
+    summer = vietnam_time_range(bucket, 1, compact=True)
+    return f'{bucket.replace("-", "–")} Porto · VN {winter} mùa đông / {summer} mùa hè'
+
+
 def display_feature(feature):
     properties = dict(feature['properties'])
     properties['status_label'] = STATUS_LABELS[properties['status']]
@@ -53,10 +73,19 @@ def select_point(state,role,lon,lat):
         raise ValueError('Tọa độ nằm ngoài phạm vi kinh độ/vĩ độ')
     state['route_'+role.lower()+'_lon'] = float(lon)
     state['route_'+role.lower()+'_lat'] = float(lat)
-    state['route_result'] = None
-    state['route_signature'] = None
-    state['route_attempt_signature'] = None
-    state['route_error'] = None
+    reset_route(state)
+
+
+def reset_route(state):
+    state.update(route_result=None, route_signature=None, route_attempt_signature=None,
+                 route_error=None, route_requested=False, route_choice='balanced', comparison_routes={})
+
+
+def clear_point(state, role):
+    for axis in ('lon', 'lat'):
+        state[f'route_{role.lower()}_{axis}'] = None
+    reset_route(state)
+    state['route_pick_mode'] = f'Chọn điểm {role}'
 
 
 def points_ready(state):
@@ -69,8 +98,8 @@ def clear_journey(state):
     for point in ('a','b'):
         for axis in ('lon','lat'):
             state['route_'+point+'_'+axis]=None
-    state.update(route_result=None,route_signature=None,route_attempt_signature=None,
-                 route_error=None,route_pick_mode='Chọn điểm A',route_choice='balanced')
+    reset_route(state)
+    state['route_pick_mode'] = 'Chọn điểm A'
 
 
 def route_features(features,edge_ids,segments=None):

@@ -1,3 +1,17 @@
+# PortoPulse — so sánh tuyến trực tiếp trên bản đồ 2026-11-16
+
+Đồng bộ giao diện Streamlit đang dùng trên máy, gồm bố cục hành trình và khung
+giờ Porto/Việt Nam. Bảng So sánh tuyến có cột Hiển thị. Tick một tiêu chí để vẽ
+phần tuyến tách khỏi đường đang xem bằng nét đứt nâu. Phần chung giữ viền xanh
+dương. Bật/tắt dùng lại kết quả A/B và giữ nguyên góc nhìn bản đồ.
+
+Kiểm thử Chrome trên ca ngày làm việc 09–12 với export Porto đã xác nhận nét
+đứt bật/tắt đúng, tuyến cân bằng và góc nhìn giữ nguyên. Kiểm thử tương tác
+Streamlit trên fixture tổng hợp cũng đạt. Gói dựng notebook gồm cả hai tệp giao
+diện mới. Dữ liệu, hồ sơ tốc độ và thuật toán định tuyến giữ nguyên.
+
+---
+
 # PortoPulse — sửa đóng gói trên clone sạch 2026-11-02
 
 Đọc log GitHub Actions: bước build_kaggle dừng vì deliverables chưa tồn tại;

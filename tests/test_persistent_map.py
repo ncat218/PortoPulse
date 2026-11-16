@@ -5,7 +5,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'app'))
-from persistent_map import compact_roads, component_arguments, journey_overlay
+from persistent_map import comparison_branches, compact_roads, component_arguments, journey_overlay
 from test_journey_endpoints import fixture_network, calculate
 from portoflow.export import serve_geojson
 from ui_logic import display_feature
@@ -39,3 +39,38 @@ def test_overlay_preserves_partial_red_edge_offroad_gap_and_marker_positions():
     assert overlay['connectors'][0][0] == [b[1],b[0]]
     assert [b[1],b[0]] in overlay['bounds']
     assert overlay['fit_id'] == 'SYNTHETIC_FIT'
+
+
+def test_compact_snapshot_matches_exported_map_for_every_bucket(tmp_path):
+    from artifact_views import build_bucket_view, read_snapshot
+    from create_browser_fixture import create
+    from ui_logic import index_views
+
+    create(tmp_path)
+    _, profiles, buckets, _, geometries, display_geometries = read_snapshot(tmp_path)
+    geojson = json.loads((tmp_path / 'traffic.geojson').read_bytes())
+    legacy = index_views(profiles, geojson)
+    assert buckets.keys() == legacy.keys()
+    for key, rows in buckets.items():
+        features, map_features = build_bucket_view(rows, geometries, display_geometries)
+        assert json.dumps(features, sort_keys=True) == json.dumps(legacy[key]['features'], sort_keys=True)
+        assert json.dumps(compact_roads(map_features)) == json.dumps(compact_roads(legacy[key]['map_features']))
+
+
+def test_comparison_only_draws_distinct_branches_and_joins_consecutive_edges():
+    def segment(edge, start, end):
+        return {'edge_id': edge, 'start_offset_m': 0, 'end_offset_m': 100,
+                'geometry': {'coordinates': [start, end]}}
+
+    a, b, c, d, e, f = ([i, i] for i in range(6))
+    first = segment('first', a, b)
+    last = segment('last', e, f)
+    shortest = [first, segment('left', b, c), segment('right', c, e), last]
+    routes = {
+        'balanced': {'segments': [first, segment('upper', b, d), segment('lower', d, e), last]},
+        'distance': {'segments': shortest},
+        'static': {'segments': shortest},
+    }
+    assert comparison_branches(routes, 'balanced', {}) == []
+    assert comparison_branches(routes, 'balanced', {'distance': True, 'static': True}) == [[b, c, e]]
+    assert comparison_branches(routes, 'distance', {'static': True}) == []

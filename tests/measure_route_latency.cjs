@@ -1,4 +1,4 @@
-/* Measure real browser -> Streamlit -> route Canvas using immutable real export.
+/* Measure Find route -> Streamlit -> route Canvas using immutable real export.
    The Leaflet map reference is injected only into test responses, never production.
    Fresh headless profile/temporary port; does not use the user's running app. */
 const fs=require('node:fs'),path=require('node:path'),net=require('node:net');
@@ -49,14 +49,16 @@ const A=[41.132423,-8.604602],B=[41.135227,-8.607853];
    await frame.evaluate(ll=>{__testMap.setView(ll,16,{animate:false});__testRenders=[];},A);await delay(150);
    await clickAt(A);await frame.locator('.point').filter({hasText:'A'}).waitFor({timeout:15000});
    await frame.waitForFunction(()=>__testArgs.pick_mode==='Chọn điểm B',null,{timeout:15000});
-   const start=Date.now();await clickAt(B);
+   await clickAt(B);
+   await frame.waitForFunction(()=>__testArgs.overlay.markers.length===2);
+   const start=Date.now();await page.getByRole('button',{name:'Tìm tuyến đường',exact:true}).click();
    await frame.waitForFunction(()=>__testRenders.length>0,null,{timeout:30000});
    const rendered=await frame.evaluate(()=>__testRenders[0].time);
-   samples.push(rendered-start);console.log('B_TO_ROUTE_MS',i+1,samples.at(-1));
+   samples.push(rendered-start);console.log('FIND_TO_ROUTE_MS',i+1,samples.at(-1));
   }
   if(errors.length)throw Error(errors.join('\n'));
-  const report={scope:'Actual headless browser mouse click B to route overlay after2animation frames; localhost full Streamlit, real22,860edge export.',
-   requested_coordinates:{A,B},day_group:'weekday',time_bucket:'00-06',initial_ready_ms,b_to_route_ms:samples,
+  const report={scope:'Actual headless browser Find route click to route overlay after 2 animation frames; localhost full Streamlit, real 22,860-edge export.',
+   requested_coordinates:{A,B},day_group:'weekday',time_bucket:'00-06',initial_ready_ms,find_to_route_ms:samples,
    target_ms:5000,all_samples_within_target:samples.every(n=>n<=5000),
    limits:['Local machine/browser sample, not universal latency guarantee.','Background map tiles stubbed; Leaflet library still loaded from CDN.',
     'Mouse positions are projected to CSS pixels, so input coordinates can differ slightly from screenshots.','Test-only JS exposes map and timestamp; production source is not modified.']};

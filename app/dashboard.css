@@ -1,0 +1,92 @@
+.stMain .block-container {
+  max-width: 1600px;
+  padding: 2.7rem clamp(1rem, 3vw, 3rem) 3rem;
+}
+
+.porto-header {
+  border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  padding-bottom: 1.05rem;
+}
+
+.porto-header h1 {
+  padding: 0;
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  letter-spacing: -.065em;
+  line-height: 1.05;
+}
+
+.porto-header p {
+  margin: .35rem 0 .3rem;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 650;
+}
+
+.porto-header span { font-size: .9rem; opacity: .8; }
+.st-key-traffic-filters, .st-key-map-panel { min-width: 0; }
+.st-key-map-panel h3 { font-size: 1.15rem; }
+
+.st-key-map-navigation [role="radiogroup"] {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.st-key-map-navigation label {
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: .6rem;
+  padding: .45rem .75rem;
+}
+
+.st-key-map-navigation label:has(input:checked) {
+  background: color-mix(in srgb, #2563eb 13%, transparent);
+  border-color: #527fe3;
+}
+
+.st-key-point-a-active, .st-key-point-a-idle { --point-accent: #2563eb; }
+.st-key-point-b-active, .st-key-point-b-idle { --point-accent: #7c3aed; }
+
+.st-key-map-panel [class*="st-key-point-"] {
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-inline-start: .25rem solid var(--point-accent);
+  border-radius: .7rem;
+  gap: .2rem;
+  padding: .4rem .6rem;
+}
+
+.st-key-point-a-active, .st-key-point-b-active {
+  border-color: var(--point-accent);
+  background: color-mix(in srgb, var(--point-accent) 12%, transparent);
+}
+
+.st-key-pick_A button, .st-key-pick_B button { width: 100%; font-weight: 650; }
+.st-key-find_route button { background: #1d4ed8; border-color: #1d4ed8; color: white; }
+.st-key-find_route button:not(:disabled):hover { background: #1e40af; }
+.st-key-find_route button:disabled { opacity: .5; }
+
+.st-key-porto-map-frame iframe {
+  display: block;
+  border-radius: .85rem;
+  outline: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+  outline-offset: -1px;
+}
+
+.traffic-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem 1.15rem;
+  font-size: .84rem;
+}
+
+.traffic-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.traffic-legend i { display: inline-block; width: .8rem; height: .38rem; border-radius: 1rem; }
+
+@media (max-width: 900px) {
+  [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] .st-key-porto-map-frame) {
+    flex-wrap: wrap;
+  }
+  [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] .st-key-porto-map-frame) > [data-testid="stColumn"] {
+    min-width: 100%;
+  }
+}

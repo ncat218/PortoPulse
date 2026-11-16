@@ -67,7 +67,23 @@ const reportPath=process.env.PORTOFLOW_TEST_REPORT||path.join(run,'result.json')
     await frame.locator('.point').filter({hasText:'A'}).waitFor({timeout:12000});
     phase='click B';await map.click({position:{x:dimensions.width/2+155,y:dimensions.height/2}});
     await frame.locator('.point').filter({hasText:'B'}).waitFor({timeout:15000});
+    assert.equal(await frame.evaluate(()=>__testArgs.overlay.route.length),0);
+    await page.getByRole('button',{name:'Tìm tuyến đường',exact:true}).click();
     await frame.locator('.leaflet-routeCore-pane canvas').waitFor({timeout:15000});
+    phase='compare routes';
+    await page.getByText('So sánh tuyến',{exact:true}).click();
+    await page.getByText('Tuyến trên bản đồ',{exact:true}).waitFor();
+    const shortest=page.getByRole('checkbox',{name:'Hiển thị Mốc so sánh: ngắn nhất'});
+    const primary=page.getByRole('checkbox',{name:'Hiển thị Đề xuất cân bằng thời gian–quãng đường'});
+    assert.equal(await primary.isDisabled(),true);
+    assert.equal(await primary.isChecked(),true);
+    const originalRoute=await frame.evaluate(()=>JSON.stringify(__testArgs.overlay.route));
+    await shortest.locator('xpath=ancestor::label[1]').click();
+    assert.equal(await shortest.isChecked(),true);
+    assert.equal(await frame.evaluate(()=>JSON.stringify(__testArgs.overlay.route)),originalRoute);
+    await shortest.locator('xpath=ancestor::label[1]').click();
+    assert.equal(await shortest.isChecked(),false);
+    await page.getByText('So sánh tuyến',{exact:true}).click();
     assert.equal(await page.getByText('Tốc độ và ETA từng đoạn',{exact:true}).count(),0);
     assert.equal(await frame.locator('.point').count(),2);
     assert.equal(await map.getAttribute('data-persisted'),'full_app');
@@ -93,6 +109,28 @@ const reportPath=process.env.PORTOFLOW_TEST_REPORT||path.join(run,'result.json')
     await map.click({position:roadPosition});
     await frame.locator('.leaflet-popup').waitFor({timeout:5000});
     assert.equal(await page.evaluate(()=>mapMessages.filter(m=>m.type==='streamlit:setComponentValue').length),countBefore);
+    phase='switch modes';
+    await page.getByText('Bản đồ giao thông',{exact:true}).click();
+    await frame.waitForFunction(()=>__testArgs.overlay.markers.length===0);
+    await page.getByText('Chọn hành trình',{exact:true}).click();
+    await frame.waitForFunction(()=>__testArgs.overlay.markers.length===2 && __testArgs.overlay.route.length>0);
+    assert.equal(await map.getAttribute('data-persisted'),'full_app');
+    if(process.env.PORTOFLOW_TEST_SCREENSHOT) {
+      await frame.evaluate(()=>__testMap.closePopup());
+      await page.evaluate(()=>document.querySelector('[data-testid="stMain"]').scrollTo(0,0));
+      await page.screenshot({path:process.env.PORTOFLOW_TEST_SCREENSHOT,fullPage:true});
+    }
+    phase='reselect A';
+    const pointB=await frame.evaluate(()=>__testArgs.overlay.markers.find(point=>point.role==='B'));
+    await page.getByRole('button',{name:'A · Điểm đi',exact:true}).click();
+    await frame.locator('#pick-hint').getByText('Chọn điểm đi A').waitFor();
+    await map.click({position:roadPosition});
+    await frame.waitForFunction(()=>__testArgs.pick_mode==='Xem bản đồ' && __testArgs.overlay.route.length===0);
+    assert.deepEqual(await frame.evaluate(()=>__testArgs.overlay.markers.find(point=>point.role==='B')),pointB);
+    phase='swap endpoints';
+    await page.getByRole('button',{name:'Đổi A ↔ B',exact:true}).click();
+    await frame.waitForFunction(point=>__testArgs.overlay.markers.some(p=>p.role==='A' &&
+      p.lat===point.lat && p.lon===point.lon),pointB);
     phase='reset';await page.getByRole('button',{name:'Chọn lại',exact:true}).click();
     await frame.waitForFunction(()=>document.querySelectorAll('.point').length===0);
     assert.equal(await map.getAttribute('data-persisted'),'full_app');
@@ -100,7 +138,9 @@ const reportPath=process.env.PORTOFLOW_TEST_REPORT||path.join(run,'result.json')
     assert.deepEqual(errors,[]);
     const report={status:'PASS',scope:'Full Streamlit app + real Leaflet click/callback loop on SYNTHETIC export',
       checks:['quality warning preserved in collapsed source details','coverage counts available on demand',
-        'single click ON a road selects and displays A','next single click ON a road selects and displays B','automatic route appears',
+        'single click ON a road selects and displays A','next single click ON a road selects and displays B','Find route displays the preview',
+        'route comparison available on demand','switching modes preserves the journey and map',
+        'reselecting A preserves B','swap reverses the endpoints',
         'two markers remain','map is not remounted when route controls change','view road popup works without Python rerun',
         'reset clears markers without remount','technical data is only built when opted in',
         'no Streamlit/JavaScript exception'],limits:['Synthetic graph; background tile images stubbed.']};

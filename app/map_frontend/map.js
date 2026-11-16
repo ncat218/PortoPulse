@@ -34,6 +34,7 @@
   let map, args, roads=[], index, dataset=null, requested=null, sequence=0;
   let visible=new Map(), overlayGroup, overlaySignature=null, fitted=null, frame=null;
   const message=document.getElementById("message");
+  const pickHint=document.getElementById("pick-hint");
   function emit(kind, point=null) {
     post("streamlit:setComponentValue",{dataType:"json",value:{dataset_id:dataset,kind,
       sequence:++sequence,instance:instanceId,last_clicked:point,last_object_clicked:null}});
@@ -80,8 +81,14 @@
     if(signature===overlaySignature) return;
     overlaySignature=signature;overlayGroup.clearLayers();
     for(const item of overlay.markers||[]) L.marker([item.lat,item.lon],{interactive:false,icon:L.divIcon({
-      className:"",iconSize:[28,28],iconAnchor:[14,14],html:'<div class="point" style="background:'+item.color+'">'+item.role+'</div>'
+      className:"",iconSize:[34,34],iconAnchor:[17,17],html:'<div class="point" style="background:'+item.color+'">'+item.role+'</div>'
     })}).addTo(overlayGroup);
+    for(const branch of overlay.comparisons||[]) {
+      const points=branch.map(p=>[p[1],p[0]]);
+      const options={pane:"routeComparison",interactive:false,smoothFactor:0};
+      L.polyline(points,{...options,color:"#fff7ed",weight:7,opacity:.95}).addTo(overlayGroup);
+      L.polyline(points,{...options,color:"#92400e",weight:4,dashArray:"8 6",lineCap:"butt"}).addTo(overlayGroup);
+    }
     for(const row of overlay.route||[]) {
       const points=row[0].map(p=>[p[1],p[0]]);
       L.polyline(points,{color:"#2563eb",weight:11,opacity:.95,pane:"routeOutline",interactive:false,smoothFactor:0}).addTo(overlayGroup);
@@ -106,7 +113,7 @@
       map=L.map("map",{preferCanvas:true}).setView(args.center,14);
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,
         attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
-      for(const [name,z] of [["roadsUnknown",410],["roadsKnown",420],["routeOutline",440],["routeCore",450]])
+      for(const [name,z] of [["roadsUnknown",410],["roadsKnown",420],["routeComparison",430],["routeOutline",440],["routeCore",450]])
         map.createPane(name).style.zIndex=z;
       overlayGroup=L.featureGroup().addTo(map);
       map.on("moveend zoomend",schedule);
@@ -114,6 +121,9 @@
       new ResizeObserver(()=>{map.invalidateSize({pan:false});schedule();}).observe(document.getElementById("map"));
     }
     map.getContainer().style.cursor=args.pick_mode==="Xem bản đồ"?"":"crosshair";
+    const hint = {"Chọn điểm A":"Chọn điểm đi A", "Chọn điểm B":"Chọn điểm đến B"}[args.pick_mode];
+    pickHint.hidden = !hint;
+    if (hint && pickHint.textContent !== hint) pickHint.textContent = hint;
     if(args.dataset_id!==dataset) {
       if(args.roads) {
         for(const layer of visible.values()) map.removeLayer(layer);

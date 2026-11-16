@@ -36,8 +36,34 @@ def component_arguments(dataset_id, event, features, overlay, center, pick_mode)
                 status_labels=STATUS_LABELS, height=560)
 
 
+def comparison_branches(routes, primary, enabled):
+    """Return contiguous pieces of enabled routes that differ from the primary."""
+    def segment_key(segment):
+        return (segment['edge_id'], round(segment['start_offset_m'], 6), round(segment['end_offset_m'], 6))
+
+    drawn = {segment_key(segment) for segment in routes[primary]['segments']}
+    branches = []
+    for name, route in routes.items():
+        if not enabled.get(name):
+            continue
+        branch = None
+        for segment in route['segments']:
+            key = segment_key(segment)
+            if key in drawn:
+                branch = None
+                continue
+            drawn.add(key)
+            coordinates = segment['geometry']['coordinates']
+            if branch is None or branch[-1] != coordinates[0]:
+                branch = list(coordinates)
+                branches.append(branch)
+            else:
+                branch.extend(coordinates[1:])
+    return branches
+
+
 def journey_overlay(features, state, result, fit_id=None):
-    overlay = {'markers': [], 'route': [], 'connectors': [], 'bounds': [], 'fit_id': fit_id}
+    overlay = {'markers': [], 'route': [], 'comparisons': [], 'connectors': [], 'bounds': [], 'fit_id': fit_id}
     for role, color in (('a', '#2563eb'), ('b', '#7c3aed')):
         lon, lat = state.get('route_'+role+'_lon'), state.get('route_'+role+'_lat')
         if lon is not None and lat is not None:
@@ -46,6 +72,8 @@ def journey_overlay(features, state, result, fit_id=None):
         chosen = result['routes'][state['route_choice']]
         route = route_features(features, chosen['edge_ids'], chosen['segments'])['features']
         overlay['route'] = compact_roads(route)
+        overlay['comparisons'] = comparison_branches(result['routes'], state['route_choice'],
+                                                     state.get('comparison_routes', {}))
         for role in ('A', 'B'):
             if chosen['endpoint_gaps_m'][role] > .5:
                 overlay['connectors'].append([[p[1], p[0]] for p in
